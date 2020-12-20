@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="static/css/css.css">
+{{ if isset .Params "product" }}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+
+  </head>
+  <body style="padding-left: 250px;">
+    <div>
+    {{ partial "sidebar" . }}
+  </div>
+  <div>
+    {{ partial "header" . }}
+</div>
+    <h3>List product</h3><br>
+    {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
+    {{ if eq $.Params.id (index $r 0) }}
+    <div style="margin-left: 120px; font-size: 20px;">
+      <h1> {{ index $r 2 }} </h1>
+      <h2>SKU: {{ index $r 1 }} </h2>
+          <span> ID: {{ index $r 0 }}</span><br>
+          <span> Stock: {{ index $r 3 }}</span>
+      </div>
+{{ end }}
+{{ end }}
+{{ partial "footer" . }}
+  </body>
+</html>
+{{ else }}
+<html lang="en" dir="ltr">
+  <head>
+
+  </head>
+  <body style="padding-left: 300px;">
+    {{ partial "sidebar" . }}
+    {{ partial "header" . }}
+    <h3>List no product</h3><br>
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    {{ range .Pages }}
+    <li>
+      <a href="{{ .URL }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+
+  
+    {{ partial "footer" . }}
+  </body>
+
+</html>
+  {{ end }}

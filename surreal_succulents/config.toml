@@ -1,0 +1,176 @@
+baseURL = "http://localhost:1313"
+languageCode = "en-us"
+title = "surreal_succulents"
+disableKinds = ['taxonomyTerm']
+ignoreErrors = ["error-remote-getcsv"]
+
+
+
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about"
+    weight = "1"
+
+  [[menu.main]]
+    identifier = "account"
+    name = "Account"
+    url = "/account"
+    weight = "2"
+
+  [[menu.main]]
+    identifier = "faq"
+    name = "FAQ"
+    url = "/advice-and-inspiration/faq"
+    weight = "3"
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact"
+    weight = "4"
+
+  [[menu.main]]
+    identifier = "shop"
+    name = "Shop"
+    url = "/shop"
+    weight = "5"
+
+  [[menu.main]]
+    identifier = "advice"
+    name = "Advice and Inspriation"
+    url = "/advice-and-inspiration"
+    weight = "6"
+
+  [[menu.main]]
+    identifier = "whoarewe"
+    name = "Who are We?"
+    url = "/articles/who-are-we"
+    weight = "7"
+
+  [[menu.main]]
+    identifier = "visitus"
+    name = "Visit Us"
+    url = "/visit-us"
+    weight = "7"
+
+  [[menu.main]]
+    identifier = "shows"
+    name = "Shows and Events"
+    url = "/shows-and-events"
+    weight = "8"
+
+  [[menu.main]]
+    identifier = "aeonium"
+    name = "Aeonium"
+    url = "/aeonium"
+    weight = "1"
+    parent = "shop"
+
+  [[menu.main]]
+    identifier = "agave"
+    name = "Agave"
+    url = "/agave"
+    weight = "2"
+    parent = "shop"
+
+  [[menu.main]]
+      identifier = "aloe"
+      name = "Aloe"
+      url = "/aloe"
+      weight = "3"
+      parent = "shop"
+
+  [[menu.main]]
+        identifier = "bestsellers"
+        name = "Best Sellers"
+        url = "/best-sellers"
+        weight = "0"
+        parent = "shop"
+
+  [[menu.main]]
+          identifier = "crassula"
+          name = "Crassula"
+          url = "/crassula"
+          weight = "4"
+          parent = "shop"
+
+  [[menu.main]]
+            identifier = "echeveria"
+            name = "Echeveria"
+            url = "/echeveria"
+            weight = "5"
+            parent = "shop"
+
+  [[menu.main]]
+              identifier = "haworthia"
+              name = "Haworthia"
+              url = "/haworthia"
+              weight = "6"
+              parent = "shop"
+
+[[menu.main]]
+                identifier = "largespecimens"
+                name = "Large Specimens"
+                url = "/large-specimens"
+                weight = "7"
+                parent = "shop"
+
+  [[menu.main]]
+                  identifier = "newin"
+                  name = "New In"
+                  url = "/new-in"
+                  weight = "8"
+                  parent = "shop"
+
+  [[menu.main]]
+                    identifier = "others"
+                    name = "Others"
+                    url = "/others"
+                    weight = "9"
+                    parent = "shop"
+
+
+  [[menu.main]]
+                      identifier = "potsandextras"
+                      name = "Pots and Extras"
+                      url = "/pots-and-extras"
+                      weight = "10"
+                      parent = "shop"
+
+  [[menu.main]]
+                        identifier = "sedeveria"
+                        name = "Sedeveria"
+                        url = "/sedeveria"
+                        weight = "11"
+                        parent = "shop"
+
+  [[menu.main]]
+                          identifier = "sedum"
+                          name = "Sedum"
+                          url = "/sedum"
+                          weight = "12"
+                          parent = "shop"
+
+    [[menu.main]]
+                            identifier = "sempervivum"
+                            name = "Semperivum"
+                            url = "/sempervivum"
+                            weight = "13"
+                            parent = "shop"
+
+[[menu.main]]
+                              identifier = "terrariums"
+                              name = "Terrariums"
+                              url = "/terrariums"
+                              weight = "14"
+                              parent = "shop"
+
+  [[menu.main]]
+                                identifier = "trailingsucculents"
+                                name = "Trailing Succulents"
+                                url = "/trailing-succulents"
+                                weight = "15"
+                                parent = "shop"
