@@ -5,11 +5,6 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
-  path: surreal_succulents/content
-  label: Pages
-  create: all
-  match: "*"
-- type: directory
   path: surreal_succulents/content/shop
   label: Shop
   create: all
@@ -19,6 +14,11 @@ sections:
   label: Articles
   create: all
   match: "**/*"
+- type: directory
+  path: surreal_succulents/content
+  label: Pages
+  create: all
+  match: "*"
 upload_dir: surreal_succulents/static/uploads
 public_path: "/uploads"
 front_matter_path: ''
