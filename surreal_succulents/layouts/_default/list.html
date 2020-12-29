@@ -1,10 +1,10 @@
-<link rel="stylesheet" href="static/css/css.css">
 {{ if isset .Params "product" }}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
-
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/css/css.css" type="text/css">
   </head>
   <body style="padding-left: 250px;">
     <div>
@@ -30,7 +30,8 @@
 {{ else }}
 <html lang="en" dir="ltr">
   <head>
-
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="css/css.css" type="text/css">
   </head>
   <body style="padding-left: 300px;">
     {{ partial "sidebar" . }}
@@ -44,7 +45,7 @@
     </li>
     {{ end }}
 
-  
+
     {{ partial "footer" . }}
   </body>
 

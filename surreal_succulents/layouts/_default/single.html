@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="static/css/css.css">
+<link rel="stylesheet" href="static/css/css.css" type="text/css">
+<script src="/static/js/scripts.js"></script>
 {{ if isset .Params "product" }}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -15,21 +16,35 @@
 </div>
   <h3>Single product</h3><br>
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
-    {{ if eq $.Params.id (index $r 0) }}
+    {{ if eq $.Params.ID (index $r 0) }}
     <div style="font-size: 20px;">
-
+      <img src="{{ index $r 9 }} ">
           <h1> {{ index $r 2 }} </h1>
           <span> SKU: {{ index $r 1 }} </span><br>
           <span> ID: {{ index $r 0 }}</span><br>
-          <span> Stock: {{ index $r 3 }}</span>
+          <span> Stock: {{ index $r 5 }}</span>
       </div><br>
-      <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
-<script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
-<div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
+      <button class="snipcart-add-item"
+        data-item-id="{{ index $r 0 }}"
+        data-item-price="{{ index $r 6 }}"
+        data-item-url=""
+        data-item-description="{{ index $r 3 }}"
+        data-item-image="{{ index $r 9 }}"
+        data-item-name="{{ index $r 1 }}">
+        Add to cart
+      </button>
       <div class="description">
-        <span> Hardiness Zone: {{ index $r 4 }}</span><br>
-        <span> Stock: {{ index $r 3 }}</span>
+
       </div>
+      <div class="details">
+<span>Hardiness: {{ index $r 10 }}</span><br>
+<span>Light Aspect: {{ index $r 11 }}</span><br>
+<span>Planting Location: {{ index $r 12 }}</span><br>
+<span>Mature Size: {{ index $r 13 }}</span><br>
+<span>Colour: {{ index $r 14 }}</span><br>
+<span>Growth Form: {{ index $r 15 }}</span>
+</div>
+
 {{ end }}
 {{ end }}
 {{ partial "footer" . }}
@@ -38,7 +53,8 @@
 {{ else }}
 <html lang="en" dir="ltr">
   <head>
-
+    <script src="/static/js/scripts.js"></script>
+    <link rel="stylesheet" href="/static/css/css.css">
   </head>
   <body style="padding-left: 250px;">
     {{ partial "sidebar" . }}
