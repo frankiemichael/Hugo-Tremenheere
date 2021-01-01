@@ -1,10 +1,13 @@
-<link rel="stylesheet" href="static/css/css.css" type="text/css">
-<script src="/static/js/scripts.js"></script>
 {{ if isset .Params "product" }}
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
+<script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
+<div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
+    <script src="/static/js/scripts.js"></script>
+    <link rel="stylesheet" href="static/css/css.css" type="text/css">
 
   </head>
   <body style="padding-left: 270px;">
@@ -26,8 +29,8 @@
       </div><br>
       <button class="snipcart-add-item"
         data-item-id="{{ index $r 0 }}"
-        data-item-price="{{ index $r 6 }}"
-        data-item-url=""
+        data-item-price="0"
+        data-item-url="http://mysite.com/products/1"
         data-item-description="{{ index $r 3 }}"
         data-item-image="{{ index $r 9 }}"
         data-item-name="{{ index $r 1 }}">
@@ -51,6 +54,7 @@
   </body>
 </html>
 {{ else }}
+
 <html lang="en" dir="ltr">
   <head>
     <script src="/static/js/scripts.js"></script>
