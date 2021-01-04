@@ -1,16 +1,7 @@
 ---
 label: Product
-hide_body: true
+hide_body: false
 fields:
-- type: text
-  name: title
-  label: title
-- type: datetime
-  name: date
-  label: date
-- type: boolean
-  name: product
-  label: product
 - type: text
   name: id
   label: id
