@@ -5,3 +5,5 @@ fields:
 - type: text
   name: id
   label: id
+pages:
+- surreal_succulents/content/shop/aeonium/velour.md
