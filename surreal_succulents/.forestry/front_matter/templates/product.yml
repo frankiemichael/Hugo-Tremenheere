@@ -2,8 +2,25 @@
 label: Product
 hide_body: false
 fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: date
+  type: datetime
+  label: Date
+  description: ''
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
 - type: text
   name: id
   label: id
+- name: product
+  type: boolean
+  label: Product
 pages:
 - surreal_succulents/content/shop/aeonium/Aeonium 'Velour'.md
