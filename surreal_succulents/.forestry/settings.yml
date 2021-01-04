@@ -5,6 +5,12 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
+  path: surreal_succulents/resources/_gen/assets/products.csv
+  label: Products CSV
+  create: all
+  match: "**/*"
+  new_doc_ext: ".csv"
+- type: directory
   path: surreal_succulents/content/shop
   label: Shop
   create: all
