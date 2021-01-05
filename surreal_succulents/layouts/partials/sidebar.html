@@ -3,12 +3,12 @@
 <script src="/js/scripts.js"></script>
 <link rel="stylesheet" href="/css/css.css" type="text/css">
 <div style ="width:250px;" class="sidenav">
-  <img style="float:center; padding-left:7px;" Height="100px" width="100px"src="/images/logocut.png" alt="Surreal Succulents" href="home.html">
+  <img style="float:center; padding-left:7px; padding-bottom:10px;" Height="100px" width="100px"src="/images/logocut.png" alt="Surreal Succulents" href="home.html">
   {{ $currentPage := . }}
   {{ range .Site.Menus.main}}
     {{ if .HasChildren }}
     <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-<button onclick="myFunction()" class="dropbtn">{{ .Name }}</button>
+    <a href="{{ .URL }}">{{ .Name }}</a>
         <div class="dropdown">
 
             <ul class="sub-menu">
