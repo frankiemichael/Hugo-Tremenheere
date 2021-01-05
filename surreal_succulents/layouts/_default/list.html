@@ -16,6 +16,7 @@
   <div>
     {{ partial "header" . }}
 </div>
+
     <h3>List product</h3><br>
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.id (index $r 0) }}
@@ -25,6 +26,9 @@
           <span> ID: {{ index $r 0 }}</span><br>
           <span> Stock: {{ index $r 3 }}</span>
       </div>
+</div>
+
+</div>
 {{ end }}
 {{ end }}
 {{ partial "footer" . }}
@@ -41,13 +45,14 @@
     {{ partial "header" . }}
     <h3>List no product</h3><br>
     <h1>{{ .Title }}</h1>
+    <div class="listlinks">
     {{ .Content }}
     {{ range .Pages }}
     <li>
       <a href="{{ .URL }}">{{ .Title }}</a>
     </li>
     {{ end }}
-
+    </div>
 
     {{ partial "footer" . }}
   </body>
