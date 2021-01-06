@@ -9,6 +9,8 @@
   list-style: none;
   text-decoration: none;
 }
+
+}
 a:link,
 a:visited,
 a:hover,
@@ -66,7 +68,15 @@ a:active {
   border: none;
   cursor: pointer;
 }
-
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: #2980B9;
@@ -77,7 +87,10 @@ a:active {
   position: relative;
   display: inline-block;
 }
-
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;

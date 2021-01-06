@@ -31,7 +31,7 @@
 </div>
 {{ end }}
 {{ end }}
-{{ partial "footer" . }}
+
   </body>
 </html>
 {{ else }}
@@ -40,8 +40,8 @@
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="css/css.css" type="text/css">
   </head>
-  <body style="padding-left: 300px;">
-    {{ partial "sidebar" . }}
+  <body>
+    {{ partial "sidebar1" . }}
     {{ partial "header" . }}
     <h3>List no product</h3><br>
     <h1>{{ .Title }}</h1>
