@@ -12,7 +12,7 @@
     <div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
 
   </head>
-  <body style="padding-left: 270px; font-family:verdana;">
+  <body style="padding-left: 270px;">
     <div>
     {{ partial "sidebar" . }}
   </div>
@@ -23,7 +23,7 @@
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
     <div style="font-size: 20px;">
-      <img src="https://app.forestry.io/sites/xs0ig2rhgsuhew/{{ index $r 9 }} ">
+      <img src="https://xs0ig2rhgsuhew.instant.forestry.io/uploads/{{ index $r 9 }} ">
           <h1> {{ index $r 2 }} </h1>
           <span> SKU: {{ index $r 1 }} </span><br>
           <span> ID: {{ index $r 0 }}</span><br>
@@ -52,7 +52,7 @@
 
 {{ end }}
 {{ end }}
-
+{{ partial "footer" . }}
   </body>
 </html>
 {{ else }}
