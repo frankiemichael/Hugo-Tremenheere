@@ -6,4 +6,3 @@ id: "5756"
 draft: true
 
 ---
-![](/uploads/0001.jpg)
