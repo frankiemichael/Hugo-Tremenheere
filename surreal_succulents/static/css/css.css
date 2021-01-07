@@ -69,7 +69,7 @@ a:active {
   cursor: pointer;
 }
 @keyframes rotation {
-  0% {transform: rotate(0deg) scale(1);}
+  0% {transform: rotate(0deg) scale(2);}
   50% {transform: rotate(45deg) scale(.5); }
   100% {transform: rotate(0deg) scale(1);}
   }
