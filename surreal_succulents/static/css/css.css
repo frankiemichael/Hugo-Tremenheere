@@ -70,6 +70,7 @@ a:active {
 }
 .opaque {
   transition: 0.5s;
+  z-index: 2;
 }
 @keyframes rotation {
   0% {transform: rotate(-45deg) scale(1.5);}
@@ -98,7 +99,10 @@ form.example button {
   border-left: none; /* Prevent double borders */
   cursor: pointer;
 }
+.colorchange{
+  background-color: black;
 
+}
 .carousel-item {
   height: 65vh;
   min-height: 350px;
@@ -133,6 +137,20 @@ form.example button {
 }
 .sidelinks {
   white-space: nowrap;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #2F69D0;
+  color: white;
+  height: 50px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  border-bottom-color: white;
+   width: 100%;
+}
+
+.sidelinks:hover {
+  background-color: #6590DC;
 }
 /* Links inside the dropdown */
 .dropdown-content a {
@@ -167,7 +185,7 @@ form.example input[type=text] {
 form.example button {
   width: 10%;
   padding: 10px;
-  background: #2196F3;
+  background: #2F69D0;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -179,7 +197,7 @@ form.example button {
 }
 
 form.example button:hover {
-  background: #0b7dda;
+  background: #6590DC;
 }
 
 /* Clear floats */

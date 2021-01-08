@@ -15,7 +15,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #5987D9;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -32,7 +32,7 @@ body {
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  color: #6590DC;
 }
 
 .sidebar .closebtn {
@@ -40,15 +40,16 @@ body {
   top: 0;
   right: 25px;
   font-size: 36px;
-  margin-left: 50px;
+  margin-left: 10px;
   height: 50px;
   width: 200px;
+  color: white;
 }
 
 .openbtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: #111;
+  background-color: #2F69D0;
   color: white;
   padding: 10px 15px;
   height: 50px;
@@ -58,7 +59,7 @@ body {
 }
 
 .openbtn:hover {
-  background-color: #444;
+  background-color: #6590DC;
 }
 
 
@@ -78,7 +79,7 @@ body {
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 {{ range .Children }}
 
-  <a href="/shop/{{ .URL }}">{{ .Name }}</a>
+  <button href="/shop/{{ .URL }}" class="sidelinks">{{ .Name }}</button>
 
 
 
@@ -98,15 +99,18 @@ function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById('opaque').style.opacity = "0.5";
   document.getElementById('headerDiv').style.width = "auto";
-
+  document.getElementById('headerDiv').style.width = "auto";
+  document.getElementById('opaque').style.pointerEvents= "none";
 
 }
-
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById('opaque').style.opacity = "1";
+  document.getElementById('opaque').style.backgroundColor = "white";
   document.getElementById('headerDiv').style.width = "auto";
+  document.getElementById('opaque').style.pointerEvents= "all";
   document.getElementById('bodyId').onclick = closeNav();
+
 }
 </script>
 
