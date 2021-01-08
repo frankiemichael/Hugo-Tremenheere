@@ -8,13 +8,15 @@
   <head>
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="/css/css.css" type="text/css">
-  </head>
-  <body id="bodyId" style="padding-left: 250px;">
-    <div>
-    {{ partial "sidebar" . }}
-  </div>
-  <div>
     {{ partial "header" . }}
+    {{ partial "sidebar" . }}
+  </head>
+
+  <body id="bodyId" style="padding-left: 250px;">
+    <div id="opaque" class="opaque">
+
+  <div>
+
 </div>
 
     <h3>List product</h3><br>
@@ -26,12 +28,10 @@
           <span> ID: {{ index $r 0 }}</span><br>
           <span> Stock: {{ index $r 3 }}</span>
       </div>
-</div>
 
-</div>
 {{ end }}
 {{ end }}
-
+</div>
   </body>
 </html>
 {{ else }}
@@ -39,9 +39,10 @@
   <head>
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="css/css.css" type="text/css">
+    {{ partial "sidebar1" . }}
   </head>
   <body id="bodyId">
-    {{ partial "sidebar1" . }}
+<div id="opaque" class="opaque">
     {{ partial "header" . }}
     <h3>List no product</h3><br>
     <h1>{{ .Title }}</h1>
@@ -55,6 +56,7 @@
     </div>
 
     {{ partial "footer" . }}
+    </div>
   </body>
 
 </html>
