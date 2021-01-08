@@ -54,7 +54,7 @@ body {
   height: 50px;
   border: none;
    border-radius:25px;
-   width: 200px;
+   width: 100px;
 }
 
 .openbtn:hover {
@@ -70,7 +70,7 @@ body {
 }
 </style>
 </head>
-<body>
+
   {{ $currentPage := . }}
   {{ range .Site.Menus.main}}
     {{ if .HasChildren }}
@@ -96,17 +96,19 @@ body {
 <script>
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById('bodyId').style.paddingLeft = "250px";
+  document.getElementById('opaque').style.opacity = "0.5";
   document.getElementById('headerDiv').style.width = "auto";
+
 
 }
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
-  document.getElementById('bodyId').style.paddingLeft = "0px";
+  document.getElementById('opaque').style.opacity = "1";
   document.getElementById('headerDiv').style.width = "auto";
+  document.getElementById('bodyId').onclick = closeNav();
 }
 </script>
 
-</body>
+
 </html>
