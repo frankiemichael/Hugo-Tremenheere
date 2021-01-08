@@ -68,6 +68,9 @@ a:active {
   border: none;
   cursor: pointer;
 }
+.opaque {
+  transition: 0.5s;
+}
 @keyframes rotation {
   0% {transform: rotate(-45deg) scale(1.5);}
   50% {transform: scale(1.25); }
