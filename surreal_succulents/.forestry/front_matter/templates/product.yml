@@ -18,6 +18,35 @@ fields:
     display_utc: false
     export_format: DD-MM-YYYY h:mm A
   hidden: true
+- name: categories
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+    options:
+    - Aeonium
+    - Echeveria
+    - Sempervivum
+    - Crassula
+    - Aloe
+    - Trailing Succulents
+    - Surreal Hybrids
+    - Others
+    - Pots and Extras
+    - Agave
+    - Haworthia
+    - Sedum
+    - Surreal Collections
+    - Sedeveria
+    - Rare Plant Fair
+    - Terrariums
+    - Geometric Pots
+    - Terracotta Pots
+    - Large Specimens
+  label: Categories
 - name: description
   type: textarea
   default: ''
@@ -31,10 +60,6 @@ fields:
   type: image_gallery
   config: {}
   label: Media
-- name: categories
-  type: tag_list
-  default: []
-  label: Categories
 - name: inventory
   type: include
   config: {}
