@@ -38,16 +38,26 @@
 <html lang="en" dir="ltr">
   <head>
     <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="css/css.css" type="text/css">
+    <link rel="stylesheet" href="static/css/css.css" type="text/css">
     {{ partial "sidebar1" . }}
+    <style>
+      img {display: block; }
+        img  {margin-left: auto; }
+        img  {margin-right: auto;}
+        img  {width: 30%};
+    </style>
   </head>
   <body id="bodyId">
 <div id="opaque" class="opaque">
     {{ partial "header" . }}
     <h3>List no product</h3><br>
-    <h1>{{ .Title }}</h1>
-    <div class="listlinks">
-    {{ .Content }}
+    <h1 class="pagetitles">{{ .Title }}</h1>
+    <div class="shopheading">
+
+      {{ .Content }}
+    </div>
+    <div >
+
     {{ range .Pages }}
     <li>
       <a href="{{ .URL }}">{{ .Title }}</a>
@@ -55,8 +65,6 @@
     {{ end }}
     </div>
 
-    {{ partial "footer" . }}
-    </div>
   </body>
 
 </html>

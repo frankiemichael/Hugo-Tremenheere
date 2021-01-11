@@ -1,0 +1,92 @@
+
+{{ if isset .Params "product" }}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <script src="/static/js/scripts.js"></script>
+    <link rel="stylesheet" href="static/css/css.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
+    <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
+    <div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
+{{ partial "sidebar1" . }}
+
+  </head>
+  <body id="bodyId" style="font-family:verdana;">
+    <div id="opaque" class="opaque">
+    <div>
+
+  </div>
+  <div>
+    {{ partial "header" . }}
+</div>
+  <h3>Single product</h3><br>
+    {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
+    {{ if eq $.Params.ID (index $r 0) }}
+    <div class="zoom">
+      <img src="{{ $.Params.media }}" alt="">
+    </div>
+    <div style="font-size: 20px;">
+          <h1> {{ $.Params.title }} </h1>
+          <span> SKU: {{ $.Params.sku }} </span><br>
+          <span> Stock: {{ $.Params.stock }}</span>
+      </div><br>
+      <button class="snipcart-add-item"
+        data-item-id="{{ index $r 0 }}"
+        data-item-price="0"
+        data-item-url="{{ index $r 16 }}"
+        data-item-image="{{ index $r 9 }}"
+        data-item-name="{{ index $r 2 }}">
+        Add to cart
+      </button>
+      <div class="description">
+
+      </div>
+      <div class="details">
+<span>Hardiness: {{ $.Params.hardiness }}</span><br>
+<span>Light Aspect: {{ range $.Params.light_aspect }}</span>
+{{ . }}<br>
+{{ end}}
+<span>Planting Location: {{ range $.Params.planting_location }}</span>
+{{ . }}
+{{ end }}
+<br>
+<span>Mature Size: {{ $.Params.mature_size }}</span><br>
+<span>Colours: {{ range $.Params.colour }}</span>
+{{ . }}
+{{ end }}
+<br>
+
+<span>Growth Form: {{ range $.Params.growth_form }}</span>
+{{ . }}
+{{ end }}
+<br>
+</div>
+
+{{ end }}
+{{ end }}
+</div>
+  </body>
+</html>
+{{ else }}
+
+<html lang="en" dir="ltr">
+  <head>
+    <script src="/static/js/scripts.js"></script>
+    <link rel="stylesheet" href="/static/css/css.css">
+
+      {{ partial "sidebar" . }}
+  </head>
+  <body id="bodyId" style="padding-left: 250px;">
+<div id="opaque" class="opaque">
+
+    {{ partial "header" . }}
+    <h3>Single no product</h3><br>
+    {{ .Content }}
+
+    {{ partial "footer" . }}
+    </div>
+  </body>
+</html>
+  {{ end }}

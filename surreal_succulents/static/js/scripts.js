@@ -7,3 +7,20 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
 }
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById('opaque').style.opacity = "0.5";
+  document.getElementById('headerDiv').style.width = "auto";
+  document.getElementById('opaque').style.pointerEvents= "none";
+
+}
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById('opaque').style.opacity = "1";
+  document.getElementById('opaque').style.backgroundColor = "white";
+  document.getElementById('headerDiv').style.width = "auto";
+  document.getElementById('opaque').style.pointerEvents= "all";
+  document.getElementById('bodyId').onclick = closeNav();
+
+}
