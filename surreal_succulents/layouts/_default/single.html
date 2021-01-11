@@ -25,8 +25,10 @@
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
     <div class="zoom">
-      <img src="{{ $.Params.media }}" alt="">
-    </div>
+      <span>{{range  $.Params.media }}</span>
+      <img src="{{ . }}">
+      {{ end }}
+        </div>
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
