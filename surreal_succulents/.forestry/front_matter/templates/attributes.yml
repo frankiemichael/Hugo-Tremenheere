@@ -10,49 +10,13 @@ fields:
     options:
     - Green
     - Amber
+    - Red
     source:
       type: simple
       section: 
       file: 
       path: 
   label: Hardiness
-- name: light_aspect
-  type: select
-  default: []
-  config:
-    required: true
-    options:
-    - Shade
-    - Part Shade
-    - Full Sun
-    - Bright Windowsill
-    source:
-      type: simple
-      section: 
-      file: 
-      path: 
-  label: Light Aspect
-- name: planting_location
-  type: select
-  default: []
-  config:
-    required: true
-    options:
-    - Greenhouse
-    - Indoors
-    - Patio
-    - Dry Shade
-    - Pot
-    - Wall
-    - Rockery
-    - Garden
-    - Windowsill
-    source:
-      type: simple
-      section: 
-      file: 
-      path: 
-  label: Planting Location
 - name: mature_size
   type: select
   default: []
@@ -70,11 +34,83 @@ fields:
       file: 
       path: 
   label: Mature Size
+- name: light_aspect
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+    options:
+    - Shade
+    - Part Shade
+    - Full Sun
+    - Bright Windowsill
+  label: Light Aspect
+- name: planting_location
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+    options:
+    - Greenhouse
+    - Indoor
+    - Patio
+    - Dry Shade
+    - Pot
+    - Wall
+    - Rockery
+    - Garden
+    - Windowsill
+    - Conservatory
+  label: Planting Location
 - name: colour
-  type: tag_list
-  default: []
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+    options:
+    - Brown
+    - Gold
+    - Grey
+    - Lilac
+    - Pale
+    - Red
+    - Orange
+    - Yellow
+    - Green
+    - Blue
+    - Purple
+    - Pink
+    - Bronze
+    - Silver
+    - White
+    - Black
+    - Variegated
+    - Multicoloured
   label: Colour
-- name: growth_forms
-  type: tag_list
-  default: []
-  label: Growth Forms
+- name: growth_form
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+    options:
+    - Single Rosette
+    - Offsets Readily
+    - Single Stem
+    - Compact
+    - Clumping
+    - Branching
+    - Spreading
+    - Trailing
+  label: Growth Form
