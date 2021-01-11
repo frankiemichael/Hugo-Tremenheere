@@ -56,6 +56,11 @@ fields:
     schema:
       format: markdown
   label: Description
+- name: display_image
+  type: file
+  config:
+    maxSize: 64
+  label: Display Image
 - name: media
   type: image_gallery
   config: {}
@@ -70,10 +75,5 @@ fields:
   config: {}
   template: attributes
   label: Attributes
-- name: display_image
-  type: file
-  config:
-    maxSize: 64
-  label: Display Image
 pages:
 - surreal_succulents/content/shop/aeonium/Aeonium 'Velour'.md
