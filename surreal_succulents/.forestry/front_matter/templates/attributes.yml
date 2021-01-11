@@ -47,6 +47,7 @@ fields:
     - Part Shade
     - Full Sun
     - Bright Windowsill
+    - Full Sun Windowsill
   label: Light Aspect
 - name: planting_location
   type: list
