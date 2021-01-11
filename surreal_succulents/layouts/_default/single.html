@@ -11,6 +11,7 @@
     <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
     <div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
 {{ partial "sidebar1" . }}
+
   </head>
   <body id="bodyId" style="font-family:verdana;">
     <div id="opaque" class="opaque">
@@ -25,10 +26,9 @@
     {{ if eq $.Params.ID (index $r 0) }}
     <div style="font-size: 20px;">
       <img src="https://app.forestry.io/sites/xs0ig2rhgsuhew/{{ index $r 9 }} ">
-          <h1> {{ index $r 2 }} </h1>
-          <span> SKU: {{ index $r 1 }} </span><br>
-          <span> ID: {{ index $r 0 }}</span><br>
-          <span> Stock: {{ index $r 5 }}</span>
+          <h1> {{ $.Params.title }} </h1>
+          <span> SKU: {{ $.Params.sku }} </span><br>
+          <span> Stock: {{ $.Params.stock }}</span>
       </div><br>
       <button class="snipcart-add-item"
         data-item-id="{{ index $r 0 }}"
@@ -42,12 +42,21 @@
 
       </div>
       <div class="details">
-<span>Hardiness: {{ index $r 10 }}</span><br>
-<span>Light Aspect: {{ index $r 11 }}</span><br>
-<span>Planting Location: {{ index $r 12 }}</span><br>
-<span>Mature Size: {{ index $r 13 }}</span><br>
-<span>Colour: {{ index $r 14 }}</span><br>
-<span>Growth Form: {{ index $r 15 }}</span>
+<span>Hardiness: {{ $.Params.hardiness }}</span><br>
+<span>Light Aspect: {{ range $.Params.light_aspect }}</span>
+{{ . }}<br>
+{{ end}}
+<span>Planting Location: {{ range $.Params.planting_location }}</span>
+{{ . }}
+{{ end }}
+<br>
+<span>Mature Size: {{ $.Params.mature_size }}</span><br>
+<span>Colours: {{ range $.Params.colour }}</span>
+{{ . }}
+{{ end }}
+<br>
+
+<span>Growth Form: {{ $.Params.growth_form }}</span>
 </div>
 
 {{ end }}
