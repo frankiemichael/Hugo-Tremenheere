@@ -25,14 +25,6 @@ fields:
     required: true
     min: 4
     max: 8
-- name: product
-  type: boolean
-  label: Product
-- name: sku
-  type: text
-  config:
-    required: false
-  label: SKU
 - name: description
   type: textarea
   default: ''
@@ -50,41 +42,15 @@ fields:
   type: tag_list
   default: []
   label: Categories
-- name: hardiness
-  type: select
-  default: []
-  config:
-    required: false
-    options:
-    - Green
-    - Amber
-    source:
-      type: simple
-      section: 
-      file: 
-      path: 
-  label: Hardiness
-- name: price
-  type: text
-  config:
-    required: false
-  label: Price
-  default: "£"
-- name: manage_stock_
-  type: boolean
-  label: Manage Stock?
-- name: stock
-  type: number
-  label: Stock
-  description: ''
-  default: 0
-  required: true
-  config:
-    min: 
-    max: 
-    step: 
-  showOnly:
-    field: manage_stock_
-    value: true
+- name: inventory
+  type: include
+  config: {}
+  template: inventory
+  label: Inventory
+- name: attributes
+  type: include
+  config: {}
+  template: attributes
+  label: Attributes
 pages:
 - surreal_succulents/content/shop/aeonium/Aeonium 'Velour'.md
