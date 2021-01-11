@@ -1,4 +1,80 @@
 ---
 label: Attributes
 hide_body: true
-fields: []
+fields:
+- name: hardiness
+  type: select
+  default: []
+  config:
+    required: true
+    options:
+    - Green
+    - Amber
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Hardiness
+- name: light_aspect
+  type: select
+  default: []
+  config:
+    required: true
+    options:
+    - Shade
+    - Part Shade
+    - Full Sun
+    - Bright Windowsill
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Light Aspect
+- name: planting_location
+  type: select
+  default: []
+  config:
+    required: true
+    options:
+    - Greenhouse
+    - Indoors
+    - Patio
+    - Dry Shade
+    - Pot
+    - Wall
+    - Rockery
+    - Garden
+    - Windowsill
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Planting Location
+- name: mature_size
+  type: select
+  default: []
+  config:
+    required: true
+    options:
+    - XSmall
+    - Small
+    - Medium
+    - Large
+    - XLarge
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Mature Size
+- name: colour
+  type: tag_list
+  default: []
+  label: Colour
+- name: growth_forms
+  type: tag_list
+  default: []
+  label: Growth Forms
