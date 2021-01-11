@@ -9,18 +9,33 @@ fields:
   label: Title
 - name: date
   type: datetime
-  label: Date
+  label: Date Created
   description: ''
   config:
     required: false
-    date_format: 
+    date_format: DD/MM/YYYY
     time_format: 
     display_utc: false
+    export_format: DD-MM-YYYY h:mm A
+  hidden: true
 - type: text
   name: id
-  label: id
+  label: Product ID
+  config:
+    required: true
+    min: 4
+    max: 8
 - name: product
   type: boolean
   label: Product
+- name: sku
+  type: text
+  config:
+    required: false
+  label: SKU
+- name: media
+  type: image_gallery
+  config: {}
+  label: Media
 pages:
 - surreal_succulents/content/shop/aeonium/Aeonium 'Velour'.md
