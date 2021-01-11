@@ -1,4 +1,36 @@
 ---
 label: Inventory
 hide_body: true
-fields: []
+fields:
+- name: price
+  type: number
+  label: Price
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+- name: sku
+  type: text
+  config:
+    required: false
+  label: SKU
+- name: manage_stock_
+  type: boolean
+  label: Manage Stock?
+  default: false
+- name: stock
+  type: number
+  label: Stock
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+  showOnly:
+    field: manage_stock_
+    value: true
