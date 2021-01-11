@@ -24,8 +24,10 @@
   <h3>Single product</h3><br>
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
+    <div class="zoom">
+      <img src="{{ $.Params.media }}" alt="">
+    </div>
     <div style="font-size: 20px;">
-      <img src="https://app.forestry.io/sites/xs0ig2rhgsuhew/{{ index $r 9 }} ">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
           <span> Stock: {{ $.Params.stock }}</span>
@@ -56,7 +58,10 @@
 {{ end }}
 <br>
 
-<span>Growth Form: {{ $.Params.growth_form }}</span>
+<span>Growth Form: {{ range $.Params.growth_form }}</span>
+{{ . }}
+{{ end }}
+<br>
 </div>
 
 {{ end }}
