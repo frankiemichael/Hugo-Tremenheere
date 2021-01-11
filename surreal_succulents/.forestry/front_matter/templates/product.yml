@@ -18,13 +18,6 @@ fields:
     display_utc: false
     export_format: DD-MM-YYYY h:mm A
   hidden: true
-- type: text
-  name: id
-  label: Product ID
-  config:
-    required: true
-    min: 4
-    max: 8
 - name: description
   type: textarea
   default: ''
