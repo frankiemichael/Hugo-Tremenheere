@@ -1,6 +1,6 @@
 
 <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
-
+<script src="/js/scripts.js"></script>
 <link rel="stylesheet" href="/css/css.css" type="text/css">
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
 <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
@@ -9,29 +9,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div style="background-color:white;">
 
-<div class="header1" id="headerDiv">
-<img class="headerlogo" src="/images/logocut.png" alt="Surreal Succulents" href="home.html">
-<h1>Surreal Succulents</h1>
-<form class="searchbar" action="action_page.php">
-<button type="submit"><i class="fa fa-search"></i></button>
-<input type="text" placeholder="Search.." name="search">
 
-</form>
-</div>
+<div id="main" style="background-color:#5987D9;">
 
-
-<div id="main" style="background-color:#5987D9;margin-top:10px; position: relative;">
   <button class="openbtn" onclick="openNav()">☰</button>
+  <img class="headerlogo" src="/images/logocut.png" alt="Surreal Succulents" href="home.html">
+
 
   <div style="float: right;">
     <button class="openbtn">About</button>
     <button class="openbtn">Advice</button>
     <button class="openbtn">Contact</button>
-    <button onclick="openBasket()" style="margin-left:10px;" class="snipcart-checkout openbtn"><i class="fa fa-shopping-basket"></i></button>
+    <button onclick="openBasket() " style="margin-left:10px;" class="snipcart-checkout openbtn"><i class="fa fa-shopping-basket"></i></button>
 
   </div>
 </div>
+<form class="searchbar" action="action_page.php">
+<button type="submit"><i class="fa fa-search"></i></button>
+<input type="text" placeholder="Search.." name="search">
 
+</form>
 
 </div>
 </div>

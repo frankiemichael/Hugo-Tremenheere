@@ -38,8 +38,9 @@
 <html lang="en" dir="ltr">
   <head>
     <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="static/css/css.css" type="text/css">
+    <link rel="stylesheet" href="/css/css.css" type="text/css">
     {{ partial "sidebar1" . }}
+
     <style>
       img {display: block; }
         img  {margin-left: auto; }
@@ -49,7 +50,7 @@
   </head>
   <body id="bodyId">
 <div id="opaque" class="opaque">
-    {{ partial "header" . }}
+{{ partial "header" . }}
     <h3>List no product</h3><br>
     <h1 class="pagetitles">{{ .Title }}</h1>
     <div class="shopheading">

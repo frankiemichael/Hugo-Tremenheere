@@ -130,6 +130,11 @@ a:active {
   transition: 0.5s;
   z-index: 2;
 }
+.opaquehidden{
+background-color:gray;
+opacity: 0.5;
+}
+
 @keyframes rotation {
   0% {transform: rotate(-45deg) scale(1.5);}
   50% {transform: scale(1.25); }
@@ -145,14 +150,13 @@ a:active {
   color: black;
   vertical-align: middle;
 }
-.headerlogo{
+.headerlogo {
+  width:50px;
   margin-left: auto;
-  margin-right: auto;
-  display: block;
-  animation: rotation 2s;
-  padding-top:30px;
-  width:250px;
+  display: inline-block;
+  padding-left: 16px;
 }
+
 form.searchbar input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -206,6 +210,7 @@ form.searchbar button:hover {
 #main {
   transition: margin-left .5s;
   padding: 16px;
+  display: flex;
 }
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {

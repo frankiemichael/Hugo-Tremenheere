@@ -9,8 +9,9 @@ function closeNav() {
 }
 
 function openNav() {
+  document.getElementById('opaque').style.backgroundColor = "black";
   document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById('opaque').style.opacity = "0.5";
+  document.getElementById('opaque').style.classList.add("opaquehidden");
   document.getElementById('headerDiv').style.width = "auto";
   document.getElementById('opaque').style.pointerEvents= "none";
 
