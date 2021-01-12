@@ -65,70 +65,70 @@ ignoreErrors = ["error-remote-getcsv"]
   [[menu.main]]
     identifier = "aeonium"
     name = "Aeonium"
-    url = "/aeonium"
+    url = "shop/aeonium"
     weight = "1"
     parent = "shop"
 
   [[menu.main]]
     identifier = "agave"
     name = "Agave"
-    url = "/agave"
+    url = "shop/agave"
     weight = "2"
     parent = "shop"
 
   [[menu.main]]
       identifier = "aloe"
       name = "Aloe"
-      url = "/aloe"
+      url = "shop/aloe"
       weight = "3"
       parent = "shop"
 
   [[menu.main]]
         identifier = "bestsellers"
         name = "Best Sellers"
-        url = "/best-sellers"
+        url = "shop/best-sellers"
         weight = "0"
         parent = "shop"
 
   [[menu.main]]
           identifier = "crassula"
           name = "Crassula"
-          url = "/crassula"
+          url = "shop/crassula"
           weight = "4"
           parent = "shop"
 
   [[menu.main]]
             identifier = "echeveria"
             name = "Echeveria"
-            url = "/echeveria"
+            url = "shop/echeveria"
             weight = "5"
             parent = "shop"
 
   [[menu.main]]
               identifier = "haworthia"
               name = "Haworthia"
-              url = "/haworthia"
+              url = "shop/haworthia"
               weight = "6"
               parent = "shop"
 
 [[menu.main]]
                 identifier = "largespecimens"
                 name = "Large Specimens"
-                url = "/large-specimens"
+                url = "shop/large-specimens"
                 weight = "7"
                 parent = "shop"
 
   [[menu.main]]
                   identifier = "newin"
                   name = "New In"
-                  url = "/new-in"
+                  url = "shop/new-in"
                   weight = "8"
                   parent = "shop"
 
   [[menu.main]]
                     identifier = "others"
                     name = "Others"
-                    url = "/others"
+                    url = "shop/others"
                     weight = "9"
                     parent = "shop"
 
@@ -136,41 +136,41 @@ ignoreErrors = ["error-remote-getcsv"]
   [[menu.main]]
                       identifier = "potsandextras"
                       name = "Pots and Extras"
-                      url = "/pots-and-extras"
+                      url = "shop/pots-and-extras"
                       weight = "10"
                       parent = "shop"
 
   [[menu.main]]
                         identifier = "sedeveria"
                         name = "Sedeveria"
-                        url = "/sedeveria"
+                        url = "shop/sedeveria"
                         weight = "11"
                         parent = "shop"
 
   [[menu.main]]
                           identifier = "sedum"
                           name = "Sedum"
-                          url = "/sedum"
+                          url = "shop/sedum"
                           weight = "12"
                           parent = "shop"
 
     [[menu.main]]
                             identifier = "sempervivum"
                             name = "Semperivum"
-                            url = "/sempervivum"
+                            url = "shop/sempervivum"
                             weight = "13"
                             parent = "shop"
 
 [[menu.main]]
                               identifier = "terrariums"
                               name = "Terrariums"
-                              url = "/terrariums"
+                              url = "shop/terrariums"
                               weight = "14"
                               parent = "shop"
 
   [[menu.main]]
                                 identifier = "trailingsucculents"
                                 name = "Trailing Succulents"
-                                url = "/trailing-succulents"
+                                url = "shop/trailing-succulents"
                                 weight = "15"
                                 parent = "shop"

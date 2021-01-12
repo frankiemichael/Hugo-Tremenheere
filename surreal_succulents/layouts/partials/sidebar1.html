@@ -13,7 +13,7 @@
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 {{ range .Children }}
 
-  <a href="/shop/{{ .URL }}" class="sidelinks">{{ .Name }}</a>
+  <a href="{{ .URL |relURL }}" class="sidelinks">{{ .Name }}</a>
 
 
 
