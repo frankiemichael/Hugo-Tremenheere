@@ -79,14 +79,21 @@ a:active {
   .sidenav a {font-size: 18px;}
 }
 .zoom {
-  padding: 50px;
-  transition: transform .2s; /* Animation */
-  width: 100px;
+  width: 100%;
   height: 100px;
   margin: 0 auto;
+  background-color: #5987D9;
+  opacity: 0.75;
+}
+.zoom:img {
+  width: 150px;
+  height:auto;
+  transition: 0.5s;
+    transition: transform .2s; /* Animation */
+      padding: 50px;
 }
 
-.zoom:hover {
+.zoom:img:hover {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 /* Dropdown Button */
@@ -180,6 +187,14 @@ form.searchbar button {
    width: 100%;
    z-index: 100;
    border-style: 2px solid;
+}
+.secondarymedia{
+  width:200px;
+  height:100px;
+}
+.secondarymedia:img {
+  width: 100px;
+  height: auto;
 }
 .shopheading {
   width: 70%;
