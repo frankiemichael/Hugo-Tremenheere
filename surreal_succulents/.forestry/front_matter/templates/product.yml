@@ -7,6 +7,15 @@ fields:
   config:
     required: false
   label: Title
+- name: display_image
+  type: file
+  config:
+    maxSize: 64
+  label: Display Image
+- name: media
+  type: image_gallery
+  config: {}
+  label: Media
 - name: date
   type: datetime
   label: Date Created
@@ -56,15 +65,6 @@ fields:
     schema:
       format: markdown
   label: Description
-- name: display_image
-  type: file
-  config:
-    maxSize: 64
-  label: Display Image
-- name: media
-  type: image_gallery
-  config: {}
-  label: Media
 - name: inventory
   type: include
   config: {}
