@@ -27,13 +27,14 @@
 
       <div class="zoom">
       <img src="{{ $.Params.display_image }}">
+      <div class="secondarymedia">
+        <span>{{range  $.Params.media }}</span>
+        <img src="{{ . }}">
+        {{ end }}
+      </div>
         </div>
-          <div class="secondarymedia">
-            <span>{{range  $.Params.media }}</span>
-            <img src="{{ . }}">
-            {{ end }}
-          </div>
-        
+
+
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
