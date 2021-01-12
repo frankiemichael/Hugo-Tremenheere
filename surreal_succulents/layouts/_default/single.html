@@ -25,15 +25,15 @@
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
 
-      <div class="zoom">
-      <img src="{{ $.Params.display_image }}">
-      <div class="secondarymedia">
-        <span>{{range  $.Params.media }}</span>
-        <img src="{{ . }}">
-        {{ end }}
-      </div>
-        </div>
 
+    <div class="zoom">
+    <img src="{{ $.Params.display_image }}">
+    <div class="secondarymedia">
+      <span>{{range  $.Params.media }}</span>
+      <img src="{{ . }}">
+      {{ end }}
+    </div>
+      </div>
 
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
