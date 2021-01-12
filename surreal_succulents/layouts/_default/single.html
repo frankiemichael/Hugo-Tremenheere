@@ -5,7 +5,8 @@
 <html lang="en" dir="ltr">
 
   <head>
-    <script src="/static/js/scripts.js"></script>
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/static/css/css.css">
     <link rel="stylesheet" href="static/css/css.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
     <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
@@ -27,25 +28,24 @@
 
 
     <div class="zoom">
-    <img src="{{ $.Params.display_image }}">
-    <div class="secondarymedia">
-      <span>{{range  $.Params.media }}</span>
-      <img src="{{ . }}">
-      {{ end }}
-    </div>
+    <img class="displayimage" src="{{ $.Params.display_image }}">
       </div>
-
+      <div class="secondarymedia">
+        <span>{{range  $.Params.media }}</span>
+        <img src="{{ . }}">
+        {{ end }}
+      </div>
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
           <span> Stock: {{ $.Params.stock }}</span>
       </div><br>
       <button class="snipcart-add-item"
-        data-item-id="{{ index $r 0 }}"
+        data-item-id="{{ $.Permalink }}"
         data-item-price="0"
-        data-item-url="{{ index $r 16 }}"
-        data-item-image="{{ index $r 9 }}"
-        data-item-name="{{ index $r 2 }}">
+        data-item-url="{{ $.Permalink }}"
+        data-item-image="{{ $.Params.display_image }}"
+        data-item-name="{{ $.Params.title }}">
         Add to cart
       </button>
       <div class="description">
@@ -81,7 +81,7 @@
 
 <html lang="en" dir="ltr">
   <head>
-    <script src="/static/js/scripts.js"></script>
+    <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="/static/css/css.css">
 
       {{ partial "sidebar" . }}

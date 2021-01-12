@@ -1,12 +1,4 @@
-<!-- snipcart assets -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy"
-  {{- if eq (getenv "HUGO_ENV") "development" -}}
-  {{ .Site.Params.snipcart_test_api_key }}
-  {{- else -}}
-  {{ .Site.Params.snipcart_live_api_key }}
-  {{- end -}}
-></script>
+
 <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
 
 <link rel="stylesheet" href="/css/css.css" type="text/css">
@@ -28,7 +20,7 @@
 </div>
 
 
-<div id="main" style="background-color:#5987D9; border-radius:25px;margin-top:10px; position: relative;">
+<div id="main" style="background-color:#5987D9;margin-top:10px; position: relative;">
   <button class="openbtn" onclick="openNav()">☰</button>
 
   <div style="float: right;">
