@@ -24,11 +24,16 @@
   <h3>Single product</h3><br>
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
-    <div class="zoom">
-      <span>{{range  $.Params.media }}</span>
-      <img src="{{ . }}">
-      {{ end }}
+
+      <div class="zoom">
+      <img src="{{ $.Params.display_image }}">
         </div>
+          <div class="secondarymedia">
+            <span>{{range  $.Params.media }}</span>
+            <img src="{{ . }}">
+            {{ end }}
+          </div>
+        
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
