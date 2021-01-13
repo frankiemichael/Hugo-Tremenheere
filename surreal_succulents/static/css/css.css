@@ -1,13 +1,16 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: verdana;
+  transition: 0.5s;
+  margin: 0 !important;
+}
+div {
   transition: 0.5s;
 }
-
 .sidebar {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   background-color: #5987D9;
@@ -15,6 +18,7 @@ body {
   transition: 0.5s;
   padding-top: 60px;
   overflow: auto;
+  opacity: 1 !important;
 }
 
 .sidebar a {
@@ -29,6 +33,7 @@ border-style: 2px solid;
 
 .sidebar a:hover {
   color: #6590DC;
+  opacity: 1 !important;
 }
 
 .sidebar .closebtn {
@@ -41,7 +46,7 @@ border-style: 2px solid;
   height: 50px;
   width: 20px;
   color: white;
-
+  opacity: 1 !important;
 }
 
 .openbtn {
@@ -83,9 +88,9 @@ text-decoration: none;
 font-family: verdana;
 color: #6590DC;
 font-size: 20px;
-position:absolute;
-    bottom:10;
-    right:20;
+position: absolute;
+bottom: 8px;
+right: 8px;
 }
 .listproductname {
 text-decoration: none;
@@ -94,15 +99,25 @@ font-size: 20px;
 color: #2F69D0;
 }
 .listproductdescription {
-  word-wrap: break-word;
+display: inline-flex;
+width: 100%;
+  overflow: hidden;
 }
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
 .listproduct li {
   list-style-type: none;
 }
 .listproductimg {
   height: auto;
-  width: 200px;
-  display: block;
+  max-width: 200px;
+  max-height: 163px;
+  width:auto;
+  height: auto;
   margin:10px;
 }
 .openbtn:hover {
@@ -215,19 +230,22 @@ a:active {
   border: none;
   cursor: pointer;
 }
-.opaque {
-transition: 0.5s;
-background-color: grey;
+.opaquehidden div {
+  opacity:0.5;
+}
+.opaquehidden h1 {
+  opacity:0.5;
 }
 .opaquehidden{
-background-color: grey;
-opacity: 0.5;
+background-color: lightgrey;
+opacity: 0.9;
 transition: 0.5s;
 overflow: hidden;
-display: relative;
+
 height:100%;
-float:right;
 width:100%;
+z-index: 50;
+float: right;
 }
 .transition {
   transition: 0.5s;
@@ -250,7 +268,9 @@ width:100%;
 .headerdiv {
   background-color:#5987D9;
   height:50px;
-  position: relative;
+  top: 0;
+  z-index: 100;
+  white-space: nowrap;
 }
 .headerlogo {
   width:50px;

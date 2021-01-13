@@ -50,8 +50,7 @@
   </head>
 
 
-  <body>
-    <div id="bodyId">
+  <body id="bodyId">
 
 
     {{ partial "header" . }}
@@ -64,12 +63,12 @@
     <div class="listing">
       {{ range .Pages }}
 
-    <div class="listproduct" onclick="location.href={{ .URL }};" style="cursor: pointer;">
+    <div class="listproduct " onclick="location.href={{ .URL }};" style="cursor: pointer;">
         {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
         <li>
         <a href="{{ .URL }}" class="listproductname">{{ .Title }}</a><br>
+        {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
         {{ with .Params.price }} <a class="listproductprice">£{{ . }}</a>{{ end }}
-        {{ with .Params.description }}<a class="listproductdescription">{{ . }}</a>{{ end }}
       </li>
     </div>
 
