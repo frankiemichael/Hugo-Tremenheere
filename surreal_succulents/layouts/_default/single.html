@@ -8,6 +8,9 @@
   <head >
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="/css/css.css" type="text/css">
+    <link type="text/css" href="magnifier.css" rel="stylesheet">
+
+    <script type="text/javascript" src="magnifier.js"></script>
     {{ partial "sidebar" . }}
     <style>
       img {display: block; }
@@ -21,21 +24,22 @@
 
   <body>
     <div id="bodyId">
-
-
     {{ partial "header" . }}
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
 
 
-    <div class="zoom">
-    <img class="displayimage" src="{{ $.Params.display_image }}">
+    <div class="producthead">
+
+    <img id="displayImage" class="displayimage" src="{{ $.Params.display_image }}">
+    <div class="secondarymedia">
+      <span>{{range  $.Params.media }}</span>
+      <img src="{{ . }}">
+      {{ end }}
+    </div>
+
       </div>
-      <div class="secondarymedia">
-        <span>{{range  $.Params.media }}</span>
-        <img src="{{ . }}">
-        {{ end }}
-      </div>
+
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>

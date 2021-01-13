@@ -192,23 +192,41 @@ a:active {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-.zoom {
-  width: 100%;
-  height: 400px;
+.producthead {
   background-color: #acc3ec;
-  display: inline-block;
-}
-.zoom img {
-  width: 400px !important;
-  height:auto;
   margin: 20px;
   margin-left: auto;
   margin-right: auto;
-  display: block;
-  transition: 0.5s;
-    transition: transform .2s; /* Animation */
-    opacity: 1 !important;
+  display:flex;
+  opacity: 1 !important;
 }
+.producthead a {
+  color:white;
+  position: !important;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  text-align: center;
+}
+.displayimage {
+  max-height: 600px;
+  max-width: 490px !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 400px;
+  height: 400px;
+}
+
 .secondarymedia img {
   width: 150px !important;
   transition: 0.5s;
@@ -218,9 +236,6 @@ a:active {
     display: inline-block;
 }
 
-.displayimage:hover {
-  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
 /* Dropdown Button */
 .dropbtn {
   background-color: #3498DB;
