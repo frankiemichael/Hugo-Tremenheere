@@ -1,28 +1,29 @@
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
+<script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
+<div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
 
 {{ if isset .Params "product" }}
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-  <head>
+  <head >
     <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="/static/css/css.css">
-    <link rel="stylesheet" href="static/css/css.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
-    <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
-    <div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
-{{ partial "sidebar1" . }}
+    <link rel="stylesheet" href="/css/css.css" type="text/css">
+    {{ partial "sidebar" . }}
+    <style>
+      img {display: block; }
+        img  {margin-left: auto; }
+        img  {margin-right: auto;}
+        img  {width: 30%};
+    </style>
 
   </head>
-  <body id="bodyId" style="font-family:verdana;">
-    <div id="opaque" class="opaque">
-    <div>
 
-  </div>
-  <div>
+
+  <body>
+    <div id="bodyId">
+
+
     {{ partial "header" . }}
-</div>
-  <h3>Single product</h3><br>
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
     {{ if eq $.Params.ID (index $r 0) }}
 

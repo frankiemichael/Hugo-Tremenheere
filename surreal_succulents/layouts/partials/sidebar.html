@@ -1,50 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<script src="/js/scripts.js"></script>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/css/css.css" type="text/css">
+</head>
+<body>
 
-<div style ="width:250px;" class="sidenav">
-  <img style="float:center; padding-left:7px; padding-bottom:10px;" Height="100px" width="100px"src="/images/logocut.png" alt="Surreal Succulents" href="home.html">
   {{ $currentPage := . }}
   {{ range .Site.Menus.main}}
     {{ if .HasChildren }}
-    <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-    <a href="{{ .URL }}">{{ .Name }}</a>
-        <div class="dropdown">
+<div id="mySidebar" class="sidebar">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+{{ range .Children }}
 
-            <ul class="sub-menu">
-                      {{ range .Children }}
-                      <div id="myDropdown" class="">
-
-                        <span>
-                              <a href="/shop/{{ .URL }}">{{ .Name }}</a>
-                              </span>
-                          </li>
-                        </div>
-                      {{ end }}
-                  </ul>
-
-                </div>
+  <a href="{{ .URL |relURL }}" class="sidelinks">{{ .Name }}</a>
 
 
 
 
 
-                  {{ else }}
-                    <li>
-                        <a href="{{ .URL }}">
-                            {{ .Pre }}
-                            <span>{{ .Name }}</span>
-                        </a>
-                    </li>
+  <div>
 
-
-                {{ end }}
-            {{ end }}
-
-
+  </div>
+{{ end }}
 </div>
-<body>
+{{ end }}
+{{ end }}
 
 </body>
+
+
+
 </html>
