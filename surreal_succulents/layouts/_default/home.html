@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head >
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/css/css.css" type="text/css">
+    {{ partial "sidebar" . }}
+
+    <style>
+      img {display: block; }
+        img  {margin-left: auto; }
+        img  {margin-right: auto;}
+        img  {width: 30%};
+    </style>
+  </head>
+
+
+  <body>
+    <div id="bodyId">
+
+
+    {{ partial "header" . }}
+    <h1 class="pagetitles">{{ .Title }}</h1>
+    <div class="shopheading">
+
+      {{ .Content }}
+    </div>
+    <div class="listing">
+      {{ range .Pages }}
+
+    <div class="listproduct" onclick="location.href={{ .URL }};" style="cursor: pointer;">
+        {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
+        <li>
+        <a href="{{ .URL }}" class="listproductname">{{ .Title }}</a><br>
+        {{ with .Params.price }} <a class="listproductprice">£{{ . }}</a>{{ end }}
+        {{ with .Params.description }}<a class="listproductdescription">{{ . }}</a>{{ end }}
+      </li>
+    </div>
+
+    {{ end }}
+    </div>
+  </body>
+
+</html>
