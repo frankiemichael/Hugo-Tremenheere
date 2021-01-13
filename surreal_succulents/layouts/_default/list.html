@@ -36,7 +36,7 @@
 </html>
 {{ else }}
 <html lang="en" dir="ltr">
-  <head>
+  <head >
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="/css/css.css" type="text/css">
     {{ partial "sidebar1" . }}
@@ -48,9 +48,13 @@
         img  {width: 30%};
     </style>
   </head>
-  <body id="bodyId">
-<div id="opaque" class="opaque">
-{{ partial "header" . }}
+
+
+  <body>
+    <div id="bodyId">
+
+
+    {{ partial "header" . }}
     <h3>List no product</h3><br>
     <h1 class="pagetitles">{{ .Title }}</h1>
     <div class="shopheading">
@@ -65,7 +69,6 @@
     </li>
     {{ end }}
     </div>
-
   </body>
 
 </html>
