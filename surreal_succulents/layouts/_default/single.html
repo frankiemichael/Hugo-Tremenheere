@@ -1,18 +1,12 @@
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
-<script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
-<div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
 
 {{ if isset .Params "product" }}
+
 <!DOCTYPE html>
+{{ partial "sidebar" . }}
 <html lang="en" dir="ltr">
-  <head >
+  <head>
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="/css/css.css" type="text/css">
-    <link type="text/css" href="magnifier.css" rel="stylesheet">
-
-    <script type="text/javascript" src="magnifier.js"></script>
-    {{ partial "sidebar" . }}
-
 
   </head>
 
@@ -24,15 +18,22 @@
 
 
     <div class="producthead">
-    <img class="displayimage" src="{{ $.Params.display_image }}">
+    <img id="displayImage" class="displayimage" src="{{ $.Params.display_image }}">
       </div>
+      <div class="secondmediadiv">
+
 
       <div class="secondarymedia">
         {{range  $.Params.media }}
-        <img src="{{ . }}">
+        <script>
+          function galleryClick() {
+            document.getElementById("displayImage").src="{{ . }}"
+          }
+        </script>
+        <img onclick="galleryClick()" height="100%" width="300px" id="secondarymedia" src="{{ . }}">
         {{ end }}
       </div>
-
+</div>
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
@@ -72,7 +73,6 @@
 
 {{ end }}
 {{ end }}
-</div>
   </body>
 </html>
 {{ else }}

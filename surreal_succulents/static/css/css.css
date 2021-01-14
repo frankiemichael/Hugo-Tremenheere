@@ -122,10 +122,9 @@ width: 100%;
 }
 .openbtn:hover {
   background-color: #6590DC;
-  transition: scale(1.25);
+  transform: scale(1.1);
   margin: 5px black;
 }
-
 .navbutton {
   font-size: 20px;
   cursor: pointer;
@@ -139,8 +138,9 @@ width: 100%;
 
 .navbutton:hover {
   background-color: #6590DC;
-  transition: scale(1.25);
+  transform: scale(1.1);
   margin: 5px black;
+  transition: 0.1s;
 }
 
 
@@ -209,23 +209,38 @@ a:active {
   margin-bottom: 5px;
   position: relative;
 }
-
+.secondmediadiv{
+  width:30%;
+  grid-row-gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+}
 
 .secondarymedia {
-  background-color: #acc3ec;
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
-  display:flex;
+  height:200px;
+  display:grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-auto-rows: minmax(auto, auto);
+    grid-column-gap:;
+
 }
 .secondarymedia img {
-  max-height: 300px;
-  max-width: 245px;
-  margin-left: auto;
-  margin-right: auto;
+  max-height: 100%;
+  max-width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
-position: relative;
+  object-fit:cover;
+  width: 1;
+  margin: 0px 20px 20px 20px;
+  border: 6px solid #acc3ec;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+}
+#secondarymedia:hover {
+  transform: scale(1.05);
 }
 /* Dropdown Button */
 .dropbtn {
@@ -279,11 +294,11 @@ float: right;
   white-space: nowrap;
 }
 .headerlogo {
-  width:50px;
-  height:50px;
-  margin-left: 10px;
-  display: inline-block;
-  padding-left: 16px;
+display: block;
+margin-left: 50px;
+margin-right: auto;
+width: 50px;
+height: 50px;
 }
 
 form.searchbar input[type=text] {
@@ -366,14 +381,7 @@ form.searchbar button:hover {
    z-index: 100;
    border-style: 2px solid;
 }
-.secondarymedia{
-  width:200px;
-  height:100px;
-}
-.secondarymedia:img {
-  width: 100px;
-  height: auto;
-}
+
 .shopheading {
   width: 70%;
   margin-left:15%;
