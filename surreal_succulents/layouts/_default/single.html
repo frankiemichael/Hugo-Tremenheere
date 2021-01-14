@@ -10,7 +10,6 @@
 
   </head>
 
-
   <body id="bodyId">
     {{ partial "header" . }}
     {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
@@ -25,12 +24,7 @@
 
       <div class="secondarymedia">
         {{range  $.Params.media }}
-        <script>
-          function galleryClick() {
-            document.getElementById("displayImage").src="{{ . }}"
-          }
-        </script>
-        <img onclick="galleryClick()" height="100%" width="300px" id="secondarymedia" src="{{ . }}">
+        <img height="100%" width="300px" id="secondarymedia" src="{{ . }}">
         {{ end }}
       </div>
 </div>
