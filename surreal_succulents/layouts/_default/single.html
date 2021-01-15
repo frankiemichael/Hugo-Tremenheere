@@ -1,19 +1,25 @@
-
+{{ if ($.Scratch.Get "photoswipeloaded") }}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+{{ end }}
 {{ if isset .Params "product" }}
 
 <!DOCTYPE html>
 {{ partial "sidebar" . }}
 <html lang="en" dir="ltr">
   <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
     <link rel="stylesheet" href="/css/css.css" type="text/css">
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.0/jquery.fancybox.min.js"></script>
   </head>
-
+{{ .Content }}
   <body id="bodyId">
     {{ partial "header" . }}
-    {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
-    {{ if eq $.Params.ID (index $r 0) }}
+
 
 
     <div class="producthead">
@@ -28,6 +34,9 @@
         {{ end }}
       </div>
 </div>
+
+
+
     <div style="font-size: 20px;">
           <h1> {{ $.Params.title }} </h1>
           <span> SKU: {{ $.Params.sku }} </span><br>
@@ -66,27 +75,6 @@
 </div>
 
 {{ end }}
-{{ end }}
+
   </body>
 </html>
-{{ else }}
-
-<html lang="en" dir="ltr">
-  <head>
-    <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="/static/css/css.css">
-
-      {{ partial "sidebar" . }}
-  </head>
-  <body id="bodyId" style="padding-left: 250px;">
-<div id="opaque" class="opaque">
-
-    {{ partial "header" . }}
-    <h3>Single no product</h3><br>
-    {{ .Content }}
-
-    {{ partial "footer" . }}
-    </div>
-  </body>
-</html>
-  {{ end }}
