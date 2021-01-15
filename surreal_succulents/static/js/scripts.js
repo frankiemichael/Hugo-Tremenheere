@@ -18,8 +18,3 @@ function homeImgOut() {
   document.getElementById("headingName").classList.add("displaynone")
 
 }
-$("div.headingName")
-    .css("margin-left",-$(this).width())
-    .animate({
-        marginLeft:0
-    }, 700);

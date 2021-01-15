@@ -201,54 +201,120 @@ a:active {
   .sidenav a {font-size: 18px;}
 }
 .producthead {
-  background-color: #acc3ec;
-  margin: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  display:flex;
+  display: block;
+  padding:20px;
+  margin-left: 20%;
+  float:left;
+  display:block;
+    width: 20%;
+    border: 6px solid black;
+    margin-top: 20px;
 }
 
 .displayimage {
   max-height: 600px;
-  max-width: 490px !important;
+  max-width: 490px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  position: relative;
+  display: block;
 }
-.secondmediadiv{
-  width:30%;
-  grid-row-gap: 10px;
+.secondarymedia{
+  width:90%;
   margin-left: auto;
   margin-right: auto;
   display:block;
+  border: 4px solid black;
+  background-color: white;
 }
 
-.secondarymedia {
-  width: 100%;
-  height:200px;
-  display:grid;
-    grid-template-columns: repeat(2, 2fr);
-    grid-auto-rows: minmax(auto, auto);
-    grid-column-gap:;
-
-}
 .secondarymedia img {
   max-height: 100%;
   max-width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  object-fit:cover;
-  width: 1;
-  margin: 0px 20px 20px 20px;
-  border: 6px solid #acc3ec;
-  margin-left: auto;
-  margin-right: auto;
-  position:relative;
+  margin-left:auto;
+   margin-right:auto;
+   border: 4px solid #acc3ec;
 }
 #secondarymedia:hover {
   transform: scale(1.05);
+}
+.productinformation{
+  float: right;
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: 20%;
+  width:30%;
+  padding:10px;
+  max-height:50%;
+
+}
+.productinformation h1{
+font-size: 60px;
+text-align:center;
+}
+.productinformation p{
+font-size: 30px;
+text-align:left;
+width:100%;
+max-width: 100%;
+}
+.productinformation2 {
+  position:relative;
+  margin-left: auto;
+
+  padding-bottom:10px;
+  width: 30%;
+  height: 200px;
+  float: right;
+  margin-right: 20%;
+}
+.priceonpage{
+  font-size: 30px;
+  position:absolute;
+  top:0;
+  left:0;
+  color:green;
+}
+.addtocart{
+  color:white;
+  font-size: 20px;
+  padding:10px;
+  text-decoration: none;
+  background-color: grey;
+  font-family: verdana;
+  position: absolute;
+  bottom: 5%;
+
+}
+.addtocart:hover{
+  transform: scale(1.05);
+  background-color: green;
+}
+
+.stocknumbers{
+  font-size: 20px;
+  position:absolute;
+  bottom:50%;
+  color:green;
+}
+.additionalinformation {
+  display: inline-block;
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+  border-top:2px dashed grey;
+  margin-top: 10px;
+  padding-top: 30px;
+}
+.productsku {
+  font-size: 30px;
+  text-transform: uppercase;
+  color:lightblue;
+}
+.producthardiness {
+  font-size: 50px;
 }
 /* Dropdown Button */
 .dropbtn {
