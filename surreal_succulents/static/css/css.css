@@ -3,6 +3,15 @@ body {
   transition: 0.5s;
   margin: 0 !important;
 }
+@media screen and (max-width: 1020px) {
+  #container, #header, #content, #footer, {
+    float: none;
+    width: auto;
+  }
+  #form {
+    display: none;
+  }
+}
 div {
   transition: 0.5s;
 }
@@ -325,6 +334,7 @@ form.searchbar input[type=text] {
   background: #f1f1f1;
   height:0px;
   float: right;
+  white-space: nowrap;
   }
 form.searchbar button {
   width: 20%;
@@ -340,6 +350,7 @@ form.searchbar button {
   height:50px;
   text-align: center;
   left:0;
+  white-space: nowrap;
 }
 form.searchbar button:hover {
   background-color: #6590DC;
