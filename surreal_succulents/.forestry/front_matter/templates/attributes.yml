@@ -95,7 +95,6 @@ fields:
     - White
     - Black
     - Variegated
-    - Multicoloured
   label: Colour
 - name: growth_form
   type: list
