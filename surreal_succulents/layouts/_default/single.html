@@ -44,7 +44,7 @@
         <img src="{{ $.Params.display_image }}" class="displayimage" id="expandedImg" style="width:100%;" >
 
         <!-- Image text -->
-        
+
       </div>
         <div class="secondarymedia">
           <div class="row">
@@ -66,9 +66,9 @@
             </div>{{ end }}
           </div>
         </div>
-        
+
   </div>
-  
+
 <!-- product information -->
 
 
@@ -89,20 +89,20 @@
         Add to cart
       </button>
       </div>
-      <div class="skudiv"> 
+      <div class="skudiv">
         <span class="productsku"> SKU: {{ $.Params.sku }} </span><br>
       </div>
 
       <div class="additionalinformation">
       <div class="trafficlightdiv"> Hardiness Zone
-        <img class="trafficlight" src="/uploads/{{$.Params.hardiness}}.jpg">
+        <img class="trafficlight" src="/uploads/trafficlights/{{$.Params.hardiness}}.jpg">
       </div>
       <div class="lightaspectdiv"> <div style="margin-bottom:20px;"><span>Light Aspect</span></div>
 
         {{ range $.Params.light_aspect }}
 
-        <img width="150px" src="/uploads/{{ . }}.jpg" title="{{ . }}"> 
-        
+        <img width="150px" src="/uploads/{{ . }}.jpg" title="{{ . }}">
+
         {{ end }}
       </div>
       <div class="plantinglocationdiv"> <div style="margin-bottom:20px;"><span>Planting Location</span></div>
