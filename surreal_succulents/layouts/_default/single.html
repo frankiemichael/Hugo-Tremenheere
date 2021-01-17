@@ -44,7 +44,7 @@
         <img src="{{ $.Params.display_image }}" class="displayimage" id="expandedImg" style="width:100%;" >
 
         <!-- Image text -->
-        <div id="imgtext"></div>
+        
       </div>
         <div class="secondarymedia">
           <div class="row">
@@ -66,7 +66,9 @@
             </div>{{ end }}
           </div>
         </div>
+        
   </div>
+  
 <!-- product information -->
 
 
@@ -87,19 +89,30 @@
         Add to cart
       </button>
       </div>
+      <div class="skudiv"> 
+        <span class="productsku"> SKU: {{ $.Params.sku }} </span><br>
+      </div>
 
       <div class="additionalinformation">
-      <span class="productsku"> SKU: {{ $.Params.sku }} </span><br>
-        <span class="producthardiness" style="color:{{$.Params.hardiness}};">Hardiness: {{ $.Params.hardiness }} Zone</span><br>
-<span>Light Aspect: {{ range $.Params.light_aspect }}</span>
-{{ . }}<br>
+      <div class="trafficlightdiv"> Hardiness Zone
+        <img class="trafficlight" src="/uploads/{{$.Params.hardiness}}.jpg">
+      </div>
+      <div class="lightaspectdiv"> <div style="margin-bottom:20px;"><span>Light Aspect</span></div>
+
+        {{ range $.Params.light_aspect }}
+
+        <img width="150px" src="/uploads/{{ . }}.jpg" title="{{ . }}"> 
+        
+        {{ end }}
+      </div>
+      <div class="plantinglocationdiv"> <div style="margin-bottom:20px;"><span>Planting Location</span></div>
+{{ range $.Params.planting_location }}<img src="/uploads/{{ . }}.jpg" title="{{ . }}">
 {{ end }}
-<span>Planting Location: {{ range $.Params.planting_location }}</span>
-{{ . }}
-{{ end }}
-<br>
-<span>Mature Size: {{ $.Params.mature_size }}</span><br>
-<span>Colours: {{ range $.Params.colour }}</span>
+</div>
+<div class="maturesizediv">Mature Size<br>
+<div class="maturesize"><span> {{ $.Params.mature_size }}</span></div><br>
+</div>
+<!--<span>Colours: {{ range $.Params.colour }}</span>
 {{ . }}
 {{ end }}
 <br>
@@ -108,7 +121,7 @@
 {{ . }}
 {{ end }}
 <br>
-</div>
+</div>-->
 
 {{ end }}
 
