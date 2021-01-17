@@ -16,7 +16,6 @@ mature_size = "XLarge"
 media = ["/uploads/velour-2.webp", "/uploads/aeoniumvelour2.webp"]
 planting_location = ["Conservatory", "Garden", "Rockery", "Wall", "Pot", "Dry Shade", "Patio", "Greenhouse"]
 price = 7.14
-product = true
 sku = "D601-velour"
 stock = 40
 title = "Aeonium 'Velour'"
