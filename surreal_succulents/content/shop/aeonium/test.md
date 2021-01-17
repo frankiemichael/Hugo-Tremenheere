@@ -16,5 +16,4 @@ price = 0
 sku = "A075-lemon"
 stock = 0
 title = "Test"
-
 +++
