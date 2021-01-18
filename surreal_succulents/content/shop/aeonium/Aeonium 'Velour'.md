@@ -6,6 +6,7 @@ description = "This Aeonium is very large and an attractive specimen when fully 
 display_image = "/uploads/velour-1.webp"
 image1 = "/uploads/velour-2.webp"
 image2 = "/uploads/aeoniumvelour2.webp"
+
 draft = true
 growth_form = ["Single Stem", "Branching"]
 hardiness = "Red"
@@ -13,7 +14,7 @@ id = "5797"
 light_aspect = ["Full Sun", "Full Sun Windowsill"]
 manage_stock_ = true
 mature_size = "XLarge"
-media = ["/uploads/velour-2.webp", "/uploads/aeoniumvelour2.webp"]
+media = ["/uploads/velour-2.webp", "/uploads/aeoniumvelour2.webp", "/uploads/aeoniumvelour2.webp", "/uploads/aeoniumvelour2.webp"]
 planting_location = ["Conservatory", "Garden", "Rockery", "Wall", "Pot", "Dry Shade", "Patio", "Greenhouse"]
 price = 7.14
 sku = "D601-velour"

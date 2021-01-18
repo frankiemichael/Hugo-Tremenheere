@@ -28,7 +28,7 @@
           <span> ID: {{ index $r 0 }}</span><br>
           <span> Stock: {{ index $r 3 }}</span>
       </div>
-
+      {{ partial "footer" . }}
 {{ end }}
 {{ end }}
 </div>
@@ -64,9 +64,10 @@
         {{ with .Params.price }} <a class="listproductprice">£{{ . }}</a>{{ end }}
       </li>
     </div>
-
+    
     {{ end }}
     </div>
   </body>
 {{ end }}
+{{ partial "footer" . }}
 </html>
