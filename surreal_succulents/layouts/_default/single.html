@@ -40,7 +40,7 @@
         <!-- Image text -->
 
       </div>
-        <div class="secondarymedia">
+        
           <div class="row">
             <div class="secondarypics">
             <div class="column">
@@ -59,8 +59,11 @@
       {{ with $.Params.image4 }}      <div class="column">
               <img src="{{ . }}" alt="{{ $.Params.title }}" onclick="myFunction(this);">
             </div>{{ end }}
+            {{ with $.Params.image5 }}      <div class="column">
+              <img src="{{ . }}" alt="{{ $.Params.title }}" onclick="myFunction(this);">
+            </div>{{ end }}
           </div>
-        </div>
+        
         </div>
 
       </div>
@@ -110,14 +113,14 @@
 {{ end }}
 </div>
 <div class="maturesizediv">Mature Size<br>
-<div class="maturesize"><span> {{ $.Params.mature_size }}</span></div><br>
+<div class="divgap"><span> {{ $.Params.mature_size }}</span></div><br>
 </div>
 <div class="coloursdiv"> Colours<br>
   {{ range $.Params.colour }}<img style="border-radius:50px;" src="/uploads/colours/{{ . }}.jpg" title="{{ . }}">{{ end }}
 </div>
 
-<div class="growthformdiv"> Growth Form <div style="margin-bottom: 50%;"></div>
-<span style="font-size: 3vw; font-family: impact;">{{ range $.Params.growth_form }} {{ . }}<br> {{ end }}</span>
+<div class="growthformdiv"> Growth Form <div style="margin-bottom: 20%;"></div>
+<span style="font-size: 2vw; font-family: impact;">{{ range $.Params.growth_form }} {{ . }}<br> {{ end }}</span>
 
 <br>
 </div>
