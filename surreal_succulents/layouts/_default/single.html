@@ -30,7 +30,7 @@
     {{ partial "header" . }}
 
 <!-- Gallery -->
-
+<div class="productgrid">
     <div class="producthead">
       <div class="container">
 
@@ -42,6 +42,7 @@
       </div>
         <div class="secondarymedia">
           <div class="row">
+            <div class="secondarypics">
             <div class="column">
               {{ with $.Params.display_image }}<img src="{{ . }}" alt="Nature" onclick="myFunction(this);">{{ end }}
             </div>
@@ -60,16 +61,22 @@
             </div>{{ end }}
           </div>
         </div>
+        </div>
 
-  </div>
+      </div>
+
 
 <!-- product information -->
 
-
-    <div class="productinformation">
+    <div>
+        <div class="productinformation">
           <h1> {{ $.Params.title }} </h1>
           <p>{{$.Params.description}}</p>
           </div>
+        </div>
+        <div class="skudiv">
+          <span class="productsku"> SKU: {{ $.Params.sku }} </span><br>
+        </div>
           <div class="productinformation2">
 
           <span class="stocknumbers">{{ $.Params.stock }} in stock</span><br>
@@ -83,10 +90,9 @@
         Add to cart
       </button>
       </div>
-      <div class="skudiv">
-        <span class="productsku"> SKU: {{ $.Params.sku }} </span><br>
-      </div>
+    </div>
 
+</div>
       <div class="additionalinformation">
       <div class="trafficlightdiv"> Hardiness Zone
         <img class="trafficlight" src="/uploads/trafficlights/{{$.Params.hardiness}}.jpg">
@@ -107,7 +113,7 @@
 <div class="maturesize"><span> {{ $.Params.mature_size }}</span></div><br>
 </div>
 <div class="coloursdiv"> Colours<br>
-  {{ range $.Params.colour }}<img src="/uploads/colours/{{ . }}.jpg" title="{{ . }}">{{ end }}
+  {{ range $.Params.colour }}<img style="border-radius:50px;" src="/uploads/colours/{{ . }}.jpg" title="{{ . }}">{{ end }}
 </div>
 
 <div class="growthformdiv"> Growth Form <div style="margin-bottom: 50%;"></div>

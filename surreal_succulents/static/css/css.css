@@ -201,16 +201,7 @@ a:active {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-.producthead {
-  display: block;
-  padding:20px;
-  margin-left: 20%;
-  float:left;
-    width: 20vw;
-    border: 6px solid black;
-    margin-top: 20px;
-  position:relative;
-}
+
 
 .displayimage {
   max-height: 600px;
@@ -240,17 +231,7 @@ a:active {
 #secondarymedia:hover {
   transform: scale(1.05);
 }
-.productinformation{
-  float: right;
-  display: block;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: 20%;
-  width:30%;
-  padding:10px;
-  max-height:50%;
 
-}
 .productinformation h1{
 font-size: 4vw;
 text-align:center;
@@ -261,23 +242,12 @@ text-align:left;
 width:100%;
 max-width: 100%;
 }
-.productinformation2 {
-  position:relative;
-  margin-left: auto;
-
-  padding-bottom:10px;
-  width: 30%;
+.productinformation2{
   height: 200px;
-  float: right;
-  margin-right: 20%;
+  text-align: left;
+  font-size: 2vw
 }
-.priceonpage{
-  font-size: 30px;
-  position:absolute;
-  top:0;
-  left:0;
-  color:green;
-}
+
 .addtocart{
   color:white;
   font-size: 20px;
@@ -285,25 +255,28 @@ max-width: 100%;
   text-decoration: none;
   background-color: grey;
   font-family: verdana;
-  position: absolute;
-  bottom: 5%;
-
+  float: left;
 }
 .addtocart:hover{
   transform: scale(1.05);
   background-color: green;
 }
-
+.productgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 3fr);
+  overflow: hidden;
+  width:80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 .stocknumbers{
   font-size: 20px;
-  position:absolute;
-  bottom:50%;
   color:green;
 }
 .additionalinformation {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  
+
   margin-left: 20%;
   margin-right: 20%;
   width: 60%;
@@ -412,15 +385,12 @@ width: 100%;
   margin-left: auto;
   margin-right: auto;
   overflow:hidden;
- 
+
   width: 100%;
 }
 .skudiv {
   margin-left: 20%;
-  position: relative;
-  width: 20%;
-  top:0;
-  z-index: -1;
+
 }
 /* Dropdown Button */
 .dropbtn {
@@ -612,18 +582,18 @@ form.searchbar button:hover {
   border-top:4px solid rgb(13, 62, 68);
   display:grid;
   grid-template-columns: repeat(6, 1fr);
- 
+
 }
 .footeraddresstremenheere {
   overflow: hidden;
   font-size: 12px;
-  
+
   margin-left:10%;
 }
 .footeraddressonline {
   overflow: hidden;
   font-size: 12px;
- 
+
   margin-left:10%;
 }
 .footeraddresstremenheere h4{
@@ -633,7 +603,7 @@ form.searchbar button:hover {
 .footeraddressonline h4{
   overflow: hidden;
   font-size: 12px;
- 
+
 }
 .fa-instagram {
   background: #125688;
