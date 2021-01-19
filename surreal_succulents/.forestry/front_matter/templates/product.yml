@@ -12,10 +12,31 @@ fields:
   config:
     maxSize: 64
   label: Display Image
-- name: media
-  type: image_gallery
-  config: {}
-  label: Media
+- name: image1
+  type: file
+  config:
+    maxSize: 64
+  label: Image 1
+- name: image2
+  type: file
+  config:
+    maxSize: 64
+  label: Image 2
+- name: image3
+  type: file
+  config:
+    maxSize: 64
+  label: Image 3
+- name: image4
+  type: file
+  config:
+    maxSize: 64
+  label: Image 4
+- name: image5
+  type: file
+  config:
+    maxSize: 64
+  label: Image 5
 - name: date
   type: datetime
   label: Date Created
