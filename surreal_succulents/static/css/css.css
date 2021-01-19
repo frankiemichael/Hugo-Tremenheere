@@ -9,14 +9,11 @@ html, body {
 
 .pageContentWrapper{
   margin-bottom:100px;/* Height of footer*/
-} 
+}
 @media screen and (max-width: 1020px) {
   #container, #header, #content, #footer, {
     float: none;
     width: auto;
-  }
-  #form {
-    display: none;
   }
 }
 div {
@@ -37,7 +34,7 @@ div {
   opacity: 1 !important;
 }
 #bodyId {
-  
+
 }
 .sidebar a {
   padding: 8px 8px 8px 32px;
@@ -110,7 +107,7 @@ border-style: 2px solid;
   display:flex;
   text-align:center;
   position:relative;
-  
+
 }
 .listproductprice {
 text-decoration: none;
@@ -326,7 +323,7 @@ max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   top: 200px;
- 
+
 }
 .trafficlightdiv {
   font-size: 1vw;
@@ -334,7 +331,7 @@ max-width: 100%;
   width: 100%;
   color:black;
   max-height:500px;
-  
+
   border-right: 0.5px solid grey;
   border-bottom: 0.5px solid grey;
   overflow:hidden;
@@ -615,7 +612,7 @@ html {
   display:grid;
   grid-template-columns: repeat(5, 1fr);
   position: absolute;
-  
+
 }
 .footeraddresstremenheere {
   overflow: hidden;
@@ -624,7 +621,7 @@ html {
   font-size:calc(6px + 0.7vw);
 }
 .footeraddressonline {
-  
+
   font-size:calc(6px + 0.7vw);
   margin-left:10%;
 }
@@ -633,7 +630,7 @@ html {
   font-size: 1vw;
 }
 .footeraddressonline h4{
-  
+
   font-size: 1vw;
 
 }
