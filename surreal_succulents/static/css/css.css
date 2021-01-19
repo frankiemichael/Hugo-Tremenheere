@@ -261,7 +261,7 @@ font-size: 4vw;
 text-align:center;
 }
 .productinformation p{
-font-size: 2vw;
+font-size:calc(6px + 1.5vw);
 text-align:left;
 width:100%;
 max-width: 100%;
