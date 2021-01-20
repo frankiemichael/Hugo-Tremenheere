@@ -14,6 +14,7 @@ html, body {
   #container, #header, #content, #footer, {
     float: none;
     width: auto;
+
   }
 }
 div {
@@ -109,6 +110,7 @@ border-style: 2px solid;
   position:relative;
 
 }
+
 .listproductprice {
 text-decoration: none;
 font-family: verdana;
@@ -226,7 +228,16 @@ a:active {
   .sidenav a {font-size: 18px;}
 }
 
-
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
+}
+.producthead {
+  flex: 1;
+  float: left;
+  margin:10px;
+}
 .displayimage {
   max-height: 600px;
   max-width: 490px;
@@ -255,15 +266,19 @@ a:active {
 #secondarymedia:hover {
   transform: scale(1.05);
 }
-
+.productinformation {
+  flex: 1;
+  max-width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+}
 .productinformation h1{
-font-size: 4vw;
+font-size: 3vw;
 text-align:center;
 }
 .productinformation p{
 font-size:calc(6px + 1.5vw);
 text-align:left;
-width:100%;
 max-width: 100%;
 }
 .productinformation2{
@@ -286,22 +301,31 @@ max-width: 100%;
   transform: scale(1.05);
   background-color: green;
 }
+@media screen and (max-width: 992px) {
+  .column {
+    flex: 50%;
+  }
+}
+#productdiv div{
+  float: left;
+  width:150px;
+}
 .productgrid {
-  display: grid;
-  grid-template-columns: repeat(2, 3fr);
   overflow: hidden;
   width:80vw;
   margin-left: 10vw;
   margin-right: 10vw;
+  flex-wrap: wrap;
+  float: right;
 }
 .stocknumbers{
   font-size: 20px;
   color:green;
 }
+
 .additionalinformation {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   width:80vw;
   margin-left: 10vw;
   margin-right: 10vw;
@@ -618,11 +642,11 @@ html {
   overflow: hidden;
   font-size: 0.7vw;
   margin-left:10%;
-  font-size:calc(6px + 0.7vw);
+  font-size:calc(5px + 0.7vw);
 }
 .footeraddressonline {
 
-  font-size:calc(6px + 0.7vw);
+  font-size:calc(5px + 0.7vw);
   margin-left:10%;
 }
 .footeraddresstremenheere h4{
@@ -651,6 +675,6 @@ html {
 }
 .footerlogo {
   display: block;
- width:6vw;
+  width:6vw;
   margin:auto;
 }
