@@ -21,7 +21,21 @@ font-family: verdana;
 font-size: 8vw;
 color:white !important;
 position:absolute;
+-webkit-text-stroke: 3px #646464;
+}
+.homeimgtextdiv{
+  position: relative;
+  text-align: center;
+  color: white;
 
+}
+.hometitle {
+  position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ font-size: 7vw;
+ -webkit-text-stroke: 3px #646464;
 }
 .homelistproductdescription {
 display: inline-flex;
