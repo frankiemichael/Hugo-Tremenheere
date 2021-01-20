@@ -2,9 +2,6 @@ baseURL = "http://localhost:1313"
 languageCode = "en-us"
 title = "surreal_succulents"
 pygmentsUseClasses=true
-snipcart_test_api_key = "YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy
-"
-snipcart_live_api_key = ""
 
 [menu]
 
