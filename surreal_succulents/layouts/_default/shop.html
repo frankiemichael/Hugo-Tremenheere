@@ -1,46 +1,23 @@
-{{ if isset .Params "product" }}
+{{ if isset .Params "productlist" }}
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
 <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
 <div id="snipcart" data-config-modal-style="side" data-api-key="YmU4ODA5YjItZDc2MC00NWNlLWJkZTYtNmNlYWZhMWRmYThkNjM3NDM5MjMwMzc5NDk3NjYy" hidden></div>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-  <head>
-    <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="/css/css.css" type="text/css">
-    {{ partial "header" . }}
-    {{ partial "sidebar" . }}
-  </head>
-
-  <body id="bodyId" style="padding-left: 250px;">
-    <div id="opaque" class="opaque">
-
-  <div>
-
-</div>
-
-    <h3>List product</h3><br>
-    {{ range $i, $r := getCSV "," "resources/_gen/assets/products.csv" }}
-    {{ if eq $.Params.id (index $r 0) }}
-    <div style="margin-left: 120px; font-size: 20px;">
-      <h1> {{ index $r 2 }} </h1>
-      <h2>SKU: {{ index $r 1 }} </h2>
-          <span> ID: {{ index $r 0 }}</span><br>
-          <span> Stock: {{ index $r 3 }}</span>
-      </div>
-      {{ partial "footer" . }}
-{{ end }}
-{{ end }}
-</div>
-  </body>
-</html>
-{{ else }}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+{{ partial "sidebar" . }}
   <head >
     <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="/css/css.css" type="text/css">
-    {{ partial "sidebar" . }}
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/gallerycss.css" type="text/css">
+    <link rel="stylesheet" href="/css/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/product.css" type="text/css">
+    <link rel="stylesheet" href="/css/productlist.css" type="text/css">
+    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
+
 
   </head>
 
@@ -51,6 +28,52 @@
     {{ partial "header" . }}
     <h1 class="pagetitles">{{ .Title }}</h1>
     <div class="shopheading">
+
+      {{ .Content }}
+    </div>
+    <div class="homelisting">
+      {{ range .Pages }}
+
+    <div class="homelistproduct" onclick="location.href={{ .URL }};" style="cursor: pointer;">
+        {{ with .Params.display_image }}<img src="{{ . }}" class="homelistproductimg">{{ end }}
+        <li>
+        <a href="{{ .URL }}" class="homelistproductname">{{ .Title }}</a><br>
+        {{ with .Params.price }} <a class="homelistproductprice">£{{ . }}</a>{{ end }}
+        {{ with .Params.description }}<a class="homelistproductdescription">{{ . }}</a>{{ end }}
+      </li>
+    </div>
+
+    {{ end }}
+    </div>
+    {{ partial "footer" . }}
+  </body>
+
+</html>
+{{else}}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head >
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/gallerycss.css" type="text/css">
+    <link rel="stylesheet" href="/css/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/product.css" type="text/css">
+    <link rel="stylesheet" href="/css/productlist.css" type="text/css">
+    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">    {{ partial "sidebar" . }}
+
+  </head>
+
+
+  <body id="bodyId">
+
+
+    {{ partial "header" . }}
+    <h1 class="pagetitles">{{ .Title }}</h1>
+    <div class="shopheading">
+
     </div>
 
     <div class="listing">
@@ -64,7 +87,6 @@
         {{ with .Params.price }} <a class="listproductprice">£{{ . }}</a>{{ end }}
       </li>
     </div>
-    
     {{ end }}
     </div>
   </body>
