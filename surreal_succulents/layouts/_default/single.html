@@ -30,7 +30,7 @@
     {{ partial "header" . }}
 
 <!-- Gallery -->
-<div class="productgrid">
+<div class="productgrid" id="productgrid">
     <div class="producthead">
       <div class="container">
 
@@ -40,7 +40,7 @@
         <!-- Image text -->
 
       </div>
-        
+
           <div class="row">
             <div class="secondarypics">
             <div class="column">
@@ -63,7 +63,7 @@
               <img src="{{ . }}" alt="{{ $.Params.title }}" onclick="myFunction(this);">
             </div>{{ end }}
           </div>
-        
+
         </div>
 
       </div>
