@@ -21,11 +21,13 @@
 
 
     {{ partial "header" . }}
-    <h1 class="pagetitles">{{ .Title }}</h1>
-    <div class="shopheading">
+    <div class="homeimgtextdiv">
 
-      {{ .Content }}
-    </div>
+
+    <img src="uploads/homeimg.jpg" width="100%" margin-top="0" alt="">
+    <img src="uploads/logocut.png" class="homelogo" alt="">
+    <h1 class="hometitle">{{ .Title }}</h1>
+      </div>
     <div class="homelisting">
       {{ range .Pages }}
 
