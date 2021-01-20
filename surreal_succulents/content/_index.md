@@ -1,4 +1,4 @@
 ---
-title: "Home"
+title: "Surreal Succulents"
 draft: true
 ---
