@@ -29,6 +29,13 @@ position:absolute;
   color: white;
 
 }
+.homelogo {
+  position: absolute;
+ top: 20%;
+ left: 45%;
+ width: 200px;
+
+}
 .hometitle {
   position: absolute;
  top: 50%;
