@@ -122,13 +122,13 @@ div {
       background-color: black;
 
     }
-    #main {
+#main {
       transition: .5s;
       padding: 16px 0px 16px 0px;
       display: flex;
 
     }
-    html {
+html {
       min-height: 100%;
       position:relative;
     }

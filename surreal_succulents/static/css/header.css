@@ -108,3 +108,13 @@ form.searchbar button {
 form.searchbar button:hover {
   background-color: #6590DC;
 }
+#main {
+      transition: .5s;
+      padding: 16px 0px 16px 0px;
+      display: flex;
+
+    }
+html {
+      min-height: 100%;
+      position:relative;
+    }
