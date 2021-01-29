@@ -9,7 +9,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script language="JavaScript" type="text/javascript" src="/js/jquery.js"></script>
     <link href="{{ "/css/swagger-css/swagger-ui.css" | relURL }}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="/css/api.css" type="text/css">
     <meta charset="utf-8">
     <title>API</title>
   </head>
@@ -17,10 +17,26 @@
     {{ partial "header" . }}
     <div id="wrapper">
 
-
-    <input type="text" name="Offset" value="0" id="offsetinput">
-    <input type="text" name="Limit" value="20" id="limitinput">
+    <h1>Display Orders</h1>
+    <form>
+    From:<input type="text" name="Offset" value="0" id="offsetinput"><br>
+    To:<input type="text" name="Limit" value="20" id="limitinput"><br>
+    Status:<select name="Status" id="statusinput">
+           <option value =""></option>
+           <option value ="InProgress">Processing</option>
+           <option value ="Processed">Picking</option>
+           <option value ="Disputed">Disputed</option>
+           <option value ="Shipped">Completed</option>
+           <option value ="Pending">Pending Payment</option>
+           <option value ="Cancelled">Cancelled</option>
+         </select><br>
+    Invoice Number:<input type="text" name="Invoice Number" id="invoicenumberinput"><br>
+    Name:<input type="text" name="Name" id="nameinput"><br>
     <button type="button" name="button">Execute</button>
+  </form>
+  </div>
+  <div id="apidata">
+
   </div>
   </body>
 </html>
