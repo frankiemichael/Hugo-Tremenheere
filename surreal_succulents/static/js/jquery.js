@@ -19,15 +19,19 @@ $("#wrapper").on("click", "button", function() {
         dataType: 'json',
         success: function(result){
             console.log(result);
-            var apilink = result.items[0].billingAddress.city;
-            $('#apidata').append(apilink);
+            var obj = result.items;
+            $.each(obj, function(i, val){
+              var final = obj[i];
+              var billaddress = final.billingAddress;
+              console.log(final);
+              $('#apidata').append("<h4>" + JSON.stringify(final.invoiceNumber) + "</h4> <br>" )
+              $('#apidata').append("<p><h4>Billing Address:</h4> <br>" + JSON.stringify(billaddress.fullName) + "<br>" + JSON.stringify(billaddress.address1) + "<br>" + JSON.stringify(billaddress.address2) + "<br>" + JSON.stringify(billaddress.city) + "<br>" + JSON.stringify(billaddress.postalCode) + "<br>" + JSON.stringify(billaddress.country) + "<br>" + JSON.stringify(billaddress.phone) +"</p>")
+
+
+
+          });
             alert(host);
-            $.each(result, function(items) {
-
-              console.log(items.billingAddress)
-
-            })
-        },
+          },
         error: function(error){
           console.log(error);
         }
