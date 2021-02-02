@@ -1,0 +1,24 @@
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+  width:20%;
+}
+#wrapper button, input {
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+}
+#apidata {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#apiheadings {
+  width:20%;
+  color: grey;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+}
