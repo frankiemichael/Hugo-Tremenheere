@@ -30,7 +30,9 @@ $("#wrapper").on("click", "button", function() {
               $('#apidata').append("<div id='apidate' <h4>" + JSON.stringify(final.creationDate) + "</h4> </div>" )
               $('#apidata').append("<div id='apistatus' <h4>" + JSON.stringify(final.status) + "</h4> </div>" )
               $('#apidata').append("<div id='apishipping'<p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p>")
-
+              var quotes = document.getElementById("apidata").innerHTML;
+              var removequotes = quotes.replace(/"/g, '');
+              document.getElementById("apidata").innerHTML = removequotes;
 
 
           });
