@@ -22,10 +22,13 @@ $("#wrapper").on("click", "button", function() {
             var obj = result.items;
             $.each(obj, function(i, val){
               var final = obj[i];
-              var billaddress = final.billingAddress;
+              var shipaddress = final.shippingAddress;
               console.log(final);
-              $('#apidata').append("<h4>" + JSON.stringify(final.invoiceNumber) + "</h4> <br>" )
-              $('#apidata').append("<p><h4>Billing Address:</h4> <br>" + JSON.stringify(billaddress.fullName) + "<br>" + JSON.stringify(billaddress.address1) + "<br>" + JSON.stringify(billaddress.address2) + "<br>" + JSON.stringify(billaddress.city) + "<br>" + JSON.stringify(billaddress.postalCode) + "<br>" + JSON.stringify(billaddress.country) + "<br>" + JSON.stringify(billaddress.phone) +"</p>")
+              $('#apidata').append("<div id='invoicenumber' <h4>" + JSON.stringify(final.invoiceNumber) + "</h4> </div>" )
+              $('#apidata').append("<div id='apiname' <h4>" + JSON.stringify(shipaddress.fullName) + "</h4> </div>" )
+              $('#apidata').append("<div id='apidate' <h4>" + JSON.stringify(final.creationDate) + "</h4> </div>" )
+              $('#apidata').append("<div id='apistatus' <h4>" + JSON.stringify(final.status) + "</h4> </div>" )
+              $('#apidata').append("<div id='apishipping'<p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p>")
 
 
 
