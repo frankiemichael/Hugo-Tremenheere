@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 $("#wrapper").on("click", "button", function() {
+  $('#apidata').empty();
   var offset = $('#offsetinput').val()
   var limit = $('#limitinput').val()
   var status = $('#statusinput').val()
