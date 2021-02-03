@@ -1,8 +1,8 @@
 $( document ).ready(function() {
+$('#executespan').text("Execute");
 $("#wrapper").on("click", "button", function() {
-  $('#apidata').empty();
+  $('#executespan').text("Execute");
   var offset = $('#offsetinput').val()
-  var executeButton = $('#executeButton').text("Execute");
   var limit = $('#limitinput').val()
   var status = $('#statusinput').val()
   var invoicenumber = $('#invoicenumberinput').val()
@@ -33,6 +33,7 @@ $("#wrapper").on("click", "button", function() {
               document.getElementById("apidata").innerHTML = removequotes;
           }),
               $("#apidata").on("click", "button", function() {
+
                   var openinvoicenumber = $(this).parent().text();
                   $.ajax({
                     type: "GET",
@@ -44,18 +45,25 @@ $("#wrapper").on("click", "button", function() {
                     contentType: "application/json",
                     dataType: 'json',
                     success: function(result){
-                      var string = result.items[0]
-                      console.log(string)
+                      var string = result.items[0];
+                      var json = JSON.stringify(string.creationDate);
+                      var dateStr = JSON.parse(json);
+                      var date = new Date(dateStr).toString().substr(0,25);
                       $('#apidata').empty();
-                      executeButton = $('#executeButton').text("Back");
-                      $('#apidata').append("<div id='apiname'> <h4>" + JSON.stringify(string.billingAddress.fullName) + "</h4> </div>" )
-                      $('#apidata').append("<div id='apidate'> <h4>" + JSON.stringify(string.creationDate) + "</h4> </div>" )
-                      $('#apidata').append("<div id='apistatus'> <h4>" + JSON.stringify(string.status) + "</h4> </div>" )
-                      $('#apidata').append("<div id='apishipping'><p>" + JSON.stringify(string.billingAddress.fullName) + "<br>" + JSON.stringify(string.billingAddress.address1) + "<br>" + JSON.stringify(string.billingAddress.address2) + "<br>" + JSON.stringify(string.billingAddress.city) + "<br>" + JSON.stringify(string.billingAddress.postalCode) + "<br>" + JSON.stringify(string.billingAddress.country) + "</p>")
+                      $('#apihead').empty();
+                      $('#executespan').text("");
+                      $('#executespan').append("<a href='.'>Back</a>");
+                      $('#wrapper').append("<div id='orderhead'><span><h1>Order " + JSON.stringify(string.invoiceNumber) + "</h1></span></div>" )
+                      $('#apidata').append("<div id='apidate'> <h4>Placed On:</h4><br>" + date + "</div>" )
+                      $('#apidata').append("<div id='orderbillingaddress'><h4>Billing Address:</h4><br>" + JSON.stringify(string.billingAddress.fullName) + "<br>" + JSON.stringify(string.billingAddress.address1) + ", " + JSON.stringify(string.billingAddress.address2) + "<br>" + JSON.stringify(string.billingAddress.city) + "<br>" + JSON.stringify(string.billingAddress.postalCode) + "<br>" + JSON.stringify(string.billingAddress.country) + "</p>")
+                      $('#apidata').append("<div id='apistatus'> <h4>Order Status:</h4><br>" + JSON.stringify(string.status) + "</div>" )
 
                       var quotes = document.getElementById("apidata").innerHTML;
                       var removequotes = quotes.replace(/"/g, '');
                       document.getElementById("apidata").innerHTML = removequotes;
+                      var quotes = document.getElementById("orderhead").innerHTML;
+                      var removequotes = quotes.replace(/"/g, '');
+                      document.getElementById("orderhead").innerHTML = removequotes;
                     }
 
                   });
