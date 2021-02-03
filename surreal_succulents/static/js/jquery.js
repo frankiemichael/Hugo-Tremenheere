@@ -25,7 +25,7 @@ $("#wrapper").on("click", "button", function() {
               var final = obj[i];
               var shipaddress = final.shippingAddress;
               console.log(final);
-              $('#apidata').append("<div id='invoicenumber'> <button type='button' id='buttonclick' name='button2'><span id='buttonspan'>" + JSON.stringify(final.invoiceNumber) + "</span></button></div>" )
+              $('#apidata').append("<div id='invoicenumber'><button type='button' id='buttonclick' name='button2'><span id='buttonspan'>" + JSON.stringify(final.invoiceNumber) + "</span></button></div>" )
               $('#apidata').append("<div id='apiname'> <h4>" + JSON.stringify(shipaddress.fullName) + "</h4> </div>" )
               $('#apidata').append("<div id='apidate'> <h4>" + JSON.stringify(final.creationDate) + "</h4> </div>" )
               $('#apidata').append("<div id='apistatus'> <h4>" + JSON.stringify(final.status) + "</h4> </div>" )
