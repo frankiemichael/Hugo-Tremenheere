@@ -10,6 +10,9 @@
     <script language="JavaScript" type="text/javascript" src="/js/jquery.js"></script>
     <link href="{{ "/css/swagger-css/swagger-ui.css" | relURL }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/api.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <title>API</title>
   </head>
@@ -18,10 +21,10 @@
     <div id="wrapper">
 
     <h1>Display Orders</h1>
-    <form>
-    From:<input type="text" name="Offset" value="0" id="offsetinput"><br>
-    To:<input type="text" name="Limit" value="20" id="limitinput"><br>
-    Status:<select name="Status" id="statusinput">
+    <form class="form-inline">
+    From:<input class="form-control" type="text" name="Offset" value="0" id="offsetinput">
+    To:<input class="form-control" type="text" name="Limit" value="20" id="limitinput">
+    Status:<select class="form-control" name="Status" id="statusinput">
            <option value =""></option>
            <option value ="InProgress">Processing</option>
            <option value ="Processed">Picking</option>
@@ -29,10 +32,10 @@
            <option value ="Shipped">Completed</option>
            <option value ="Pending">Pending Payment</option>
            <option value ="Cancelled">Cancelled</option>
-         </select><br>
-    Invoice Number:<input type="text" name="Invoice Number" id="invoicenumberinput"><br>
-    Name:<input type="text" name="Name" id="nameinput"><br>
-    <button type="button" name="button">Execute</button>
+         </select>
+    Invoice Number:<input class="form-control" type="text" name="Invoice Number" id="invoicenumberinput">
+    Name:<input class="form-control" type="text" name="Name" id="nameinput"><br>
+    <button type="button" name="button"><span id="executespan"></span></button>
   </form>
   </div>
   <div id="apihead">

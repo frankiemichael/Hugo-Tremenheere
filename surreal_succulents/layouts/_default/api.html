@@ -19,8 +19,8 @@
 
     <h1>Display Orders</h1>
     <form>
-    From:<input type="text" name="Offset" value="0" id="offsetinput"><br>
-    To:<input type="text" name="Limit" value="20" id="limitinput"><br>
+    From:<input type="text" name="Offset" value="0" id="offsetinput">
+    To:<input type="text" name="Limit" value="20" id="limitinput">
     Status:<select name="Status" id="statusinput">
            <option value =""></option>
            <option value ="InProgress">Processing</option>
@@ -29,10 +29,10 @@
            <option value ="Shipped">Completed</option>
            <option value ="Pending">Pending Payment</option>
            <option value ="Cancelled">Cancelled</option>
-         </select><br>
-    Invoice Number:<input type="text" name="Invoice Number" id="invoicenumberinput"><br>
-    Name:<input type="text" name="Name" id="nameinput"><br>
-    <button type="button" name="button">Execute</button>
+         </select>
+    Invoice Number:<input type="text" name="Invoice Number" id="invoicenumberinput">
+    Name:<input type="text" name="Name" id="nameinput">
+    <button type="button" name="button"><span id="executespan"></span></button>
   </form>
   </div>
   <div id="apihead">
