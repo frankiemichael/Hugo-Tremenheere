@@ -1,17 +1,38 @@
-#wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  display:block;
+#orderhead{
+  width:100% !important;
 
 }
+#orderhead span{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 #wrapper button, input {
   margin-left: auto;
   margin-right: auto;
   display:block;
 }
+#wrapper div {
+  background-color: lightgrey;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width:25%;
+  height:250px;
+  vertical-align: top;
+  font-size:2vw;
+  padding:10px;
+}
+#solditems{
+  width: 100% !important;
+  height:20px !important;
+  display:flex !important;
+}
 #apidata {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -39,7 +60,7 @@
 }
 #apihead {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -49,6 +70,9 @@
   display: block;
   width:100%;
   text-align: center;
+  background-color: grey !important;
+  color:white;
+  height:100px !important;
 }
 .apisearchform {
   display: inline;
