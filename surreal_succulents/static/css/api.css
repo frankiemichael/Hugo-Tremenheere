@@ -20,9 +20,10 @@
   margin-left: auto;
   margin-right: auto;
   width:25%;
-  height:250px;
+  height:40vw;
+  max-height: 250px;
   vertical-align: top;
-  font-size:2vw;
+  font-size:calc(5px + 1vw);
   padding:10px;
 }
 #solditems{
@@ -78,4 +79,14 @@
   display: inline;
   white-space: nowrap;
   width:10%;
+}
+#soldproducts {
+  width:100% !important;
+  background-color: grey !important;
+  color:white;
+  height: 50px !important;
+}
+#solditems {
+  color:black !important;
+  height: auto !important;
 }
