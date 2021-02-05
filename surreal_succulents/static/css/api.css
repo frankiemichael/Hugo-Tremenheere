@@ -74,6 +74,7 @@
   background-color: grey !important;
   color:white;
   height:100px !important;
+  margin-top:10px !important;
 }
 .apisearchform {
   display: inline;
@@ -85,22 +86,19 @@
   background-color: grey !important;
   color:white;
   height: 50px !important;
-
+  grid-template-columns: repeat(6, 1fr) !important;
+  margin-right: 10px !important;
 }
 
 #solditems {
   color:black !important;
   height: 100px !important;
   display: grid !important;
-  grid-template-columns: repeat(6, 1fr) !important;
-  margin-left: 10px !important;
-  margin-right: 10px !important;
+  grid-template-columns: repeat(5, 1fr) !important;
 
 }
 #soldproducts div {
   height:auto !important;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  border: 1px solid grey;
   width:100% !important;
 }
