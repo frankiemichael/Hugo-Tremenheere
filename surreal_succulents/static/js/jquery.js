@@ -70,7 +70,7 @@ $("#wrapper").on("click", "button", function() {
                       var product = string.items
                       $.each(product, function(i, val){
                       var productlist = product[i];
-                      $('#soldproducts').append("<div id='solditems'>" + JSON.stringify(productlist.name) + "£" + JSON.stringify(productlist.price))
+                      $('#soldproducts').append("<div id='solditems'><div>" + JSON.stringify(productlist.name) + "</div><div>£" + JSON.stringify(productlist.price) + "</div></div>")
                       });
 
                       var quotes = document.getElementById("wrapper").innerHTML;
