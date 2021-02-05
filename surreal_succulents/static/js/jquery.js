@@ -66,11 +66,11 @@ $("#wrapper").on("click", "button", function() {
                       $('#wrapper').append("<div><h4>Shipping Address:</h4><br>" + JSON.stringify(string.shippingAddress.fullName) + "<br>" + JSON.stringify(string.shippingAddress.address1) + ", " + JSON.stringify(string.shippingAddress.address2) + "<br>" + JSON.stringify(string.shippingAddress.city) + "<br>" + JSON.stringify(string.shippingAddress.postalCode) + "<br>" + JSON.stringify(string.shippingAddress.country) + "</p>")
                       $('#wrapper').append("<div><h4></h4><br>")
                       $('#wrapper').append("<div id='soldproducts'><h4>Products:</h4><br>")
-
+                      $('#soldproducts').append("<div id='solditems'><div><h4>SKU</h4></div><div><h4>Name</h4></div><div><h4>Quantity</h4></div><div><h4>Individual Price</h4></div><div><h4>Total</h4></div></div>")
                       var product = string.items
                       $.each(product, function(i, val){
                       var productlist = product[i];
-                      $('#soldproducts').append("<div id='solditems'><div>" + JSON.stringify(productlist.name) + "</div><div>£" + JSON.stringify(productlist.price) + "</div></div>")
+                      $('#soldproducts').append("<div id='solditems'><div>" + JSON.stringify(productlist.customFields[0].value) + "</div><div>" + JSON.stringify(productlist.name) + "</div><div>" + JSON.stringify(productlist.quantity) + "</div><div>£" + JSON.stringify(productlist.price) + "</div><div>£" + JSON.stringify(productlist.totalPrice) + "</div></div>")
                       });
 
                       var quotes = document.getElementById("wrapper").innerHTML;
