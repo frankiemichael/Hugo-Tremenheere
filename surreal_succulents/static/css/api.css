@@ -79,7 +79,7 @@
 .apisearchform {
   display: inline;
   white-space: nowrap;
-  width:10%;
+  width:5%;
 }
 #soldproducts {
   width:100% !important;
@@ -89,7 +89,9 @@
   grid-template-columns: repeat(6, 1fr) !important;
   margin-right: 10px !important;
 }
-
+#perpage {
+  width:75px !important;
+}
 #solditems {
   color:black !important;
   height: 100px !important;
@@ -97,8 +99,16 @@
   grid-template-columns: repeat(5, 1fr) !important;
 
 }
+.form-inline {
+  display:block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 #soldproducts div {
   height:auto !important;
   border: 1px solid grey;
   width:100% !important;
+}
+#pagecontrol {
+  display: inline-block;
 }
