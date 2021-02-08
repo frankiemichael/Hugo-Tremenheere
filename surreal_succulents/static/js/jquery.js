@@ -21,12 +21,16 @@ $("#wrapper").on("click", "button", function() {
         success: function(result){
             var obj = result.items;
             $.each(obj, function(i, val){
+              var string = result.items[i];
+              var json = JSON.stringify(string.creationDate);
+              var dateStr = JSON.parse(json);
+              var date = new Date(dateStr).toString().substr(0,25);
               var final = obj[i];
               console.log(final);
               var shipaddress = final.shippingAddress;
               $('#apidata').append("<div id='invoicenumber'><button type='button' id='buttonclick' name='button2'><span id='buttonspan'>" + JSON.stringify(final.invoiceNumber) + "</span></button></div>" )
               $('#apidata').append("<div id='apiname'> <h4>" + JSON.stringify(shipaddress.fullName) + "</h4> </div>" )
-              $('#apidata').append("<div id='apidate'> <h4>" + JSON.stringify(final.creationDate) + "</h4> </div>" )
+              $('#apidata').append("<div id='apidate'> <h4>" + JSON.stringify(date) + "</h4> </div>" )
               $('#apidata').append("<div id='apistatus'> <h4>" + JSON.stringify(final.status) + "</h4> </div>" )
               $('#apidata').append("<div id='apishipping'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p>")
               $('#apidata').append("<div id='apiprice'> <h4> £" + JSON.stringify(final.finalGrandTotal) + "<br>" + JSON.stringify(final.itemsCount) + " items</h4> </div>")
@@ -64,7 +68,7 @@ $("#wrapper").on("click", "button", function() {
                       $('#wrapper').append("<div><h4>Placed On:</h4><br>" + date  + "<br><br><h4>Order Status:</h4>" + JSON.stringify(string.status) + "</div>")
                       $('#wrapper').append("<div><h4>Billing Address:</h4><br>" + JSON.stringify(string.billingAddress.fullName) + "<br>" + JSON.stringify(string.billingAddress.address1) + ", " + JSON.stringify(string.billingAddress.address2) + "<br>" + JSON.stringify(string.billingAddress.city) + "<br>" + JSON.stringify(string.billingAddress.postalCode) + "<br>" + JSON.stringify(string.billingAddress.country) + "</p>")
                       $('#wrapper').append("<div><h4>Shipping Address:</h4><br>" + JSON.stringify(string.shippingAddress.fullName) + "<br>" + JSON.stringify(string.shippingAddress.address1) + ", " + JSON.stringify(string.shippingAddress.address2) + "<br>" + JSON.stringify(string.shippingAddress.city) + "<br>" + JSON.stringify(string.shippingAddress.postalCode) + "<br>" + JSON.stringify(string.shippingAddress.country) + "</p>")
-                      $('#wrapper').append("<div><h4></h4><br>")
+                      $('#wrapper').append("<div><h4>Payment Details</h4><br>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) )
                       $('#wrapper').append("<div id='soldproducts'><h4>Products:</h4><br>")
                       $('#soldproducts').append("<div id='solditems'><div><h4>SKU</h4></div><div><h4>Name</h4></div><div><h4>Quantity</h4></div><div><h4>Individual Price</h4></div><div><h4>Total</h4></div></div>")
                       var product = string.items
