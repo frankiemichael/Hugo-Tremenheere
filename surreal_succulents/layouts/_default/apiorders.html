@@ -17,12 +17,12 @@
     <title>API</title>
   </head>
   <body>
-    <div id="wrapper">
+
 
     <h1>Display Orders</h1>
     <form class="form-inline">
     From:<input class="form-control" type="text" name="Offset" value="0" id="offsetinput">
-    To:<input class="form-control" type="text" name="Limit" value="20" id="limitinput">
+    To:<input class="form-control" type="text" name="Limit" value="50" id="limitinput">
     Status:<select class="form-control" name="Status" id="statusinput">
            <option value =""></option>
            <option value ="InProgress">Processing</option>
@@ -34,8 +34,10 @@
          </select>
     Invoice Number:<input class="form-control" type="text" name="Invoice Number" id="invoicenumberinput">
     Name:<input class="form-control" type="text" name="Name" id="nameinput">
+    <div id="wrapper">
     <button type="button" name="button"><span id="executespan"></span></button>
   </form>
+
   </div>
   <div id="apihead">
     <div id="apiheadings">
