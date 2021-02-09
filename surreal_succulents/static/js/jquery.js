@@ -74,7 +74,7 @@ $("#executeButton").click (function(e) {
                         $('#wrapper').append("<div id='apiorderinfotop'><h4>Placed On:</h4>" + date  + "<br><br><h4>Order Status:</h4><select class='form-control' name='Status' id='statusinput' disabled><option value='" + string.status + "' selected='true' disabled='disabled'>" + string.status + "</option><option value ='InProgress'>In progress</option><option value ='Processed'>Processed</option><option value ='Disputed'>Disputed</option><option value ='Delivered'>Delivered</option><option value ='Shipped'>Shipped</option><option value ='Pending'>Pending</option><option value ='Cancelled'>Cancelled</option></select></div>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Billing Address:</h4><textarea id='billingfullname' readonly>" + JSON.stringify(string.billingAddress.fullName) + "</textarea><br><textarea id='billingaddress1' readonly>" + JSON.stringify(string.billingAddress.address1) + "</textarea><textarea id='billingaddress2' readonly>" + JSON.stringify(string.billingAddress.address2) + "</textarea><br><textarea id='billingaddresscity' readonly>" + JSON.stringify(string.billingAddress.city) + "</textarea><br><textarea id='billingaddresspostcode' readonly>" + JSON.stringify(string.billingAddress.postalCode) + "</textarea><br><textarea id='billingaddresscountry' readonly>" + JSON.stringify(string.billingAddress.country) + "</textarea></p>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Shipping Address:</h4><textarea id='shippingfullname' readonly>" + JSON.stringify(string.shippingAddress.fullName) + "</textarea><br><textarea id='shippingaddress1' readonly>" + JSON.stringify(string.shippingAddress.address1) + "</textarea><textarea id='shippingaddress2' readonly>" + JSON.stringify(string.shippingAddress.address2) + "</textarea><br><textarea id='shippingaddresscity' readonly>" + JSON.stringify(string.shippingAddress.city) + "</textarea><br><textarea id='shippingaddresspostcode' readonly>" + JSON.stringify(string.shippingAddress.postalCode) + "</textarea><br><textarea id='shippingaddresscountry' readonly>" + JSON.stringify(string.shippingAddress.country) + "</textarea></p>")
-                      $('#wrapper').append("<div id='apiorderinfotop'><h4>Customer Details</h4><img height='50px' width='50px' src=" + JSON.stringify(string.user.gravatarUrl) + "><br>Phone: <textarea id='customerphone' readonly>" + JSON.stringify(string.user.billingAddressPhone) + "</textarea><br>Email: <textarea id='customeremail' readonly>" + JSON.stringify(string.user.email) + "</textarea><br>User ID: " + JSON.stringify(string.user.id) + "<br>Previous Orders: " + JSON.stringify(string.user.statistics.ordersCount) + "</div>");
+                      $('#wrapper').append("<div id='apiorderinfotop'><h4>Customer Details</h4><img height='50px' width='50px' src=" + JSON.stringify(string.user.gravatarUrl) + "><br>Phone: <textarea id='customerphone' readonly>" + JSON.stringify(string.customFields[0].value) + "</textarea><br>Email: <textarea id='customeremail' readonly>" + JSON.stringify(string.user.email) + "</textarea><br>User ID: " + JSON.stringify(string.user.id) + "<br>Previous Orders: " + JSON.stringify(string.user.statistics.ordersCount) + "</div>");
 
                       $('#wrapper').append("<div id='soldproducts'><h3>Products</h3><br>")
                       $('#soldproducts').append("<div id='solditems'><div><h4>SKU</h4></div><div><h4>Name</h4></div><div><h4>Quantity</h4></div><div><h4>Individual Price</h4></div><div><h4>Total</h4></div></div>")
@@ -121,6 +121,7 @@ $("#executeButton").click (function(e) {
                         $("#ammendorder").click (function(e) {
                           var statusselect = $('select').val();
                           var token = string.token;
+
                           console.log($('#customerphone').val())
 
                           e.preventDefault();
@@ -153,9 +154,15 @@ $("#executeButton").click (function(e) {
                                   postalCode:$('#shippingaddresspostcode').val(),
                                 },
                                 user: {
-                                  billingAddressPhone:$('#customerphone').val(),
                                   email:$('#customeremail').val(),
-                                }
+                                },
+                                customFields: [
+                                  {value:$('#customerphone').val()},
+                                ]
+
+
+
+
 
                               }),
                               success: function(result){
