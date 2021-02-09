@@ -67,7 +67,7 @@ $("#executeButton").click (function() {
                       $('#executespan').append("<a href='.'>Back</a>");
                       $('#wrapper').append("<div id='orderhead'><span><h1>Order " + JSON.stringify(string.invoiceNumber) + "</h1></span></div></div>")
                       $('#orderhead').append("<button type='button' id='apieditbutton' name='apieditbutton'><span id='buttonspan'>Edit Order</span></button>")
-                        $('#wrapper').append("<div id='apiorderinfotop'><h4>Placed On:</h4>" + date  + "<br><br><h4>Order Status:</h4><select class='form-control' name='Status' id='statusinput'><option selected='true' disabled='disabled'>" + string.status + "</option><option value ='InProgress'>In progress</option><option value ='Processed'>Processed</option><option value ='Disputed'>Disputed</option><option value ='Delivered'>Delivered</option><option value ='Shipped'>Shipped</option><option value ='Pending'>Pending</option><option value ='Cancelled'>Cancelled</option></select></div>")
+                        $('#wrapper').append("<div id='apiorderinfotop'><h4>Placed On:</h4>" + date  + "<br><br><h4>Order Status:</h4><select class='form-control' name='Status' id='statusinput'><option value='" + string.status + "' selected='true' disabled='disabled'>" + string.status + "</option><option value ='InProgress'>In progress</option><option value ='Processed'>Processed</option><option value ='Disputed'>Disputed</option><option value ='Delivered'>Delivered</option><option value ='Shipped'>Shipped</option><option value ='Pending'>Pending</option><option value ='Cancelled'>Cancelled</option></select></div>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Billing Address:</h4><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.fullName) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.address1) + "</textarea>, <textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.address2) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.city) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.postalCode) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.country) + "</textarea></p>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Shipping Address:</h4><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.fullName) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.address1) + "</textarea>, <textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.address2) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.city) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.postalCode) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.country) + "</textarea></p>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) )
@@ -90,30 +90,32 @@ $("#executeButton").click (function() {
                         $("#apieditbutton").click (function() {
                           $(textarea).prop("readOnly", false)
                           $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
+                        $('select').on('change', function() {
+                            var statusselect = this.value
+                            console.log(statusselect)
 
                         $("#ammendorder").click (function() {
-                          console.log(JSON.stringify(string.token))));
-
-
+                          var token = string.token;
                           console.log(token)
-
                           $.ajax({
                               type: "PUT",
-                              url: puthost + token + statusput,
+                              url: puthost + token,
                               headers: {
                                 'Authorization': `Basic ${btoa(secret)}`,
                                 'Accept': 'application/json'
                               },
                               contentType: "application/json",
                               dataType: 'json',
+                              data: "{ status:'"+statusselect+"' }",
                               success: function(result){
                                 console.log(result)
                                 alert(host)
                               },
                               error: function(error){
                                 console.log(error);
-                              }
 
+                              }
+                              });
                         });
                       });
                     });
