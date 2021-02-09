@@ -1,6 +1,5 @@
 html, body {
   font-family: verdana;
-  transition: 0.5s;
   margin: 0 !important;
   padding:0;
   min-height:100%;
@@ -99,7 +98,6 @@ html, body {
   .opaquehidden{
   background-color: lightgrey;
   opacity: 0.9;
-  transition: 0.5s;
   overflow: hidden;
 
   height:100%;
