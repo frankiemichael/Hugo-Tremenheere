@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 $('#executespan').text("Execute");
+
 $("#executeButton").click (function() {
   $('#executespan').html("<a href='.'>Cancel</a>");
   var offset = $('#offsetinput').val()
@@ -8,6 +9,7 @@ $("#executeButton").click (function() {
   var invoicenumber = $('#invoicenumberinput').val()
   var name = $('#nameinput').val()
   var host = 'https://app.snipcart.com/api/orders' + "?offset=" + offset + "&limit=" + limit + "&status=" + status + "&placedBy=" + name
+  var puthost = 'https://app.snipcart.com/api/orders/'
   let secret = 'ST_MjZlOGQ4YjUtMzQwNC00OGM5LWI0MWYtOTE0YzliZDg2ZjFlNjM3NDY5MTIzMTA5ODA2NzAy' //hide this!!!!!!
     $.ajax({
         type: "GET",
@@ -39,7 +41,7 @@ $("#executeButton").click (function() {
               var removequotes = quotes.replace(/"/g, '');
               document.getElementById("apidata").innerHTML = removequotes;
           }),
-              $("#buttonclick").click (function() {
+              $("#apidata").on("click","button", function() {
 
                   var openinvoicenumber = $(this).parent().text();
                   $.ajax({
@@ -63,16 +65,15 @@ $("#executeButton").click (function() {
                       $('#apihead').remove();
                       $('#executespan').text("");
                       $('#executespan').append("<a href='.'>Back</a>");
-                      $('#wrapper').append("<div id='orderhead'><span><h1>Order " + JSON.stringify(string.invoiceNumber) + "</h1></span> <button type='button' id='apieditbutton'>Edit Order</button></div>")
-                      $('#apieditbutton').click (function() {
-                        alert(hello)
-                      });
-                      $('#wrapper').append("<div><h4>Placed On:</h4>" + date  + "<br><br><h4>Order Status:</h4>" + JSON.stringify(string.status) + "</div>")
-                      $('#wrapper').append("<div><h4>Billing Address:</h4>" + JSON.stringify(string.billingAddress.fullName) + "<br>" + JSON.stringify(string.billingAddress.address1) + ", " + JSON.stringify(string.billingAddress.address2) + "<br>" + JSON.stringify(string.billingAddress.city) + "<br>" + JSON.stringify(string.billingAddress.postalCode) + "<br>" + JSON.stringify(string.billingAddress.country) + "</p>")
-                      $('#wrapper').append("<div><h4>Shipping Address:</h4>" + JSON.stringify(string.shippingAddress.fullName) + "<br>" + JSON.stringify(string.shippingAddress.address1) + ", " + JSON.stringify(string.shippingAddress.address2) + "<br>" + JSON.stringify(string.shippingAddress.city) + "<br>" + JSON.stringify(string.shippingAddress.postalCode) + "<br>" + JSON.stringify(string.shippingAddress.country) + "</p>")
-                      $('#wrapper').append("<div><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) )
+                      $('#wrapper').append("<div id='orderhead'><span><h1>Order " + JSON.stringify(string.invoiceNumber) + "</h1></span></div></div>")
+                      $('#orderhead').append("<button type='button' id='apieditbutton' name='apieditbutton'><span id='buttonspan'>Edit Order</span></button>")
+                        $('#wrapper').append("<div id='apiorderinfotop'><h4>Placed On:</h4>" + date  + "<br><br><h4>Order Status:</h4><select class='form-control' name='Status' id='statusinput'><option selected='true' disabled='disabled'>" + string.status + "</option><option value ='InProgress'>In progress</option><option value ='Processed'>Processed</option><option value ='Disputed'>Disputed</option><option value ='Delivered'>Delivered</option><option value ='Shipped'>Shipped</option><option value ='Pending'>Pending</option><option value ='Cancelled'>Cancelled</option></select></div>")
+                      $('#wrapper').append("<div id='apiorderinfotop'><h4>Billing Address:</h4><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.fullName) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.address1) + "</textarea>, <textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.address2) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.city) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.postalCode) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.billingAddress.country) + "</textarea></p>")
+                      $('#wrapper').append("<div id='apiorderinfotop'><h4>Shipping Address:</h4><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.fullName) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.address1) + "</textarea>, <textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.address2) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.city) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.postalCode) + "</textarea><br><textarea id='textarea' readonly>" + JSON.stringify(string.shippingAddress.country) + "</textarea></p>")
+                      $('#wrapper').append("<div id='apiorderinfotop'><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) )
                       $('#wrapper').append("<div id='soldproducts'><h3>Products</h3><br>")
                       $('#soldproducts').append("<div id='solditems'><div><h4>SKU</h4></div><div><h4>Name</h4></div><div><h4>Quantity</h4></div><div><h4>Individual Price</h4></div><div><h4>Total</h4></div></div>")
+
                       var product = string.items
                       $.each(product, function(i, val){
                       var productlist = product[i];
@@ -86,6 +87,36 @@ $("#executeButton").click (function() {
                       var quotes = document.getElementById("orderhead").innerHTML;
                       var removequotes = quotes.replace(/"/g, '');
                       document.getElementById("orderhead").innerHTML = removequotes;
+                        $("#apieditbutton").click (function() {
+                          $(textarea).prop("readOnly", false)
+                          $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
+
+                        $("#ammendorder").click (function() {
+                          console.log(JSON.stringify(string.token))));
+
+
+                          console.log(token)
+
+                          $.ajax({
+                              type: "PUT",
+                              url: puthost + token + statusput,
+                              headers: {
+                                'Authorization': `Basic ${btoa(secret)}`,
+                                'Accept': 'application/json'
+                              },
+                              contentType: "application/json",
+                              dataType: 'json',
+                              success: function(result){
+                                console.log(result)
+                                alert(host)
+                              },
+                              error: function(error){
+                                console.log(error);
+                              }
+
+                        });
+                      });
+                    });
                     }
 
                   });

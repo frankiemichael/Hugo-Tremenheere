@@ -23,8 +23,6 @@ body h1 h2 h3 h4{
   margin-left: auto;
   margin-right: auto;
   width:25%;
-  height:40vw;
-  max-height: 250px;
   vertical-align: top;
   font-size:calc(5px + 1vw);
   padding-top:10px;
@@ -81,13 +79,28 @@ body h1 h2 h3 h4{
   text-align: center;
   background-color: grey !important;
   color:white;
-  height:100px !important;
+  height:200px !important;
   margin-top:10px !important;
+}
+#apiorderinfotop {
+  height: 400px !important;
 }
 .apisearchform {
   display: inline;
   white-space: nowrap;
   width:5%;
+}
+textarea {
+  border: none;
+overflow: auto;
+outline: none;
+height:4vh;
+width: 20vw;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+
+resize: none; /*remove the resize handle on the bottom right*/
 }
 #soldproducts {
   width:100% !important;
@@ -138,4 +151,7 @@ body h1 h2 h3 h4{
 }
 #pagecontrol {
   display: inline-block;
+}
+#ammendorder {
+  color:black !important;
 }
