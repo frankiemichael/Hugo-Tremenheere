@@ -1,2 +1,0 @@
-<link href="{{ "/css/swagger-css/swagger-ui.css" | relURL }}" rel="stylesheet" type="text/css">
-{{ .Content }}
