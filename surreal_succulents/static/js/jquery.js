@@ -108,6 +108,26 @@ $("#executeButton").click (function(e) {
                           $('#plus').css({"display" : "block"});
                           $('#minus').css({"display" : "block"});
                           $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
+                          $(function(){
+                          var addInput = '#qty'; //This is the id of the input you are changing
+                          var n = 1; //n is equal to 1
+                          //Set default value to n (n = 1)
+                          $(addInput).val(n);
+                          //On click add 1 to n
+                          $('#plus').on('click', function(){
+                          $(addInput).val(++n);
+                        })
+
+                        $('#minus').on('click', function(){
+                          //If n is bigger or equal to 1 subtract 1 from n
+                          if (n >= 1) {
+                            $(addInput).val(--n);
+                          } else {
+                            //Otherwise do nothing
+                          }
+                        });
+                      });
+                      
                         $('select').on('change', function() {
                             var statusselect = this.value
                             var token = string.token;
@@ -132,13 +152,23 @@ $("#executeButton").click (function(e) {
                         $("#ammendorder").click (function(e) {
                           var statusselect = $('select').val();
                           var token = string.token;
-
-                          console.log($('#customerphone').val())
-
+                          var qty = $('#qty').val();
+                          var product = string.items
+                          $.each(product, function(i, val){
+                          var productlist = product[i];
+                            $('#qty').on('change', function() {
+                              $('#qty').val($('#qty').val())
+                            });
+                        });
+                        var qtyarray = '';
+                        $.each(product, function(i, val){
+                           var productlist = product[i];
+                           qtyarray = val
+                        });
+                          console.log(qtyarray)
                           e.preventDefault();
                           e.stopImmediatePropagation();
                           $.ajax({
-
                               type: "PUT",
                               url: puthost + token,
                               headers: {
@@ -169,13 +199,17 @@ $("#executeButton").click (function(e) {
                                 },
                                 customFields: [
                                   {value:$('#deliverynote').val()},
-                                ]
+                                ],
+                                items:
+                                  {quantity:qtyarray}
+                                ,
 
 
 
 
 
                               }),
+
                               success: function(result){
                                 console.log(result)
 
