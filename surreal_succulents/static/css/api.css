@@ -129,6 +129,29 @@ resize: none; /*remove the resize handle on the bottom right*/
   text-align: center;
 
 }
+#qty {
+  width:20px !important;
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:inherit;
+  border:none;
+}
+.qtybutton {
+  background-color: grey;
+  border:1px solid black;
+  font-size: 15px !important;
+}
+.qtybutton:hover{
+  background-color: lightgrey;
+}
+#deliverynote {
+  height: 400px !important;
+  width:200px !important;
+  white-space: normal !important;
+  min-width: 200px;
+  overflow: hidden !important;
+}
 #apiadditionalinfoheader {
   width:100% !important;
   background-color: grey !important;
