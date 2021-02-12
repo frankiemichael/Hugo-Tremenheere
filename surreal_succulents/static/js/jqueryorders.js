@@ -14,6 +14,7 @@ $("#executeButton").click (function(e) {
   var name = $('#nameinput').val()
   var host = 'https://app.snipcart.com/api/orders' + "?offset=" + offset + "&limit=" + limit + "&status=" + status + "&placedBy=" + name
   var puthost = 'https://app.snipcart.com/api/orders/'
+  var refundhost = 'https://app.snipcart.com/api/v1/orders/'
   let secret = 'ST_MjZlOGQ4YjUtMzQwNC00OGM5LWI0MWYtOTE0YzliZDg2ZjFlNjM3NDY5MTIzMTA5ODA2NzAy' //hide this!!!!!!
     $.ajax({
         type: "GET",
@@ -93,6 +94,9 @@ $("#executeButton").click (function(e) {
                       $('#soldproducts').append("<div id='solditems'><div>" + JSON.stringify(productlist.customFields[0].value) + "</div><div>" + JSON.stringify(productlist.name) + "</div><div class='qtydiv'><span>" + JSON.stringify(productlist.quantity) + "</span></div><div>£" + JSON.stringify(productlist.price) + "</div><div>£" + JSON.stringify(productlist.totalPrice) + "</div></div>")
                       eachqty = JSON.stringify(qtyId);
                     });
+                    $('#soldproducts').append("<br><div id='apirefunds'><h3>Refund</h3></div><br>")
+
+
                       $('#soldproducts').append("<br><div id='apiadditionalinfoheader'><h3>Additional Information</h3></div><br> <div id='apiaddinfo'><div><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) + "</div><div><h4>Shipping Details</h4><br>Cost: £" + JSON.stringify(string.shippingFees) + "<br>Method: " + JSON.stringify(string.shippingMethod) + "<br>Tracking Number: <textarea id='trackingnumber' readonly>" + JSON.stringify(string.trackingNumber) + "</textarea>" );
                       $("#trackingnumber").text($("#trackingnumber").text().replace('null', ''));
                       var quotes = document.getElementById("wrapper").innerHTML;
@@ -133,6 +137,30 @@ $("#executeButton").click (function(e) {
                                 },
                           });
                         });
+                        $('#apirefunds').click (function() {
+                          $(this).unbind('click');
+                          e.preventDefault();
+                          e.stopImmediatePropagation();
+                          $('#apirefunds').append("<div>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button></div>")
+                          var token = string.token;
+                          $.ajax({
+                            type: "GET",
+                            url: refundhost + token + "/refunds",
+                            headers: {
+                              'Authorization': `Basic ${btoa(secret)}`,
+                              'Accept': 'application/json'
+                            },
+                            contentType: "application/json",
+                            dataType: 'json',
+                            success: function(result){
+                              console.log(result)
+                            },
+                            error: function(error) {
+                              console.log(error)
+                            }
+                        });
+
+                      })
                         $("#ammendorder").click (function(e) {
                           var token = string.token;
                           e.preventDefault();
