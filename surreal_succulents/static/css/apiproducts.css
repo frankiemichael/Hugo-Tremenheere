@@ -1,0 +1,198 @@
+#orderhead{
+  width:100% !important;
+
+}
+#orderhead span{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#wrapper button, input {
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+}
+body h1 h2 h3 h4{
+  font-weight:bold;
+}
+#wrapper div {
+  background-color: lightgrey;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width:25%;
+  vertical-align: top;
+  font-size:20px;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+#solditems{
+  width: 100% !important;
+  height:20px !important;
+  display:flex !important;
+}
+#apieditbutton {
+  color: black !important;
+
+}
+#apidata {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#apiheadings {
+  width:100%;
+  color: grey;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid grey !important;
+  border-left: none !important;
+}
+#invoicenumber {
+  color:blue !important;
+}
+#apidata div {
+  padding:5px;
+  text-align:center;
+  color:grey;
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+}
+#orderbillingaddress {
+  text-align: left !important;
+}
+#apihead {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#orderhead {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width:100%;
+  text-align: center;
+  background-color: grey !important;
+  color:white;
+  height:200px !important;
+  margin-top:10px !important;
+}
+#apiorderinfotop {
+  height: 400px !important;
+}
+#apicustomerdetails {
+  display: inline-block !important;
+  float:left;
+  clear: left;
+  height:auto !important;
+  white-space: nowrap;
+  vertical-align: top;
+  text-align: center;
+}
+.apisearchform {
+  display: inline;
+  white-space: nowrap;
+  width:5%;
+}
+textarea {
+  background-color: lightgrey;
+  border: none;
+overflow: hidden;
+outline: none;
+height:4vh;
+width: 20vw;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+white-space: nowrap;
+resize: none; /*remove the resize handle on the bottom right*/
+}
+#customeremail {
+  font-size: 15px !important;
+  vertical-align: bottom;
+}
+#soldproducts {
+  width:100% !important;
+  background-color: grey !important;
+  color:white;
+  height: 80px !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  margin-right: 10px !important;
+  text-align: center;
+}
+#apiadditionalinfo h2 {
+  text-align: center;
+
+}
+#qty {
+  width:20px !important;
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:inherit;
+  border:none;
+}
+.qtybutton {
+  background-color: grey;
+  border:1px solid black;
+  font-size: 15px !important;
+}
+.qtybutton:hover{
+  background-color: lightgrey;
+}
+#deliverynote {
+  height: 400px !important;
+  width:200px !important;
+  white-space: normal !important;
+  min-width: 200px;
+  overflow: hidden !important;
+}
+#apiadditionalinfoheader {
+  width:100% !important;
+  background-color: grey !important;
+  color:white;
+  height: 80px !important;
+  margin-right: 10px !important;
+  text-align: center;
+}
+
+#apiaddinfo {
+  color:black !important;
+  height: 100px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+#perpage {
+  width:75px !important;
+}
+#solditems {
+  color:black !important;
+  height: 100px !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+}
+.form-inline {
+  display:block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#soldproducts div {
+  height:auto !important;
+  border: 1px solid grey;
+  width:100% !important;
+}
+#pagecontrol {
+  display: inline-block;
+}
+#ammendorder {
+  color:black !important;
+}
+#productid {
+  max-width: 200px;
+  overflow: hidden;
+}
