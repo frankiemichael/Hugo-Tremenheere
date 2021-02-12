@@ -129,6 +129,22 @@ resize: none; /*remove the resize handle on the bottom right*/
   text-align: center;
 
 }
+#apirefunds h3{
+  color:white !important;
+}
+#apirefunds {
+  background-color: grey !important;
+  color:red !important;
+}
+#apirefunds input {
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+#refundamount {
+  width:50px !important;
+}
 #qty {
   width:20px !important;
   display: block !important;
