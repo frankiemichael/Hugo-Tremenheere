@@ -115,6 +115,7 @@ $("#executeButton").click (function(e) {
                           $('#plus').css({"display" : "block"});
                           $('#minus').css({"display" : "block"});
                           $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
+                          $('#apirefunds').append("<div id='refunddata'><button type='button' id='closerefund'>Close</button>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
 
                         $('select').on('change', function() {
                             var statusselect = this.value
@@ -137,12 +138,17 @@ $("#executeButton").click (function(e) {
                                 },
                           });
                         });
-                        $('#apirefunds').click (function() {
-                          $(this).unbind('click');
+                      });
+                      var clicks = 0;
+                      $('#apirefunds').click (function() {
+                        if (clicks == 0)  {
+                          ++clicks;
+                          console.log(clicks)
                           e.preventDefault();
                           e.stopImmediatePropagation();
-                          $('#apirefunds').append("<div>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button></div>")
                           var token = string.token;
+                          var refundamount = $('#refundamount').val();
+                          var refundreason = $('#refundreason').val()
                           $.ajax({
                             type: "GET",
                             url: refundhost + token + "/refunds",
@@ -159,9 +165,58 @@ $("#executeButton").click (function(e) {
                               console.log(error)
                             }
                         });
+                      } else {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                      $('#apirefunds').css({"height" : "200px !important"})
+                      --clicks;
 
-                      })
-                        $("#ammendorder").click (function(e) {
+                      console.log(clicks)
+                      }
+
+                        $('#submitrefund').click (function() {
+                          var r = confirm("Send refund?");
+                        if(r == true) {
+                          var refundamount = $('#refundamount').val();
+                          var refundreason = $('#refundreason').val();
+                          var refundbox = ''
+                          if ($('#refundemail').is(":checked"))
+                          {
+                            var refundbox = true
+                          }
+                          else refundbox = false
+
+
+                          console.log(refundbox)
+                          $.ajax({
+                            type: "POST",
+                            url: refundhost + token + "/refunds",
+                            headers: {
+                              'Authorization': `Basic ${btoa(secret)}`,
+                              'Accept': 'application/json'
+                            },
+                            contentType: "application/json",
+                            dataType: 'json',
+                            data: JSON.stringify({
+                              amount: refundamount,
+                              comment: refundreason,
+                              notifyCustomer: refundbox,
+                            }),
+                            success: function(result){
+                              console.log(result)
+                            },
+                            error: function(error) {
+                              console.log(error)
+                            }
+                          })
+                        }else {
+                          return false;
+                        }
+
+                      });
+
+
+                      $("#ammendorder").click (function(e) {
                           var token = string.token;
                           e.preventDefault();
                           e.stopImmediatePropagation();
