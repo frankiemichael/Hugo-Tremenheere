@@ -135,6 +135,12 @@ resize: none; /*remove the resize handle on the bottom right*/
 #apirefunds {
   background-color: grey !important;
   color:red !important;
+  cursor: pointer;
+}
+#apirefunds:hover{
+  background-color: lightgrey;
+  height:100%;
+  width:100%;
 }
 #apirefunds input {
   display: block !important;
@@ -142,8 +148,15 @@ resize: none; /*remove the resize handle on the bottom right*/
   margin-right: auto;
 
 }
+#apirefunds div {
+  cursor: default;
+}
 #refundamount {
   width:50px !important;
+}
+#refunddata {
+  height: 1px !important;
+  transition:1s;
 }
 #qty {
   width:20px !important;
