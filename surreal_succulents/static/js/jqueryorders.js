@@ -151,7 +151,8 @@ $("#executeButton").click (function(e) {
                           e.stopImmediatePropagation();
                           var token = string.token;
                           var refundamount = $('#refundamount').val();
-                          var refundreason = $('#refundreason').val()
+                          var refundreason = $('#refundreason').val();
+
                           $.ajax({
                             type: "GET",
                             url: refundhost + token + "/refunds",
@@ -163,9 +164,12 @@ $("#executeButton").click (function(e) {
                             dataType: 'json',
                             success: function(result){
                               console.log(result)
+                              var json = JSON.stringify(result.creationDate);
+                              var dateStr = JSON.parse(json);
+                              var date = new Date(dateStr).toString().substr(0,25);
                               $.each(obj, function(i, val){
                                 refunds = result[i]
-                                $('#totalrefunded').append("<ul>Amount: £" + JSON.stringify(refunds.amount) + "<br><span>Reason:"+ JSON.stringify(refunds.comment) + "</span></li>")
+                                $('#totalrefunded').append("Amount: £" + JSON.stringify(refunds.amount) + "<br><span>Reason:"+ JSON.stringify(refunds.comment) + "<br>Date: " + date + "</span><br></li>")
                               });
                             },
                             error: function(error) {
