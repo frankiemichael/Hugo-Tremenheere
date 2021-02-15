@@ -115,7 +115,7 @@ $("#executeButton").click (function(e) {
                           $('#plus').css({"display" : "block"});
                           $('#minus').css({"display" : "block"});
                           $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
-                          $('#apirefunds').append("<div id='refunddata' style='display: none; overflow: hidden !important;'> <button type='button' id='closerefund'>Close</button>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
+                          $('#apirefunds').append("<div id='refunddata' style='display: none; overflow: hidden !important;'> <div id='totalrefunded'></div>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
 
                         $('select').on('change', function() {
                             var statusselect = this.value
@@ -142,6 +142,7 @@ $("#executeButton").click (function(e) {
                       var clicks = 0;
                       $('#refundbutton').click (function() {
                         if (clicks == 0)  {
+
                           $('#refundtitle').html('Refund ↑');
                           $('#refunddata').css({"display" : ""})
                           ++clicks;
@@ -162,6 +163,10 @@ $("#executeButton").click (function(e) {
                             dataType: 'json',
                             success: function(result){
                               console.log(result)
+                              $.each(obj, function(i, val){
+                                refunds = result[i]
+                                $('#totalrefunded').append("<ul>Amount: £" + JSON.stringify(refunds.amount) + "<br><span>Reason:"+ JSON.stringify(refunds.comment) + "</span></li>")
+                              });
                             },
                             error: function(error) {
                               console.log(error)
