@@ -137,6 +137,11 @@ resize: none; /*remove the resize handle on the bottom right*/
   color:red !important;
   cursor: pointer;
 }
+#refundbutton {
+  background-color: grey !important;
+  color:red !important;
+  cursor: pointer;
+}
 #apirefunds:hover{
   background-color: lightgrey;
   height:100%;
