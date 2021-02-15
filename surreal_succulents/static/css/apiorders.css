@@ -2,6 +2,11 @@
   width:100% !important;
 
 }
+#soldproducts div {
+  height:auto !important;
+  border: 1px solid grey;
+  width:100% !important;
+}
 #orderhead span{
   text-align: center;
   margin-left: auto;
@@ -210,16 +215,19 @@ resize: none; /*remove the resize handle on the bottom right*/
   display: grid !important;
   grid-template-columns: repeat(5, 1fr) !important;
 }
+#totalrefunded {
+  overflow:scroll !important;
+  max-height:100px !important;
+  width:140px !important;
+  padding:10px !important;
+  font-size:12px !important;
+}
 .form-inline {
   display:block !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-#soldproducts div {
-  height:auto !important;
-  border: 1px solid grey;
-  width:100% !important;
-}
+
 #pagecontrol {
   display: inline-block;
 }
