@@ -94,7 +94,7 @@ $("#executeButton").click (function(e) {
                       $('#soldproducts').append("<div id='solditems'><div>" + JSON.stringify(productlist.customFields[0].value) + "</div><div>" + JSON.stringify(productlist.name) + "</div><div class='qtydiv'><span>" + JSON.stringify(productlist.quantity) + "</span></div><div>£" + JSON.stringify(productlist.price) + "</div><div>£" + JSON.stringify(productlist.totalPrice) + "</div></div>")
                       eachqty = JSON.stringify(qtyId);
                     });
-                    $('#soldproducts').append("<br><div id='apirefunds'><h3>Refund</h3></div><br>")
+                    $('#soldproducts').append("<br><div id='apirefunds'><div id='refundbutton'><h3 id='refundtitle'>Refund ↓</h3></div></div><br>")
 
 
                       $('#soldproducts').append("<br><div id='apiadditionalinfoheader'><h3>Additional Information</h3></div><br> <div id='apiaddinfo'><div><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) + "</div><div><h4>Shipping Details</h4><br>Cost: £" + JSON.stringify(string.shippingFees) + "<br>Method: " + JSON.stringify(string.shippingMethod) + "<br>Tracking Number: <textarea id='trackingnumber' readonly>" + JSON.stringify(string.trackingNumber) + "</textarea>" );
@@ -115,7 +115,7 @@ $("#executeButton").click (function(e) {
                           $('#plus').css({"display" : "block"});
                           $('#minus').css({"display" : "block"});
                           $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
-                          $('#apirefunds').append("<div id='refunddata'><button type='button' id='closerefund'>Close</button>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
+                          $('#apirefunds').append("<div id='refunddata' style='display: none; overflow: hidden !important;'> <button type='button' id='closerefund'>Close</button>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
 
                         $('select').on('change', function() {
                             var statusselect = this.value
@@ -140,8 +140,10 @@ $("#executeButton").click (function(e) {
                         });
                       });
                       var clicks = 0;
-                      $('#apirefunds').click (function() {
+                      $('#refundbutton').click (function() {
                         if (clicks == 0)  {
+                          $('#refundtitle').html('Refund ↑');
+                          $('#refunddata').css({"display" : ""})
                           ++clicks;
                           console.log(clicks)
                           e.preventDefault();
@@ -166,9 +168,8 @@ $("#executeButton").click (function(e) {
                             }
                         });
                       } else {
-                        e.preventDefault();
-                        e.stopImmediatePropagation();
-                      $('#apirefunds').css({"height" : "200px !important"})
+                        $('#refundtitle').html('Refund ↓')
+                        $('#refunddata').css({"display": "none"})
                       --clicks;
 
                       console.log(clicks)
