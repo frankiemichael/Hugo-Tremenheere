@@ -42,11 +42,8 @@ body h1 h2 h3 h4{
   color: black !important;
 
 }
-#apidata {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  margin-left: 10px;
-  margin-right: 10px;
+#apidata table{
+width:100%
 }
 #apiheadings {
   width:100%;
@@ -60,13 +57,7 @@ body h1 h2 h3 h4{
 #invoicenumber {
   color:blue !important;
 }
-#apidata div {
-  padding:5px;
-  text-align:center;
-  color:grey;
-  border-bottom: 1px solid lightgrey;
-  border-left: 1px solid lightgrey;
-}
+
 #orderbillingaddress {
   text-align: left !important;
 }
@@ -216,18 +207,28 @@ resize: none; /*remove the resize handle on the bottom right*/
   grid-template-columns: repeat(5, 1fr) !important;
 }
 #totalrefunded {
-  overflow:scroll !important;
+  overflow:auto !important;
   max-height:100px !important;
-  width:140px !important;
+  max-width:140px !important;
   padding:10px !important;
   font-size:12px !important;
+  border:none !important;
+  background-color: white !important;
 }
 .form-inline {
   display:block !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
+#orderSelect {
+  height:25px !important;
+  width:25px !important;
 
+}
+#selectAllOrders {
+  height:25px !important;
+  width:25px !important;
+}
 #pagecontrol {
   display: inline-block;
 }
