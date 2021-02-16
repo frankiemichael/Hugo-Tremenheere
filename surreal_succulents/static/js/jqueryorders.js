@@ -30,7 +30,7 @@ $("#executeButton").click (function(e) {
         dataType: 'json',
         success: function(result){
             var obj = result.items;
-            $('#apidata').append("<table id='apiTable'><th><h3>Invoice Number</h3></th><th><h3>Name</h3></th><th><h3>Date</h3></th><th><h3>Status</h3></th><th><h3>Shipping Address</h3></th><th><h3>Price / Items</h3></th>")
+            $('#apidata').append("<table id='apiTable'><th><h3>Invoice Number</h3><input id='selectAllOrders' type='checkbox'></input><button type='button' id='orderPrint'>Print</button></th><th><h3>Name</h3></th><th><h3>Date</h3></th><th><h3>Status</h3></th><th><h3>Shipping Address</h3></th><th><h3>Price / Items</h3></th>")
             $.each(obj, function(i, val){
               var string = result.items[i];
               var json = JSON.stringify(string.creationDate);
@@ -49,14 +49,14 @@ $("#executeButton").click (function(e) {
                 console.log($('input:checkbox').val())
               });
 
-              $('#invoicenumber input').on('change', function() {
+            //  $('#invoicenumber input').on('change', function() {
 
               $('#orderPrint').click(function() {
                 e.preventDefault();
                 e.stopImmediatePropagation();
                 var ivNumber = ''
-              if ($('#apidata input[type=checkbox]').is(":checked")) {
-                var ivNumber = $(this).parent().text()
+              if ($('td input').is(":checked")) {
+                var ivNumber = $(this).text()
                 console.log(ivNumber);
                 $.ajax({
                     type: "GET",
@@ -78,10 +78,10 @@ $("#executeButton").click (function(e) {
 
             }
           });
-        });
-          }),
+        //});
+      });
               $('#refundbutton').off('click');
-              $("#apidata").on("click","button", function(e) {
+              $("td").on("click","button", function() {
                 $('#refundbutton').on('click');
                 $(this).off('click');
                 e.preventDefault();
