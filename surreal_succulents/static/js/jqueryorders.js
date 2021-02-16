@@ -6,6 +6,9 @@ $("#executeButton").click (function(e) {
   e.preventDefault();
   e.stopImmediatePropagation();
   $('#executespan').html("<a href='.'>Cancel</a>");
+  $("#orderPrint").click(function(){
+    window.print();
+  });
 
   var offset = $('#offsetinput').val()
   var limit = $('#limitinput').val()
@@ -27,6 +30,7 @@ $("#executeButton").click (function(e) {
         dataType: 'json',
         success: function(result){
             var obj = result.items;
+            $('#apidata').append("<table id='apiTable'><th><h3>Invoice Number</h3></th><th><h3>Name</h3></th><th><h3>Date</h3></th><th><h3>Status</h3></th><th><h3>Shipping Address</h3></th><th><h3>Price / Items</h3></th>")
             $.each(obj, function(i, val){
               var string = result.items[i];
               var json = JSON.stringify(string.creationDate);
@@ -35,21 +39,54 @@ $("#executeButton").click (function(e) {
               var final = obj[i];
               console.log(final);
               var shipaddress = final.shippingAddress;
-              $('#apidata').append("<div id='invoicenumber'><button type='button' id='buttonclick' name='button2'><span id='buttonspan'>" + JSON.stringify(final.invoiceNumber) + "</span></button></div>" )
-              $('#apidata').append("<div id='apiname'> <h4>" + JSON.stringify(shipaddress.fullName) + "</h4> </div>" )
-              $('#apidata').append("<div id='apidate'> <h4>" + JSON.stringify(date) + "</h4> </div>" )
-              $('#apidata').append("<div id='apistatus'> <h4>" + JSON.stringify(final.status) + "</h4> </div>" )
-              $('#apidata').append("<div id='apishipping'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p>")
-              $('#apidata').append("<div id='apiprice'> <h4> £" + JSON.stringify(final.finalGrandTotal) + "<br>" + JSON.stringify(final.itemsCount) + " items</h4> </div>")
+              $('#apiTable').append("<tr><td><button type='button' id='buttonclick' name='button2'><span id='buttonspan'><br>" + JSON.stringify(final.invoiceNumber) + "</span></button><input type='checkbox' id='orderSelect'></input></td><td> <h4>" + JSON.stringify(shipaddress.fullName) + "</h4> </td><td> <h4>" + JSON.stringify(date) + "</h4> </td><td> <h4>" + JSON.stringify(final.status) + "</h4> </td><td><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></td><td> <h4> £" + JSON.stringify(final.finalGrandTotal) + "<br>" + JSON.stringify(final.itemsCount) + " items</h4> </td>" )
 
               var quotes = document.getElementById("apidata").innerHTML;
               var removequotes = quotes.replace(/"/g, '');
               document.getElementById("apidata").innerHTML = removequotes;
-          }),
-              $("#apidata").on("click","button", function(e) {
-                $(this).unbind('click');
+              $('#selectAllOrders').on('change', function() {
+                $('input:checkbox').not(this).prop('checked', this.checked);
+                console.log($('input:checkbox').val())
+              });
+
+              $('#invoicenumber input').on('change', function() {
+
+              $('#orderPrint').click(function() {
                 e.preventDefault();
                 e.stopImmediatePropagation();
+                var ivNumber = ''
+              if ($('#apidata input[type=checkbox]').is(":checked")) {
+                var ivNumber = $(this).parent().text()
+                console.log(ivNumber);
+                $.ajax({
+                    type: "GET",
+                    url: host + "&invoiceNumber=" + ivNumber,
+                    headers: {
+                      'Authorization': `Basic ${btoa(secret)}`,
+                      'Accept': 'application/json'
+                    },
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(result){
+                      console.log(result)
+                    },
+                    error: function(error) {
+                      console.log(error)
+                    }
+                  });
+              }else {
+
+            }
+          });
+        });
+          }),
+              $('#refundbutton').off('click');
+              $("#apidata").on("click","button", function(e) {
+                $('#refundbutton').on('click');
+                $(this).off('click');
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
                   var openinvoicenumber = $(this).parent().text();
                   $.ajax({
                     type: "GET",
@@ -97,7 +134,7 @@ $("#executeButton").click (function(e) {
                     $('#soldproducts').append("<br><div id='apirefunds'><div id='refundbutton'><h3 id='refundtitle'>Refund ↓</h3></div></div><br>")
 
 
-                      $('#soldproducts').append("<br><div id='apiadditionalinfoheader'><h3>Additional Information</h3></div><br> <div id='apiaddinfo'><div><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Grand Total: £" + JSON.stringify(string.finalGrandTotal) + "<br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) + "</div><div><h4>Shipping Details</h4><br>Cost: £" + JSON.stringify(string.shippingFees) + "<br>Method: " + JSON.stringify(string.shippingMethod) + "<br>Tracking Number: <textarea id='trackingnumber' readonly>" + JSON.stringify(string.trackingNumber) + "</textarea>" );
+                      $('#soldproducts').append("<br><div id='apiadditionalinfoheader'><h3>Additional Information</h3></div><br> <div id='apiaddinfo'><div><h4>Payment Details</h4>Type:" + JSON.stringify(string.paymentMethod) + "<br>Total: <span id='grandTotal'>£" + JSON.stringify(string.finalGrandTotal) + "</span><span id='adjustedAmount'>£" + JSON.stringify(string.adjustedAmount) + "</span><br>Status: " + JSON.stringify(string.paymentStatus) + "<br>Transaction ID: " + JSON.stringify(string.paymentTransactionId) + "</div><div><h4>Shipping Details</h4><br>Cost: £" + JSON.stringify(string.shippingFees) + "<br>Method: " + JSON.stringify(string.shippingMethod) + "<br>Tracking Number: <textarea id='trackingnumber' readonly>" + JSON.stringify(string.trackingNumber) + "</textarea>" );
                       $("#trackingnumber").text($("#trackingnumber").text().replace('null', ''));
                       var quotes = document.getElementById("wrapper").innerHTML;
                       var removequotes = quotes.replace(/"/g, '');
@@ -105,6 +142,15 @@ $("#executeButton").click (function(e) {
                       var quotes = document.getElementById("orderhead").innerHTML;
                       var removequotes = quotes.replace(/"/g, '');
                       document.getElementById("orderhead").innerHTML = removequotes;
+                      var totalGrand = $('#grandTotal').html()
+                      var amountAdjusted = $('#adjustedAmount').html()
+                      console.log(totalGrand)
+                      console.log(amountAdjusted)
+                      if ( totalGrand != amountAdjusted) {
+                        $('#grandTotal').css({"text-decoration" : "line-through", "color" : "red"})
+                      }else {
+                        $('#adjustedAmount').hide()
+                      };
 
                         $("#apieditbutton").click (function() {
                           $(this).unbind('click');
@@ -115,7 +161,7 @@ $("#executeButton").click (function(e) {
                           $('#plus').css({"display" : "block"});
                           $('#minus').css({"display" : "block"});
                           $('#orderhead').append("<button type='button' id='ammendorder' name='ammendorder'>Update</button>")
-                          $('#apirefunds').append("<div id='refunddata' style='display: none; overflow: hidden !important;'> <div id='totalrefunded'></div>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
+                          $('#apirefunds').append("<div id='refunddata' style='display: none; overflow: hidden !important;'> <div id='totalrefunded'><h4 style='font-size:15px; white-space:nowrap;'>Refund History</h4></div><br>Amount: <input type='text' value='' id='refundamount'></input><br>Reason for refund: <input type='text' value='' id='refundreason'></input><br><button type='button' id='submitrefund'>Submit</button><br>Notify Customer? <input type='checkbox' id='refundemail'></input></</div>")
 
                         $('select').on('change', function() {
                             var statusselect = this.value
@@ -138,9 +184,10 @@ $("#executeButton").click (function(e) {
                                 },
                           });
                         });
-                      });
+
                       var clicks = 0;
                       $('#refundbutton').click (function() {
+
                         if (clicks == 0)  {
 
                           $('#refundtitle').html('Refund ↑');
@@ -164,11 +211,12 @@ $("#executeButton").click (function(e) {
                             dataType: 'json',
                             success: function(result){
                               console.log(result)
-                              var json = JSON.stringify(result.creationDate);
-                              var dateStr = JSON.parse(json);
-                              var date = new Date(dateStr).toString().substr(0,25);
+
                               $.each(obj, function(i, val){
                                 refunds = result[i]
+                                var json = JSON.stringify(refunds.creationDate);
+                                var dateStr = JSON.parse(json);
+                                var date = new Date(dateStr).toString().substr(0,25);
                                 $('#totalrefunded').append("Amount: £" + JSON.stringify(refunds.amount) + "<br><span>Reason:"+ JSON.stringify(refunds.comment) + "<br>Date: " + date + "</span><br></li>")
                               });
                             },
@@ -185,6 +233,7 @@ $("#executeButton").click (function(e) {
                       }
 
                         $('#submitrefund').click (function() {
+                          $('#grandTotal').css({"text-decoration" : "line-through", "color" : "red", "font-size" : "12px"})
                           var r = confirm("Send refund?");
                         if(r == true) {
                           var refundamount = $('#refundamount').val();
@@ -224,7 +273,7 @@ $("#executeButton").click (function(e) {
                         }
 
                       });
-
+                  });
 
                       $("#ammendorder").click (function(e) {
                           var token = string.token;
