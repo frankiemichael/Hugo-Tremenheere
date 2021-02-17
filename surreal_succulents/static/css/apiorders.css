@@ -13,26 +13,13 @@
   margin-right: auto;
   display: block;
 }
+#wrapper {
+  position: absolute;
+  top:0;
+  left:40%;
+}
 
-#wrapper button, input {
-  margin-left: auto;
-  margin-right: auto;
-  display:block;
-}
-body h1 h2 h3 h4{
-  font-weight:bold;
-}
-#wrapper div {
-  background-color: lightgrey;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  width:25%;
-  vertical-align: top;
-  font-size:20px;
-  padding-top:10px;
-  padding-bottom:10px;
-}
+
 #solditems{
   width: 100% !important;
   height:20px !important;
@@ -234,4 +221,8 @@ resize: none; /*remove the resize handle on the bottom right*/
 }
 #ammendorder {
   color:black !important;
+}
+#apiTable td{
+  padding:10px;
+  border:1px solid grey;
 }
