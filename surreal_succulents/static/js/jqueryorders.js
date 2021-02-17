@@ -6,9 +6,7 @@ $("#executeButton").click (function(e) {
   e.preventDefault();
   e.stopImmediatePropagation();
   $('#executespan').html("<a href='.'>Cancel</a>");
-  $("#orderPrint").click(function(){
-    window.print();
-  });
+
 
   var offset = $('#offsetinput').val()
   var limit = $('#limitinput').val()
@@ -49,14 +47,13 @@ $("#executeButton").click (function(e) {
                 console.log($('input:checkbox').val())
               });
 
-            //  $('#invoicenumber input').on('change', function() {
+              $('#apiTable td input').on('change', function() {
 
-              $('#orderPrint').click(function() {
-                e.preventDefault();
-                e.stopImmediatePropagation();
+
                 var ivNumber = ''
-              if ($('td input').is(":checked")) {
-                var ivNumber = $(this).text()
+              if ($('tr input').is(":checked")) {
+                var ivNumber = $(this).parent().text()
+
                 console.log(ivNumber);
                 $.ajax({
                     type: "GET",
@@ -68,7 +65,27 @@ $("#executeButton").click (function(e) {
                     contentType: "application/json",
                     dataType: 'json',
                     success: function(result){
+                      var productData = result.items
+                      var data = result.items[0];
                       console.log(result)
+                      console.log(data)
+                      var shipaddress = data.shippingAddress
+                      $('body').css({'margin' : '0', 'padding' : '0', 'font' : '12pt "Tahoma"'})
+                      $('*').css({'box-sizing' : 'border-box', '-moz-box-sizing' : 'border-box'})
+                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'</div></div>")
+
+                      $('#printItems').append("<table id='printTable'><th><h3>SKU</h3></th><th><h3>Product</h3></th><th><h3>Quantity</h3></th>")
+                      console.log()
+                      var productItems = productData.items
+                      $.each(productData, function(i, val){
+                        var productNext = productData;
+                        var product = productNext.items[i]
+                        var productSku = product.customFields[0]
+                        var productName = product.name
+                        var productQuantity = product.quantity
+                        $('#printTable').append("<tr><td>"+JSON.stringify(productSku) + "</td><td>" + JSON.stringify(productName) + "</td><td>" + JSON.stringify(productQuantity) + "</td>")
+
+                      });
                     },
                     error: function(error) {
                       console.log(error)
@@ -77,8 +94,17 @@ $("#executeButton").click (function(e) {
               }else {
 
             }
-          });
-        //});
+
+        });
+        $('#orderPrint').click(function() {
+          $("h1").empty();
+          $("form").empty();
+          $("#apidata").empty();
+          $("#wrapper").css({'position':'absolute', 'height' : '0'})
+          $("#wrapper").append("<a style='position:absolute;height:0;' href='.'>Go back</a>")
+          $("#printPDF").removeAttr('hidden');
+          window.print();
+        });
       });
               $('#refundbutton').off('click');
               $("td").on("click","button", function() {
