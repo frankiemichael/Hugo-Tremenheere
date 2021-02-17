@@ -65,7 +65,7 @@ $("#executeButton").click (function(e) {
                     contentType: "application/json",
                     dataType: 'json',
                     success: function(result){
-                      var productData = result.items
+
                       var data = result.items[0];
                       console.log(result)
                       console.log(data)
@@ -74,16 +74,16 @@ $("#executeButton").click (function(e) {
                       $('*').css({'box-sizing' : 'border-box', '-moz-box-sizing' : 'border-box'})
                       $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'</div></div>")
 
-                      $('#printItems').append("<table id='printTable'><th><h3>SKU</h3></th><th><h3>Product</h3></th><th><h3>Quantity</h3></th>")
                       console.log()
-                      var productItems = productData.items
+                      var productData = result.items
+                      $('#printItems').append("<table id='printTable'><th><h3>SKU</h3></th><th><h3>Product</h3></th><th><h3>Quantity</h3></th>")
+
                       $.each(productData, function(i, val){
-                        var productNext = productData;
-                        var product = productNext.items[i]
-                        var productSku = product.customFields[0]
+                        var product = result.items[i].items[i]
+                        var productSku = product.customFields[i].value
                         var productName = product.name
                         var productQuantity = product.quantity
-                        $('#printTable').append("<tr><td>"+JSON.stringify(productSku) + "</td><td>" + JSON.stringify(productName) + "</td><td>" + JSON.stringify(productQuantity) + "</td>")
+                        $('#printTable').append("<tr><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
 
                       });
                     },
@@ -103,7 +103,6 @@ $("#executeButton").click (function(e) {
           $("#wrapper").css({'position':'absolute', 'height' : '0'})
           $("#wrapper").append("<a style='position:absolute;height:0;' href='.'>Go back</a>")
           $("#printPDF").removeAttr('hidden');
-          window.print();
         });
       });
               $('#refundbutton').off('click');
