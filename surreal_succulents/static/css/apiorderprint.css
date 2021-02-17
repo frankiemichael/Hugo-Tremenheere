@@ -40,3 +40,12 @@ margin: 0;
   position: relative;
   display:block;
 }
+#printTable {
+  position: relative;
+  top:150px;
+  left:50px;
+  width:100%;
+}
+#printTable td {
+  border:1px solid grey
+}
