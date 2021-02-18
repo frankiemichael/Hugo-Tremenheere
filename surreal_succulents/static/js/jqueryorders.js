@@ -48,12 +48,23 @@ $("#executeButton").click (function(e) {
               });
 
               $('#apiTable td input').on('change', function() {
+                var check = $('#apiTable').find('input[type=checkbox]:checked').length;
+                console.log(check);
 
 
                 var ivNumber = ''
               if ($('tr input').is(":checked")) {
+                $('#apiTable td input').on('change', function() {
+                //  if ($(this).is(':checked')){
+                    var iv = $(this).parent().text()
+                    console.log(iv)
+                    $('#tableId'+iv+'').parentsUntil('#printPDF').remove()
+                    //console.log(test)
+                //  }
+                })
                 var ivNumber = $(this).parent().text()
-
+                var tableId = "printTable" + ivNumber
+                console.log(tableId);
                 console.log(ivNumber);
                 $.ajax({
                     type: "GET",
@@ -67,23 +78,24 @@ $("#executeButton").click (function(e) {
                     success: function(result){
 
                       var data = result.items[0];
-                      console.log(result)
-                      console.log(data)
+                    //  console.log(result)
                       var shipaddress = data.shippingAddress
                       $('body').css({'margin' : '0', 'padding' : '0', 'font' : '12pt "Tahoma"'})
                       $('*').css({'box-sizing' : 'border-box', '-moz-box-sizing' : 'border-box'})
-                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'</div></div>")
+                      var divId = "page" + ivNumber
 
+                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'</div></div>")
                       console.log()
-                      var productData = result.items
-                      $('#printItems').append("<table id='printTable'><th><h3>SKU</h3></th><th><h3>Product</h3></th><th><h3>Quantity</h3></th>")
+                      var productData = data.items
 
                       $.each(productData, function(i, val){
-                        var product = result.items[i].items[i]
-                        var productSku = product.customFields[i].value
+                        var order = productData[i]
+                        var product = order
+                        console.log(product)
+                        var productSku = product.customFields[0].value
                         var productName = product.name
                         var productQuantity = product.quantity
-                        $('#printTable').append("<tr><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
+                        $('#'+tableId+'').append("<tr><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
 
                       });
                     },
@@ -107,6 +119,7 @@ $("#executeButton").click (function(e) {
       });
               $('#refundbutton').off('click');
               $("td").on("click","button", function() {
+                $(".form-inline").remove();
                 $('#refundbutton').on('click');
                 $(this).off('click');
                 e.preventDefault();
@@ -127,14 +140,15 @@ $("#executeButton").click (function(e) {
                       var json = JSON.stringify(string.creationDate);
                       var dateStr = JSON.parse(json);
                       var date = new Date(dateStr).toString().substr(0,25);
-
-
+                      $('#wrapper').css({'left' : '0'});
+                      $('#printPDF').remove();
+                      $('#displayOrdersHeading').remove();
                       $('#apidata').remove();
                       $('#apihead').remove();
                       $('#executespan').text("");
-                      $('#executespan').append("<a href='.'>Back</a>");
                       $('#wrapper').append("<div id='orderhead'><span><h1>Order " + JSON.stringify(string.invoiceNumber) + "</h1></span></div></div>")
                       $('#orderhead').append("<button type='button' id='apieditbutton' name='apieditbutton'><span id='buttonspan'>Edit Order</span></button>")
+                      $('#orderhead').append("<a id='backButton' href='.'>Back</a>")
                         $('#wrapper').append("<div id='apiorderinfotop'><h4>Placed On:</h4>" + date  + "<br><br><h4>Order Status:</h4><select class='form-control' name='Status' id='statusinput' disabled><option value='" + string.status + "' selected='true' disabled='disabled'>" + string.status + "</option><option value ='InProgress'>In progress</option><option value ='Processed'>Processed</option><option value ='Disputed'>Disputed</option><option value ='Delivered'>Delivered</option><option value ='Shipped'>Shipped</option><option value ='Pending'>Pending</option><option value ='Cancelled'>Cancelled</option></select></div>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Billing Address:</h4><textarea id='billingfullname' readonly>" + JSON.stringify(string.billingAddress.fullName) + "</textarea><br><textarea id='billingaddress1' readonly>" + JSON.stringify(string.billingAddress.address1) + "</textarea><textarea id='billingaddress2' readonly>" + JSON.stringify(string.billingAddress.address2) + "</textarea><br><textarea id='billingaddresscity' readonly>" + JSON.stringify(string.billingAddress.city) + "</textarea><br><textarea id='billingaddresspostcode' readonly>" + JSON.stringify(string.billingAddress.postalCode) + "</textarea><br><textarea id='billingaddresscountry' readonly>" + JSON.stringify(string.billingAddress.country) + "</textarea></p>")
                       $('#wrapper').append("<div id='apiorderinfotop'><h4>Shipping Address:</h4><textarea id='shippingfullname' readonly>" + JSON.stringify(string.shippingAddress.fullName) + "</textarea><br><textarea id='shippingaddress1' readonly>" + JSON.stringify(string.shippingAddress.address1) + "</textarea><textarea id='shippingaddress2' readonly>" + JSON.stringify(string.shippingAddress.address2) + "</textarea><br><textarea id='shippingaddresscity' readonly>" + JSON.stringify(string.shippingAddress.city) + "</textarea><br><textarea id='shippingaddresspostcode' readonly>" + JSON.stringify(string.shippingAddress.postalCode) + "</textarea><br><textarea id='shippingaddresscountry' readonly>" + JSON.stringify(string.shippingAddress.country) + "</textarea></p>")
@@ -152,6 +166,7 @@ $("#executeButton").click (function(e) {
                       var eachqty = []
                       $.each(product, function(i, val){
                       var productlist = product[i];
+                      console.log(productlist)
                       var qtyId = product[i].uniqueId
                       $('#soldproducts').append("<div id='solditems'><div>" + JSON.stringify(productlist.customFields[0].value) + "</div><div>" + JSON.stringify(productlist.name) + "</div><div class='qtydiv'><span>" + JSON.stringify(productlist.quantity) + "</span></div><div>£" + JSON.stringify(productlist.price) + "</div><div>£" + JSON.stringify(productlist.totalPrice) + "</div></div>")
                       eachqty = JSON.stringify(qtyId);
