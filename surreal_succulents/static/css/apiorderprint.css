@@ -46,6 +46,13 @@ margin: 0;
   left:50px;
   width:100%;
 }
-#printTable td {
-  border:1px solid grey
+#printItems table td {
+  border:1px solid grey;
+  padding:10px;
+}
+#printItems table{
+  position: relative;
+  top:150px;
+  left:50px;
+  width:80%;
 }
