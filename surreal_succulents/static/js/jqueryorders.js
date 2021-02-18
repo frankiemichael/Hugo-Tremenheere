@@ -83,7 +83,7 @@ $("#executeButton").click (function(e) {
                       $('body').css({'margin' : '0', 'padding' : '0', 'font' : '12pt "Tahoma"'})
                       $('*').css({'box-sizing' : 'border-box', '-moz-box-sizing' : 'border-box'})
                       var divId = "page" + ivNumber
-                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'><tr><th>SKU</th><th>Name</th><th>Quantity</th></table></div></div>")
+                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><div id='orderNumberPrint'><h3>Order "+JSON.stringify(data.invoiceNumber)+ "</h3></div><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'><tr><th>SKU</th><th>Name</th><th>Quantity</th></table></div></div>")
                       console.log()
                       var productData = data.items
 
@@ -95,6 +95,7 @@ $("#executeButton").click (function(e) {
                         var productName = product.name
                         var productQuantity = product.quantity
                         $('#'+tableId+'').append("<tr><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
+
 
                       });
                     },
@@ -114,6 +115,9 @@ $("#executeButton").click (function(e) {
           $("#wrapper").css({'position':'absolute', 'height' : '0'})
           $("#wrapper").append("<a style='position:absolute;height:0;' href='.'>Go back</a>")
           $("#printPDF").removeAttr('hidden');
+          var quotes = document.getElementById("printPDF").innerHTML;
+          var removequotes = quotes.replace(/"/g, '');
+          document.getElementById("printPDF").innerHTML = removequotes;
         });
       });
               $('#refundbutton').off('click');
