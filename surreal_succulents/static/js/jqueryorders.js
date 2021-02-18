@@ -83,8 +83,7 @@ $("#executeButton").click (function(e) {
                       $('body').css({'margin' : '0', 'padding' : '0', 'font' : '12pt "Tahoma"'})
                       $('*').css({'box-sizing' : 'border-box', '-moz-box-sizing' : 'border-box'})
                       var divId = "page" + ivNumber
-
-                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'</div></div>")
+                      $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><h3 style='position:relative;right:0;float:right;'>Order "+JSON.stringify(data.invoiceNumber)+ "</h3><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'><tr><th>SKU</th><th>Name</th><th>Quantity</th></table></div></div>")
                       console.log()
                       var productData = data.items
 
