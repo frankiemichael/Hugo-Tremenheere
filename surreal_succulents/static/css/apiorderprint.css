@@ -39,6 +39,7 @@ margin: 0;
   float:right;
   position: relative;
   display:block;
+  top:150px;
 }
 #printTable {
   position: relative;
@@ -55,4 +56,10 @@ margin: 0;
   top:150px;
   left:50px;
   width:80%;
+}
+#orderNumberPrint{
+  position: relative;
+  float:right;
+  display:flex;
+  width:auto;
 }
