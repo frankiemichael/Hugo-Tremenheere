@@ -28,7 +28,15 @@ $("#executeButton").click (function(e) {
         dataType: 'json',
         success: function(result){
             var obj = result.items;
-            $('#apidata').append("<table id='apiTable'><th><h3>Invoice Number</h3><input id='selectAllOrders' type='checkbox'></input><button type='button' id='orderPrint'>Print</button></th><th><h3>Name</h3></th><th><h3>Date</h3></th><th><h3>Status</h3></th><th><h3>Shipping Address</h3></th><th><h3>Price / Items</h3></th>")
+            var bulkactions = ''
+            $('#apidata').append("<select id='orderprintselect'> <option selected='true' disabled='true'>Bulk Actions</option><option value='packingslip'>Print Packing Slips</option><option value='pickinglist'>Print Pick List</option></select>")
+            $('#apidata').on('change','select', function(){
+              //var orderprintselect = $('#orderprintselect').val()
+              var bulkactions = this.value
+              $('.orderprintbutton').attr("id", bulkactions)
+            });
+
+            $('#apidata').append("<button class='orderprintbutton' type='button' id=''>Go</button><table id='apiTable'><th><h3>Invoice Number</h3><input id='selectAllOrders' type='checkbox'></input></th><th><h3>Name</h3></th><th><h3>Date</h3></th><th><h3>Status</h3></th><th><h3>Shipping Address</h3></th><th><h3>Price / Items</h3></th>")
             $.each(obj, function(i, val){
               var string = result.items[i];
               var json = JSON.stringify(string.creationDate);
@@ -43,27 +51,59 @@ $("#executeButton").click (function(e) {
               var removequotes = quotes.replace(/"/g, '');
               document.getElementById("apidata").innerHTML = removequotes;
               $('#selectAllOrders').on('change', function() {
+                if ($('#selectAllOrders').is(':checked')){
+
                 $('input:checkbox').not(this).prop('checked', this.checked);
                 console.log($('input:checkbox').val())
-              });
 
-              $('#apiTable td input').on('change', function() {
-                var check = $('#apiTable').find('input[type=checkbox]:checked').length;
-                console.log(check);
+                $.each(obj, function(i, val) {
+                  var data = obj[i]
+                  var shipaddress = data.shippingAddress
+                  var rowId = "tablerow" + ivNumber
+                  var tableId = "printTable" + data.invoiceNumber
+                  console.log(tableId)
+                  $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><div id='orderNumberPrint'><h3>Order "+JSON.stringify(data.invoiceNumber)+ "</h3></div><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'><tr><th>SKU</th><th>Name</th><th>Quantity</th></table></div></div>")
+                  var productData = data.items
+
+                  $.each(productData, function(i, val){
+                    var order = productData[i]
+                    var rowId = "tablerow" + ivNumber
+                    var product = order
+                    console.log(product)
+                    var productSku = product.customFields[0].value
+                    var productName = product.name
+                    var productQuantity = product.quantity
+                    $('#'+tableId+'').append("<tr><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
+                    $('#pickingListTable').append("<tr id='"+rowId+"'><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
+
+
+                  });
+                })
+              }else {
+                $('#printPDF').empty()
+                $("input:checkbox").prop('checked', $(this).prop("checked"));
+                console.log($('input:checkbox').val())
+              }
+              });
+              //$('#apiTable td input').on('change', function() {
+              //  var check = $('#apiTable').find('input[type=checkbox]:checked').length;
+                //console.log(check);
 
 
                 var ivNumber = ''
-              if ($('tr input').is(":checked")) {
+                var checks = 1
                 $('#apiTable td input').on('change', function() {
-                //  if ($(this).is(':checked')){
-                    var iv = $(this).parent().text()
-                    console.log(iv)
-                    $('#tableId'+iv+'').parentsUntil('#printPDF').remove()
-                    //console.log(test)
-                //  }
-                })
+                  if($(this).is(':checked')){
+            //      if (checks != 1){
+              //      ++checks
+
+
+              //    }else{
+              //      --checks
+              //      console.log(checks)
                 var ivNumber = $(this).parent().text()
                 var tableId = "printTable" + ivNumber
+                var rowId = "tablerow" + ivNumber
                 console.log(tableId);
                 console.log(ivNumber);
                 $.ajax({
@@ -84,6 +124,7 @@ $("#executeButton").click (function(e) {
                       $('*').css({'box-sizing' : 'border-box', '-moz-box-sizing' : 'border-box'})
                       var divId = "page" + ivNumber
                       $('#printPDF').append("<div class='page'><div style='position:absolute;'><img style='postition:absolute;height:75px;width:75px;' src='/uploads/logocut.png'></div><div id='orderNumberPrint'><h3>Order "+JSON.stringify(data.invoiceNumber)+ "</h3></div><div id='addressPDF'><p>" + JSON.stringify(shipaddress.fullName) + "<br>" + JSON.stringify(shipaddress.address1) + "<br>" + JSON.stringify(shipaddress.address2) + "<br>" + JSON.stringify(shipaddress.city) + "<br>" + JSON.stringify(shipaddress.postalCode) + "<br>" + JSON.stringify(shipaddress.country) + "</p></div><div id='printShippingMethod'><h4>Shipping Method</h4>"+ JSON.stringify(data.shippingMethod) +"</div><div id='printItems'><table id ='"+tableId+"'><tr><th>SKU</th><th>Name</th><th>Quantity</th></table></div></div>")
+                      $('#printPicking').append("")
                       console.log()
                       var productData = data.items
 
@@ -95,6 +136,7 @@ $("#executeButton").click (function(e) {
                         var productName = product.name
                         var productQuantity = product.quantity
                         $('#'+tableId+'').append("<tr><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
+                        $('#pickingListTable').append("<tr id='"+rowId+"'><td id='skuTd'>"+JSON.stringify(productSku) + "</td><td id='nameTd'>" + JSON.stringify(productName) + "</td><td id='quantityTd'>" + JSON.stringify(productQuantity) + "</td>")
 
 
                       });
@@ -103,12 +145,22 @@ $("#executeButton").click (function(e) {
                       console.log(error)
                     }
                   });
-              }else {
 
-            }
+            //  }
+         }else{
 
+           var ivNumber = $(this).parent().text()
+           var tableId = "printTable" + ivNumber
+           var rowId = "tablerow" + ivNumber
+           console.log(tableId)
+           $('#'+tableId+'').parent().parent().remove()
+           $('#'+rowId+'').remove()
+
+         }
+          });
         });
-        $('#orderPrint').click(function() {
+
+        $('#apidata').on('click','#packingslip',function() {
           $("h1").empty();
           $("form").empty();
           $("#apidata").empty();
@@ -119,7 +171,19 @@ $("#executeButton").click (function(e) {
           var removequotes = quotes.replace(/"/g, '');
           document.getElementById("printPDF").innerHTML = removequotes;
         });
-      });
+        $('#apidata').on('click','#pickinglist',function() {
+          $("h1").empty();
+          $("form").empty();
+          $("#apidata").empty();
+          $("#wrapper").css({'position':'absolute', 'height' : '0'})
+          $("#wrapper").append("<a style='position:absolute;height:0;' href='.'>Go back</a>")
+          $("#printPicking").removeAttr('hidden');
+          var quotes = document.getElementById("printPicking").innerHTML;
+          var removequotes = quotes.replace(/"/g, '');
+          document.getElementById("printPicking").innerHTML = removequotes;
+
+        });
+
               $('#refundbutton').off('click');
               $("td").on("click","button", function() {
                 $(".form-inline").remove();
