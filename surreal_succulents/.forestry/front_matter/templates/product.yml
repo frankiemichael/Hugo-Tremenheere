@@ -22,3 +22,5 @@ fields:
   config: {}
   template: attributes
   label: Attributes
+pages:
+- surreal_succulents/content/shop/Terrarium/agapanthus.md
