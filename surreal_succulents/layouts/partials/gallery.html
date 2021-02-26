@@ -1,0 +1,22 @@
+
+<!-- The grid: four columns -->
+<div class="row">
+  <div class="column">
+    <img width="100px"src="{{ $.Params.display_image }}" @click="myFunction(this);">
+    <img width="100px"src="{{ $.Params.image1 }}" @click="myFunction(this);">
+    <img width="100px"src="{{ $.Params.image2 }}" @click="myFunction(this);">
+
+  </div>
+</div>
+
+<!-- The expanding image container -->
+<div class="containergallery">
+  <!-- Close the image -->
+  <span @click="this.parentElement.style.display='none'" class="closebtngallery">&times;</span>
+
+  <!-- Expanded image -->
+  <img id="expandedImg" style="width:100%">
+
+  <!-- Image text -->
+  <div id="imgtext"></div>
+</div>
