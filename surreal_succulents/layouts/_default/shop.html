@@ -25,6 +25,7 @@
     {{ partial "header" . }}
     <h1 class="pagetitles">{{ .Title }}</h1>
     <div class="shopheading">
+      <input id="backButton" action="action" type="button" value="Back" onclick="history.go(-1);" />
 
       {{ .Content }}
     </div>
@@ -35,9 +36,9 @@
     <div class="categorylistproduct">
       {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
 
-
       {{ if isset .Params "folder" }}
-      <a href="{{.Permalink}}" class="categorytitle"><h4>{{ .Title }}</h4><span style="color:green; font-size:25px;">Open folder</span></a>
+      <a class="categorytitle"><h4>{{ .Title }}</h4></a>
+      <button onclick="location.href='{{.Permalink}}';" id='openfolder'>Open folder</button>
       {{else}}
       <a class="categorytitle"><h4>{{ .Title }}</h4></a>
     {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
@@ -46,12 +47,12 @@
       {{with .Params.id }}data-item-id="{{ . }}"{{end}}
       {{with .Params.price }}data-item-price="{{ . }}"{{ end }}
       data-item-url="{{ $.Permalink }}"
-      data-item-image="{{ $.Params.display_image }}"
+      {{ with $.Params.display_image }}data-item-image="{{.}}"{{end}}
       {{with .Params.title}}data-item-name="{{.}}"{{end}}
       data-item-custom1-name="SKU"
       data-item-custom1-type="SKU"
-      data-item-custom1-value="{{ $.Params.sku }}"
-        {{with .Params.options }}data-item-custom1-options="{{.}}"{{end}}>
+      {{ with $.Params.sku }}data-item-custom1-value="{{.}}"{{end}}
+      {{with .Params.options }}data-item-custom1-options="{{.}}"{{end}}>
       +
     </button>
 
