@@ -37,10 +37,28 @@ left:5%;
 }
 .categorytitle {
  position: absolute;
- top:0;
- left:30%;
+ bottom:0;
+ left:15px;
  font-size: 1.5vw;
  color:black;
+ text-decoration: none;
+}
+#openfolder {
+  height:100px;
+  width: 100px;
+  margin:auto;
+  background-color: lightgrey;
+  position: absolute;
+  right:15px;
+  top:15px;
+  background-color: #89a08f;
+  color:white;
+}
+#openfolder:hover {
+
+  background-color: grey;
+  color:white;
+  cursor:pointer;
 }
 .categorylistproductdescription {
 display: inline-flex;
@@ -78,7 +96,9 @@ overflow: hidden;
   position: absolute;
   right:15px;
   top:15px;
-  height: 40px;
+  height: 100px;
+  width:100px;
+
 }
 .addtobasketlist:hover{
   cursor:pointer;
@@ -90,4 +110,14 @@ overflow: hidden;
   max-height: 150px;
   width:auto;
   margin:10px;
+}
+#backButton {
+  margin:10px;
+  padding:15px;
+  color:white;
+  background-color: #89a08f;
+}
+#backButton:hover{
+  cursor:pointer;
+  background-color: grey;
 }
