@@ -38,7 +38,9 @@
 
       {{ if isset .Params "folder" }}
       <a class="categorytitle"><h4>{{ .Title }}</h4></a>
-      <button onclick="location.href='{{.Permalink}}';" id='openfolder'>Open folder</button>
+      <form method="get" action="{{.Permalink}}">
+          <button id="openfolder" type="submit">Open Folder</button>
+      </form>
       {{else}}
       <a class="categorytitle"><h4>{{ .Title }}</h4></a>
     {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
