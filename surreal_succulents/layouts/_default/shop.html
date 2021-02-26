@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/product.css" type="text/css">
     <link rel="stylesheet" href="/css/productlist.css" type="text/css">
     <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
-    
+
 
   </head>
 
@@ -34,11 +34,26 @@
     <div class="listing">
       {{ range .Pages }}
 
-    <div class="categorylistproduct" onclick="location.href={{ .URL }};" style="cursor: pointer;">
-        {{ with .Params.display_image }}<img src="{{ . }}" class="categorylistproductimg">{{ end }}
-        <li>
-        <a href="{{ .URL }}" class="categorylistproductname">{{ .Title }}</a><br>
-      </li>
+    <div class="categorylistproduct">
+      {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
+
+      <a class="categorytitle"><h4>{{ .Title }}</h4></a>
+
+      {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
+      {{ with .Params.price }} <a class="listproductprice">From <br>£{{ . }}</a>{{ end }}
+      <button class="snipcart-add-item addtobasketlist"
+        data-item-id="{{ $.Permalink }}"
+        {{with .Params.price }}data-item-price="{{ . }}"{{ end }}
+        data-item-url="{{ $.Permalink }}"
+        data-item-image="{{ $.Params.display_image }}"
+        {{with .Params.title}}data-item-name="{{.}}"{{end}}
+        data-item-custom1-name="SKU"
+        data-item-custom1-type="SKU"
+        data-item-custom1-value="{{ $.Params.sku }}"
+          {{with .Params.options }}data-item-custom1-options="{{.}}"{{end}}>
+        +
+      </button>
+
     </div>
 
     {{ end }}
@@ -77,13 +92,9 @@
     <div class="listing">
       {{ range .Pages }}
 
-    <div class="listproduct " onclick="location.href={{ .URL }};" style="cursor: pointer;">
+    <div class="listproduct " style="cursor: pointer;">
         {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
-        <li>
-        <a href="{{ .URL }}" class="listproductname">{{ .Title }}</a><br>
-        {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
-        {{ with .Params.price }} <a class="listproductprice">£{{ . }}</a>{{ end }}
-      </li>
+
     </div>
     {{ end }}
     </div>
