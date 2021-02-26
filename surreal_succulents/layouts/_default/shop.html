@@ -1,7 +1,4 @@
 {{ if isset .Params "productlist" }}
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
-<script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
-<div id="snipcart" data-config-modal-style="side" data-api-key="ZWMzMTFmOGQtNmZlOC00Y2ExLWI2MGYtYTEwNTIxNmMxMDE4NjM3NDk4NzUzOTg5NjEwOTU3" hidden></div>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -31,34 +28,37 @@
 
       {{ .Content }}
     </div>
+
     <div class="listing">
       {{ range .Pages }}
 
     <div class="categorylistproduct">
       {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
 
+
+      {{ if isset .Params "folder" }}
+      <a href="{{.Permalink}}" class="categorytitle"><h4>{{ .Title }}</h4><span style="color:green; font-size:25px;">Open folder</span></a>
+      {{else}}
       <a class="categorytitle"><h4>{{ .Title }}</h4></a>
+    {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
+    {{ with .Params.price }} <a class="listproductprice">From <br>£{{ . }}</a>{{ end }}
+    <button class="snipcart-add-item addtobasketlist"
+      {{with .Params.id }}data-item-id="{{ . }}"{{end}}
+      {{with .Params.price }}data-item-price="{{ . }}"{{ end }}
+      data-item-url="{{ $.Permalink }}"
+      data-item-image="{{ $.Params.display_image }}"
+      {{with .Params.title}}data-item-name="{{.}}"{{end}}
+      data-item-custom1-name="SKU"
+      data-item-custom1-type="SKU"
+      data-item-custom1-value="{{ $.Params.sku }}"
+        {{with .Params.options }}data-item-custom1-options="{{.}}"{{end}}>
+      +
+    </button>
 
-      {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
-      {{ with .Params.price }} <a class="listproductprice">From <br>£{{ . }}</a>{{ end }}
-      <button class="snipcart-add-item addtobasketlist"
-        {{with .Params.id }}data-item-id="{{ . }}"{{end}}
-        {{with .Params.price }}data-item-price="{{ . }}"{{ end }}
-        data-item-url="{{ $.Permalink }}"
-        data-item-image="{{ $.Params.display_image }}"
-        {{with .Params.title}}data-item-name="{{.}}"{{end}}
-        data-item-custom1-name="SKU"
-        data-item-custom1-type="SKU"
-        data-item-custom1-value="{{ $.Params.sku }}"
-          {{with .Params.options }}data-item-custom1-options="{{.}}"{{end}}>
-        +
-      </button>
-
-    </div>
-
+  </div>
+    {{end}}
     {{ end }}
     </div>
-    {{ partial "footer" . }}
   </body>
 
 </html>
@@ -99,5 +99,4 @@
     </div>
   </body>
 {{ end }}
-{{ partial "footer" . }}
 </html>
