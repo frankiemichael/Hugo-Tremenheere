@@ -18,3 +18,4 @@ function homeImgOut() {
   document.getElementById("headingName").classList.add("displaynone")
 
 }
+Snipcart.api.configure('show_cart_automatically', false);
