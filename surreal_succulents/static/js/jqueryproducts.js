@@ -21,7 +21,7 @@ $.ajax({
       console.log(listproducts)
       $('#stockTable').append("<tr><td id='tdId'>" + listproducts.userDefinedId + "</td><td id='tdName'>" + listproducts.name + "<button id='expandOptions'>></button></td><td id='tdSku'>" + listproducts.customFields[0].value + "</td><td id='tdStock'>" + listproducts.stock + "</tr><br>")
     })
-    $('tr:not(:has(th)):not(:contains('TREREIFE'))").hide();
+    $('tr:not(:has(th)):not(:contains("TREREIFE"))').hide();
     $('th').parent
 },
   error: function(error) {
