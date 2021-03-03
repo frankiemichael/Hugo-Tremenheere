@@ -38,8 +38,7 @@ body h1 h2 h3 h4{
 
 }
 #apidata {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -64,6 +63,15 @@ body h1 h2 h3 h4{
 }
 #orderbillingaddress {
   text-align: left !important;
+}
+#stockTable{
+  width:100%;
+}
+#tdId{
+  width:355px;
+}
+#notHide{
+  display:inline !important;
 }
 #apihead {
   display: grid;
