@@ -1,0 +1,10 @@
+---
+label: Inventory
+hide_body: true
+fields:
+- name: sku
+  type: text
+  config:
+    required: false
+  label: SKU
+  hidden: false

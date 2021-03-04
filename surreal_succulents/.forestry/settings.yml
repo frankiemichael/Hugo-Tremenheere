@@ -1,0 +1,42 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: 
+webhook_url: 
+sections:
+- type: directory
+  path: surreal_succulents/content/api
+  label: API
+  create: all
+  match: "**/*"
+- type: directory
+  path: surreal_succulents/content/shop
+  label: Shop
+  create: all
+  match: "**/*"
+- type: directory
+  path: surreal_succulents/content/articles
+  label: Articles
+  create: all
+  match: "**/*"
+- type: directory
+  path: surreal_succulents/content
+  label: Pages
+  create: all
+  match: "*"
+upload_dir: tremenheere/static/uploads
+public_path: "/uploads"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename: :year:"
+build:
+  preview_env:
+  - HUGO_ENV=staging
+  - HUGO_VERSION=0.79.0
+  preview_output_directory: public
+  preview_docker_image: forestryio/hugo:node12
+  mount_path: "/srv"
+  working_dir: "/srv"
+  instant_preview_command: cd surreal_succulents && hugo server -D -E -F --port 8080
+    --bind 0.0.0.0 --renderToDisk -d public
+version: 0.79.0

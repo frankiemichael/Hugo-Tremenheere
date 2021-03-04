@@ -1,0 +1,19 @@
+---
+label: Product
+hide_body: false
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: display_image
+  type: file
+  config:
+    maxSize: 64
+  label: Display Image
+- name: inventory
+  type: include
+  config: {}
+  template: inventory
+  label: Inventory
