@@ -73,6 +73,10 @@ body h1 h2 h3 h4{
 td input {
   width:60px;
 }
+#variantButton{
+  float:right;
+  margin-right: 20px;
+}
 #apihead {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

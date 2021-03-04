@@ -53,6 +53,7 @@
       {{with .Params.title}}data-item-name="{{.}}"{{end}}
       data-item-custom1-name="SKU"
       data-item-custom1-type="SKU"
+      {{ with $.Params.sku }}data-item-custom1-value="{{.}}"{{end}}
       data-item-custom2-name="Option"
       data-item-custom2-type="option"
       {{with .Params.options }}data-item-custom2-options="{{.}}"{{end}}>

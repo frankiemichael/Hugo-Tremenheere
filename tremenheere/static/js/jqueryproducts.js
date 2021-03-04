@@ -17,16 +17,22 @@ $.ajax({
     var listproducts = ""
     console.log(products)
     $.each(products, function(i,val){
+
       var listproducts = products[i]
       console.log(listproducts)
-      $('#stockTable').append("<tr><td id='tdId'><span>" + listproducts.userDefinedId + "</span></td><td id='tdName'><a style='text-decoration:none;color:black;'>" + listproducts.name + "</a><button id='expandOptions'>></button></td><td id='tdSku'><input type='text' id='changeSku"+ i + "' value='" + listproducts.customFields[0].value + "'></input></td><td id='tdStock'><input type='text' id='changeStock"+ i + "' value='" + listproducts.stock + "'></input></tr><br>")
+
+      var variants = listproducts.variants.length
+      if (variants === 0) {
+        $('#stockTable').append("<tr><td id='tdId'><span>" + this.userDefinedId + "</span></td><td id='tdName'><a style='text-decoration:none;color:black;'>" + listproducts.name + "</a></td><td id='tdSku'>" + listproducts.customFields[0].value + "</td><td id='tdStock'><input type='text' id='changeStock"+ i + "' value='" + listproducts.stock + "'></input></tr><br>")
+      }else{
+        console.log(this)
+        $('#stockTable').append("<tr><td id='tdId'><span>" + this.userDefinedId + "</span></td><td id='tdName'><a style='text-decoration:none;color:black;'>" + this.name + "</a><button type='button' id='variantButton'>Variants ></button></td><td id='tdSku'>" + this.customFields[0].value + "</td><td id='tdStock'><input type='text' id='changeStock"+ i + "' value='" + this.stock + "'></input></tr><br>")
+      }
     })
       $('input').on('change', function(){
         var idFind = $(this).parent().parent();
         var id = $(this).parent().parent().find('span').text();
-        var skuUpdate = [{'value':$(this).val()},]
 
-        console.log(skuUpdate)
         $.ajax({
           type:"PUT",
           url: host + "/" + id,
@@ -36,11 +42,16 @@ $.ajax({
           },
           contentType: "application/json",
           dataType: 'json',
-          data: JSON.stringify({ customFields: skuUpdate }),
+          data: JSON.stringify({
+            stock:$(this).val()
+          }),
 
           success: function(result){
             console.log(result)
             console.log(this)
+
+
+
           },
           error: function(error) {
           console.log(error)
