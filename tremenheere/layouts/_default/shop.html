@@ -1,0 +1,107 @@
+{{ if isset .Params "productlist" }}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head >
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/gallerycss.css" type="text/css">
+    <link rel="stylesheet" href="/css/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/product.css" type="text/css">
+    <link rel="stylesheet" href="/css/productlist.css" type="text/css">
+    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
+
+
+  </head>
+
+
+  <body id="bodyId">
+
+
+    {{ partial "header" . }}
+    <h1 class="pagetitles">{{ .Title }}</h1>
+    <div class="shopheading">
+      <input id="backButton" action="action" type="button" value="Back" onclick="history.go(-1);" />
+
+      {{ .Content }}
+    </div>
+
+    <div class="listing">
+      {{ range .Pages }}
+
+    <div class="categorylistproduct">
+      {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
+
+      {{ if isset .Params "folder" }}
+      <a class="categorytitle">{{ .Title }}</a>
+      <form method="get" action="{{.Permalink}}">
+          <button id="openfolder" type="submit">Open Folder</button>
+      </form>
+      {{else}}
+      <a class="categorytitle">{{ .Title }}</a>
+    {{ with .Params.description }}<a class="line-clamp listproductdescription">{{ . }}</a>{{ end }}
+    {{ with .Params.price }} <a class="listproductprice">From <br>£{{ . }}</a>{{ end }}
+    <button class="snipcart-add-item addtobasketlist"
+      {{with .Params.id }}data-item-id="{{ . }}"{{end}}
+      {{with .Params.price }}data-item-price="{{ . }}"{{ end }}
+      data-item-url="{{ $.Permalink }}"
+      {{ with $.Params.display_image }}data-item-image="{{.}}"{{end}}
+      {{with .Params.title}}data-item-name="{{.}}"{{end}}
+      data-item-custom1-name="SKU"
+      data-item-custom1-type="SKU"
+      {{ with $.Params.sku }}data-item-custom1-value="{{.}}"{{end}}
+      data-item-custom2-name="Option"
+      data-item-custom2-type="option"
+      {{with .Params.options }}data-item-custom2-options="{{.}}"{{end}}>
+      +
+    </button>
+
+  </div>
+    {{end}}
+    {{ end }}
+    </div>
+  </body>
+
+</html>
+{{else}}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head >
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/gallerycss.css" type="text/css">
+    <link rel="stylesheet" href="/css/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/product.css" type="text/css">
+    <link rel="stylesheet" href="/css/productlist.css" type="text/css">
+    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
+  </head>
+
+
+  <body id="bodyId">
+
+
+
+    <h1 class="pagetitles">{{ .Title }}</h1>
+    <div class="shopheading">
+
+    </div>
+
+    <div class="listing">
+      {{ range .Pages }}
+
+    <div class="listproduct " style="cursor: pointer;">
+        {{ with .Params.display_image }}<img src="{{ . }}" class="listproductimg">{{ end }}
+
+    </div>
+    {{ end }}
+    </div>
+  </body>
+{{ end }}
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head >
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/css/categorylist.css" type="text/css">
+    <link rel="stylesheet" href="/css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/gallerycss.css" type="text/css">
+    <link rel="stylesheet" href="/css/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/product.css" type="text/css">
+    <link rel="stylesheet" href="/css/productlist.css" type="text/css">
+    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
+
+  </head>
+
+
+  <body id="bodyId">
+
+
+    {{ partial "header" . }}
+    <div class="homeimgtextdiv">
+
+
+    <img src="uploads/homeimg.jpg" width="100%" margin-top="0" alt="">
+    <img src="uploads/logocut.png" class="homelogo" alt="">
+    <h1 class="hometitle">{{ .Title }}</h1>
+      </div>
+    <div class="homelisting">
+      {{ range .Pages }}
+
+    <div class="homelistproduct" onclick="location.href={{ .URL }};" style="cursor: pointer;">
+        {{ with .Params.display_image }}<img src="{{ . }}" class="homelistproductimg">{{ end }}
+        <li>
+        <a href="{{ .URL }}" class="homelistproductname">{{ .Title }}</a><br>
+        {{ with .Params.price }} <a class="homelistproductprice">£{{ . }}</a>{{ end }}
+        {{ with .Params.description }}<a class="homelistproductdescription">{{ . }}</a>{{ end }}
+      </li>
+    </div>
+
+    {{ end }}
+    </div>
+  </body>
+
+</html>

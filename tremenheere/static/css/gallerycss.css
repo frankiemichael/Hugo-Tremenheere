@@ -1,0 +1,62 @@
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+
+}
+.secondarypics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width:300px;
+  height:81.66px;
+  grid-auto-rows: 81.66px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8;
+  cursor: pointer;
+
+}
+
+.column img:hover {
+  opacity: 1;
+}
+.row {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  width:100%;
+}
+.row img{
+  width:100px;
+  height:81.66px;
+  margin-left:auto;
+  margin-right:auto;
+  border: 2px solid white;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+.container {
+  display: flex;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 50px;
+  left: 25px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the image */
