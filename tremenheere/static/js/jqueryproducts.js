@@ -2,12 +2,74 @@ $( document ).ready(function() {
 var host = "https://app.snipcart.com/api/products";
 var secret = "ST_ZTg1YjU2ZTgtMmVjZi00ZGZlLWE2NmItOTAzMjE3MjczMGRkNjM3NDk5MzMxNTMzMzYwMTEz"
 var id = "TREREIFE"
+var jsonbin = "$2b$10$1mozpYSw1gbKNBFXQKDvIeCGZLXpnq.HC7uUTsuYPDfJ9KaLa7QeC"
+$.ajax({
+  type:"GET",
+  headers: {
+    "secret-key": "$2b$10$1mozpYSw1gbKNBFXQKDvIeCGZLXpnq.HC7uUTsuYPDfJ9KaLa7QeC",
+  },
+  url: "https://api.jsonbin.io/b/604242c80866664b1089501d/6",
+
+  contentType: "application/json",
+  dataType: 'json',
+  success: function(result){
+    console.log(result)
+    var products = ""
+    $.each(result, function(i,val){
+      var products = result[i]
+      console.log(products)
+      var variants = products[0].variants.length
+      var variantdata = products[0].variants
+      var productdata = products[0]
+      console.log(productdata)
+      if (variants === 0) {
+        $('#stockTable').append("<tr><td id='tdId'><span>" + productdata.id + "</span></td><td id='tdName'><a style='text-decoration:none;color:black;'>" + productdata.name + "</a></td><td id='tdSku'><input type='text' value='" + productdata.sku + "'></input></td><td id='tdStock'><input type='text' id='changeStock"+ i + "' value='" + products.stock + "'></input></tr><br>")
+
+      }else{
+        $('#stockTable').append("<tr><td id='tdId'><span>" + productdata.id + "</span></td><td id='tdName'><a style='text-decoration:none;color:black;'>" + productdata.name + "</a></td><td id='tdSku'><input type='text' value='" + productdata.sku + "'></input></td><td id='tdStock'><button type='button' id='editVariants'>Edit Variants</button></tr><br>")
+
+      }
+
+
+
+    })
+  },
+  error: function(error){
+    console.log(error)
+  }
+});
+$('input').on('change', function(){
+  var id
+})
+$.ajax({
+  type:"PUT",
+  headers: {
+    "secret-key": "$2b$10$1mozpYSw1gbKNBFXQKDvIeCGZLXpnq.HC7uUTsuYPDfJ9KaLa7QeC",
+    "versioning":"false"
+  },
+  url: "https://api.jsonbin.io/b/604242c80866664b1089501d/6",
+
+  contentType: "application/json",
+  dataType: 'json',
+  success: function(result){
+    console.log(result)
+  },
+  error: function(error){
+    console.log(error)
+  }
+});
+return
+
+
+
+
+
+
 $.ajax({
   type:"GET",
   url: host,
   headers: {
-    'Authorization': `Basic ${btoa(secret)}`,
-    'Accept': 'application/json'
+    "secret-key": "$2b$10$1mozpYSw1gbKNBFXQKDvIeCGZLXpnq.HC7uUTsuYPDfJ9KaLa7QeC"
   },
   contentType: "application/json",
   dataType: 'json',

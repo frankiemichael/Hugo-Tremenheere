@@ -1,11 +1,12 @@
 .homelisting {
-  padding-left: 15%;
-  padding-right: 15%;
   display:grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(auto, auto);
-    grid-column-gap: 40px;
     grid-row-gap: 40px;
+    width:60%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 .homelistproduct {
   border: 5px solid;
@@ -18,31 +19,35 @@
 .homelistproductname {
 text-decoration: none;
 font-family: verdana;
-font-size: 8vw;
+font-size: 3vw;
 color:white !important;
 position:absolute;
--webkit-text-stroke: 3px #646464;
+-webkit-text-stroke: 2px #646464;
 }
 .homeimgtextdiv{
   position: relative;
   text-align: center;
   color: white;
-
+  width:60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 .homelogo {
   position: absolute;
  top: 20%;
  left: 45%;
- width: 10vw;
+ width: 6vw;
 
 }
 .hometitle {
   position: absolute;
- top: 50%;
+ top: 60%;
  left: 50%;
  transform: translate(-50%, -50%);
- font-size: 7vw;
- -webkit-text-stroke: 3px #646464;
+ font-size: 4vw;
+ -webkit-text-stroke: 2px #646464;
+
 }
 .homelistproductdescription {
 display: inline-flex;
@@ -55,8 +60,10 @@ overflow: hidden;
   display:flex;
   text-align:left;
   position:relative;
-  width:30vw;
-  height:30vw;
+  width:20vw;
+  height:20vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 .homelistproduct li {
   list-style-type: none;
